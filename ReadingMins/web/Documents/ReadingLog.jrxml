@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2016-10-13T13:32:37 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReadingLog" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="581f160f-6a6a-48e0-a185-b14365a4a189">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="StudentName" class="java.lang.String"/>
+	<parameter name="Month" class="java.lang.String"/>
+	<parameter name="StudentID" class="java.lang.String"/>
+	<parameter name="Total_Mins" class="java.lang.Integer"/>
+	<parameter name="SubPage_Path" class="java.lang.String"/>
+	<parameter name="Parameter1" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<detail>
+		<band height="60">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="0" y="30" width="80" height="30" uuid="cc338357-4138-451d-b53a-26541fecad80"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Days of Month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="30" width="400" height="30" uuid="b128896c-4709-4dcf-aa76-7fab8f548c91"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Selection Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="30" width="100" height="30" uuid="d58aacb3-c939-4856-91a3-e954c140cee2">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Minutes Read]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="121" height="30" uuid="c4bcc656-4865-4a9f-8b70-00c671355644"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Month:" + $P{Month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="0" width="260" height="30" uuid="6a35ece6-c972-4e6f-a56e-a7768fe83d2e">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{StudentName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="101" height="30" uuid="6fa022e8-bf82-4d6d-8334-4ca245a65774"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{StudentID}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<subreport isUsingCache="false" runToBottom="false" overflowType="Stretch">
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="580" height="20" uuid="54e91384-00df-4607-9eb6-6874ffbd9a16"/>
+				<dataSourceExpression><![CDATA[((net.sf.jasperreports.engine.data.JRXmlDataSource)$P{REPORT_DATA_SOURCE}).dataSource("/Doc/subMins")]]></dataSourceExpression>
+				<subreportExpression><![CDATA[$P{SubPage_Path} + "/Documents/ReadingLogItem.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="60">
+			<frame>
+				<reportElement positionType="Float" x="0" y="10" width="570" height="50" uuid="ad697711-172f-4320-aebd-b6ace454b74f">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<staticText>
+					<reportElement x="0" y="20" width="100" height="30" uuid="2c8d915c-47f8-4d58-b683-fc56b46e9fb6"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<text><![CDATA[Parent Signature:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="20" width="250" height="30" uuid="0aec2b42-543b-4b40-97ad-d2b8220f8f0a">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<box>
+						<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="380" y="20" width="80" height="30" uuid="d9c0ea48-a33b-4cae-9523-4c1945e0020e"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<text><![CDATA[Date:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="460" y="20" width="110" height="30" uuid="dd2fb40b-8e4e-4bea-862e-99ee64f8f58c"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+					</box>
+					<textFieldExpression><![CDATA[""]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="5" y="0" width="564" height="20" uuid="e0242199-e56a-409a-99a2-af40be16816d">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["Total Minutes for the Month:       " + $P{Total_Mins} + "  minutes."]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,99 @@
+<%-- 
+    Document   : signonpage
+    Created on : Sep 30, 2016, 7:40:44 AM
+    Author     : renhongxiang
+--%>
+
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Sign Up Page</title>
+        <jsp:include page="../css/body.jsp"/>
+        <jsp:include page="../css/table.jsp"/>
+        <jsp:include page="../css/base.jsp"/>
+        
+    </head>
+    <body>
+        <table class="area">
+            <tr>
+                <td>
+                    <table class="boxcenter" style="margin-top: 200px ">
+                        <tr class="textcenter">
+                            <td>
+                                <div class="pagehead">Create your Reading Log Account</div>
+                            </td>
+                        </tr>
+                        <tr class="boxcenter">
+                            <td>
+                                <fieldset>
+                                    <form:form method="post" modelAttribute="signOnForm" action="">
+                                        <table class="textright, boxleft">
+                                            <tr>
+                                                <td>
+                                                    <form:label path="userName"> 
+                                                            Choose your username
+                                                    </form:label>
+                                                </td>
+                                                <td>
+                                                    <form:input path="userName" /><form:errors path="userName" cssClass="error" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <form:label path="password">
+                                                            Create a password 
+                                                    </form:label>
+                                                </td>
+                                                <td>
+                                                    <form:password path="password" /><form:errors path="password" cssClass="error" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <form:label path="passwordConfirm">
+                                                            Confirm password 
+                                                    </form:label>
+                                                </td>
+                                                <td>
+                                                    <form:password path="passwordConfirm" /><form:errors path="passwordConfirm" cssClass="error" />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <form:label path="registeremail">
+                                                            Your email address 
+                                                    </form:label>
+                                                </td>
+                                                <td>
+                                                    <form:input path="registeremail" /><form:errors path="registeremail" cssClass="error" />
+                                                </td>
+                                            </tr>
+                                            <tr class="textcenter">
+                                                <td>
+                                                </td>
+                                                <td>
+                                                    <button type="submit" >Submit
+                                                                </button>                
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </form:form>
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr class="center">
+                            <td>
+                                <a href="login">sign in with exist account</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

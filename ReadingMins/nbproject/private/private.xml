@@ -3,15 +3,64 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp/welcome.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/tiles.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/MonthlyDetailController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp_old/loginNewStudent.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/AppController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/helpLayout.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentBean.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/addStudent.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/table.css</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadMinsInitServlet.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingDetail.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogBean.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/nbproject/build-impl.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/sessHeader.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadingMinsConfig.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/redirect.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/register/UserAccountController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp/signonpage.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp/login.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp/signonresultpage.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/web.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/sessLayout.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseFooter.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/applicationContext.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/blank.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/studentMenu.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/StudentLevelController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/META-INF/context.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/monthlyinfo.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/js/jquery-ui.min.js</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp_old/addMinResult.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseCss.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/baseLayout.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentEdit.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/setting.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/dispatcher-servlet.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/signup.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/register/UserAccountBean.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/LoginInBean.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/HelloWorldController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp_old/signonpage.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentBeanList.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/SessionController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/login/UserLoginController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/login/UserLogoutController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/login.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/mins/SubmitMinsController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp_old/studentInfo.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/register/UserAccountController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/selectStudent.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/minsEdit.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/body.css</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/mins/EditMinsController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/base.css</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogMonthBean.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseHeader.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/addMins.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp_old/login.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/jsp_old/submitmins.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/download/readinglog/DownloadReadLogController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/web/app/WebUtils.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/EditStudentController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/mins/SubmitMins.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/userMenu.jsp</file>
         </group>
     </open-files>
 </project-private>

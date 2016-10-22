@@ -21,5 +21,7 @@
     p:password="${jdbc.password}" /-->
 
     <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+<!--    <bean id="sessdata" class="rm_lib.sess.RM_SessionData" scope="session">    
+    </bean>-->
 
 </beans>

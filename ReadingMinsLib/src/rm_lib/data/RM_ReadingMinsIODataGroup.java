@@ -23,12 +23,16 @@ public class RM_ReadingMinsIODataGroup extends RY_IODataGroupBase{
 
     @Override
     protected boolean setDataToIOData(DataIOHandleBase ioHandle, boolean loadOnly) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RM_ReadingMins minRec = this.getReadMins();
+        if(minRec != null){
+            return minRec.setDataToIODataReadingMins(ioHandle, loadOnly);
+        }
+        return false;
     }
 
     @Override
     protected boolean setIODataToData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
@@ -38,7 +42,17 @@ public class RM_ReadingMinsIODataGroup extends RY_IODataGroupBase{
 
     @Override
     protected DataIOIdentity getInheritanceIOID(DataIOHandleBase saveHandle, boolean loadOnly) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+
+    private RM_ReadingMins getReadMins(){
+        RY_DataBase obj = this.getDataObj();
+        if(obj != null){
+            if(obj instanceof RM_ReadingMins){
+                return (RM_ReadingMins)obj;
+            }
+        }
+        return null;
     }
     
 }

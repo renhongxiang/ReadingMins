@@ -8,6 +8,7 @@ package rm_lib.application.init;
 import rcommon.rdata.iosystem.DataIOFactoryManager;
 import rcommon.rdata.iosystem.DataIOOperationFactory;
 import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
+import rcommon.rdata.iosys.operation.common.DataIOTimerOperation;
 import rytable.RY_TableManager;
 import rytable.ini.DBInitBase;
 
@@ -67,6 +68,8 @@ public class RM_AppInit extends DBInitBase{
         if(!appInited){
             super.doInit();
             DataIOFactoryManager.setDefaultDataFactory(createOperationFactory());
+            RMTimerUserFactory defaultUserFact = new RMTimerUserFactory();
+            DataIOTimerOperation.setUserFact(defaultUserFact);
         }
     }
 }

@@ -5,6 +5,8 @@
  */
 package com.readingmins.controller.register;
 
+import rcommon.rdata.common.RY_User;
+
 /**
  *
  * @author renhongxiang
@@ -71,6 +73,17 @@ public class UserAccountBean {
         this.registerEmail = registeremail;
     }
 
+    
+    public static RY_User createUserFromBean(UserAccountBean bean){
+        if(bean != null){
+            RY_User user = new RY_User();
+            user.setUserID(bean.getUserName());
+            user.setPassword(bean.getPassword());
+            user.setAcctEmail(bean.getRegisteremail());
+            return user;
+        }
+        return null;
+    }
     
     
 }

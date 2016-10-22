@@ -7,6 +7,8 @@ package rm_lib.application.init;
 
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOOperationFactory;
+import rm_lib.dataio.utils.RMDataIOUtilManager;
+import rm_lib.dataio.utils.database.RMDBUtilManager;
 import rytable.data.iosys.dbutils.DataIODBUtilManager;
 
 /**
@@ -22,6 +24,9 @@ public class RM_DataIOOperationFactory extends DataIOOperationFactory{
 
         DataIODBUtilManager dataIOUtilMan = new DataIODBUtilManager();
         handle.setDataIOUtilManager(dataIOUtilMan);
+        
+        RMDataIOUtilManager rmIOUtilMan = new RMDBUtilManager();
+        handle.setRmDataIOManager(rmIOUtilMan);
         
         return handle;
     }

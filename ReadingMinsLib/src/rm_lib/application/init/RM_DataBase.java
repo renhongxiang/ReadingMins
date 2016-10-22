@@ -5,7 +5,8 @@
  */
 package rm_lib.application.init;
 
-import rm_lib.database.RY_StudentTB;
+import rm_lib.database.RM_ReadingMinsTB;
+import rm_lib.database.RM_StudentTB;
 import rytable.RY_TableManager;
 import rytable.common.RY_AddressTB;
 import rytable.common.RY_CompanyTB;
@@ -34,8 +35,8 @@ public class RM_DataBase extends RY_TableManager{
         this.addTable(RY_ContactInfoTB.createInstance());
         this.addTable(RY_PhoneTB.createInstance());
         this.addTable(RY_EmailTB.createInstance());
-        this.addTable(RY_StudentTB.createInstance());
-
+        this.addTable(RM_StudentTB.createInstance());
+        this.addTable(RM_ReadingMinsTB.createInstance());
         return false;
     }    
 }

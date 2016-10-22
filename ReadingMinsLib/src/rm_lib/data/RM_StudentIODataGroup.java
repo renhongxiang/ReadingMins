@@ -23,12 +23,20 @@ public class RM_StudentIODataGroup extends RY_IODataGroupBase{
 
     @Override
     protected boolean setDataToIOData(DataIOHandleBase ioHandle, boolean loadOnly) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RM_Student student = this.getStudent();
+        if(student != null){
+            return student.setDataToIODataStudent(ioHandle, loadOnly);
+        }
+        return false;
     }
 
     @Override
     protected boolean setIODataToData() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RM_Student student = this.getStudent();
+        if(student != null){
+            return student.setIODataToDataStudent();
+        }
+        return false;
     }
 
     @Override
@@ -38,7 +46,17 @@ public class RM_StudentIODataGroup extends RY_IODataGroupBase{
 
     @Override
     protected DataIOIdentity getInheritanceIOID(DataIOHandleBase saveHandle, boolean loadOnly) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
+    }
+    
+    private RM_Student getStudent(){
+        RY_DataBase obj = this.getDataObj();
+        if(obj != null){
+            if(obj instanceof RM_Student){
+                return (RM_Student)obj;
+            }
+        }
+        return null;
     }
     
 }

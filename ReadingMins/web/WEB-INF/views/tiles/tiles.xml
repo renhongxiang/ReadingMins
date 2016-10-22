@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+  
+   <!-- Base Definition -->
+   
+   <definition name="base-definition"
+       template="/WEB-INF/views/tiles/layouts/baseLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="css" value="/WEB-INF/views/tiles/template/baseCss.jsp" />
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/baseHeader.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/baseFooter.jsp" />
+   </definition>  
+   
+   <definition name="Login" extends="base-definition">  
+       <put-attribute name="title" value="Login" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
+   </definition>  
+   
+   <definition name="SignUp" extends="base-definition">  
+       <put-attribute name="title" value="register" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/signup.jsp" />  
+   </definition>  
+   
+   <definition name="setting" template="/WEB-INF/views/pages/setting.jsp">  
+       <put-attribute name="title" value="" />
+   </definition>  
+
+   <definition name="help" template="/WEB-INF/views/tiles/layouts/helpLayout.jsp">  
+       <put-attribute name="title" value="" />
+   </definition>  
+
+   <definition name="base-user"
+       template="/WEB-INF/views/tiles/layouts/sessLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="css" value="/WEB-INF/views/tiles/template/baseCss.jsp" />
+       <put-attribute name="header" value="/WEB-INF/views/tiles/template/sessHeader.jsp" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/userMenu.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/baseFooter.jsp" />  
+   </definition>  
+
+
+   <definition name="base-student" extends="base-user">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/studentMenu.jsp" />  
+   </definition>  
+  
+   <!-- Home Page -->
+   <definition name="addStudent" extends="base-user">  
+       <put-attribute name="title" value="Add Student" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/addStudent.jsp" />  
+   </definition>  
+   
+   <definition name="selectStudent" extends="base-user">  
+       <put-attribute name="title" value="Add Student" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/selectStudent.jsp" />  
+   </definition>  
+
+    <definition name="editStudent" extends="base-student">  
+       <put-attribute name="title" value="Edit Student" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/studentEdit.jsp" />  
+   </definition> 
+   
+   <definition name="detail" extends="base-student">  
+       <put-attribute name="title" value="Add Student" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/readingDetail.jsp" />  
+   </definition>  
+ 
+   <definition name="monthInfo" extends="base-student">  
+       <put-attribute name="title" value="Add Student" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/monthlyinfo.jsp" />  
+   </definition>  
+ 
+   <definition name="addRecord" extends="base-student">  
+       <put-attribute name="title" value="Add Student" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/addMins.jsp" />  
+   </definition>  
+  
+   <definition name="minsEdit" extends="base-student">  
+       <put-attribute name="title" value="Edit Reading Log" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/minsEdit.jsp" />  
+   </definition>  
+  
+  
+</tiles-definitions>

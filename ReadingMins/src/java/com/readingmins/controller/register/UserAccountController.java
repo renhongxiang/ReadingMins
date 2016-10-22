@@ -5,6 +5,8 @@
  */
 package com.readingmins.controller.register;
 
+import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import rcommon.utils.datastructure.ArrayUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,9 +15,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rcommon.process.logics.RegisterUserLogic;
-import rcommon.rdata.common.RY_ContactInfo;
-import rcommon.rdata.common.RY_Email;
 import rcommon.rdata.common.RY_User;
+import rcommon.rerror.RErrorItem;
+import rcommon.rerror.RErrorManager;
+import rcommon.rerror.RErrorPair;
 import rm_lib.application.init.RM_AppInit;
 
 /**
@@ -27,9 +30,8 @@ public class UserAccountController {
     
     @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
     public String signUp(ModelMap model) {
-        RM_AppInit.initApp();
         model.addAttribute("signOnForm", new UserAccountBean());
-        return "signonpage"; // this is which page to use.
+        return "SignUp"; // this is which page to use.
     }
 
     
@@ -39,15 +41,37 @@ public class UserAccountController {
             String userID = bean.getUserName();
             if(userID != null){
                 if(this.verifyPasswordSame(bean)){
-                    RY_User user = this.createUserFromBean(bean);
+                    RY_User user = UserAccountBean.createUserFromBean(bean);
                     RegisterUserLogic logic = new RegisterUserLogic();
                     if(logic.doRegisterUser(user)){
                         return "signonresultpage";
+                    }else{
+                        if(result != null){
+                            RErrorManager errMan = logic.getErrorManager();
+                            if(errMan != null){
+                                List<RErrorItem> errList = errMan.getErrorItemList();
+                                if(errList != null){
+                                    for(RErrorItem err:errList){
+                                        RErrorPair pair = err.getErrorPair();
+                                        if(pair != null){
+                                            result.rejectValue(pair.getType(),pair.getType(),pair.getMessage());
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
         return "signonpage"; // this is which page to use.
+    }
+    
+    
+    @RequestMapping(value = "/signonresultpage", method = RequestMethod.GET)
+    public String sayHelloAgain(ModelMap model) {
+        model.addAttribute("userName", "Hello World Again, from Spring 4 MVC");
+        return "signonresultpage";
     }
     
     private boolean verifyPasswordSame(UserAccountBean bean){
@@ -61,14 +85,4 @@ public class UserAccountController {
         return false;
     }
     
-    private RY_User createUserFromBean(UserAccountBean bean){
-        if(bean != null){
-            RY_User user = new RY_User();
-            user.setUserID(bean.getUserName());
-            user.setPassword(bean.getPassword());
-            user.setAcctEmail(bean.getRegisteremail());
-            return user;
-        }
-        return null;
-    }
 }

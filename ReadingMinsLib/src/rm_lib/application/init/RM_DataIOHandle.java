@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import rcommon.rdata.iosys.db.DBConnectionSupport;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
+import rm_lib.dataio.utils.RMDataIOUtilManager;
 
 /**
  *
@@ -19,7 +20,8 @@ import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
  */
 public class RM_DataIOHandle extends DataIOHandleBase implements DBConnectionSupport{
     
-    private Connection conn = null;
+    private Connection conn = null;    
+    private RMDataIOUtilManager rmDataIOManager = null;
     
     @Override
     public Connection getConnection() {
@@ -98,5 +100,14 @@ public class RM_DataIOHandle extends DataIOHandleBase implements DBConnectionSup
         }        
         return true;
     }
+
+    public RMDataIOUtilManager getRmDataIOManager() {
+        return rmDataIOManager;
+    }
+
+    public void setRmDataIOManager(RMDataIOUtilManager rmDataIOManager) {
+        this.rmDataIOManager = rmDataIOManager;
+    }
+    
     
 }

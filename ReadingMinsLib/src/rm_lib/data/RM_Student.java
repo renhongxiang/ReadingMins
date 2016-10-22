@@ -5,16 +5,20 @@
  */
 package rm_lib.data;
 
-import rcommon.rdata.common.RY_DataBase;
 import rcommon.rdata.common.RY_IODataGroupBase;
+import rcommon.rdata.common.RY_Person;
 import rcommon.rdata.common.RY_User;
+import rcommon.rdata.datavalue.R_Int_Value;
+import rcommon.rdata.datavalue.R_String_Value;
+import rcommon.rdata.iosystem.DataIOHandleBase;
+import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rdata.structure.RY_IODataObjectBase;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_Student extends RY_DataBase{
+public class RM_Student extends RY_Person{
     
     private RY_User user = null;
     
@@ -49,6 +53,18 @@ public class RM_Student extends RY_DataBase{
         return null;
     }    
     
+    public RM_StudentIOData getSavedStudentIOData(boolean createIfNull){        
+        RY_IODataObjectBase ioData = null;
+        RY_IODataGroupBase group = this.getStudentDataGroup(createIfNull);
+        if(group != null){
+            ioData = group.getLastSavedData(createIfNull);
+        }
+        if(ioData != null && ioData instanceof RM_StudentIOData){
+            return (RM_StudentIOData)ioData;
+        }        
+        return null;
+    }    
+    
 // </editor-fold>
 
     public RY_User getUser() {
@@ -59,6 +75,120 @@ public class RM_Student extends RY_DataBase{
         this.user = user;
     }
     
+    public String getStudentCode() {
+        RM_StudentIOData ioData = this.getStudentIOData();
+        if(ioData != null){
+            return R_String_Value.getStringValue(ioData.getIDCode());
+        }
+        return null;
+    }
+
+    public void setStudentCode(String code) {
+        RM_StudentIOData ioData = this.getStudentIOData(true);
+        if(ioData != null){
+            ioData.setIDCode(R_String_Value.createValueFromString(code));
+        }
+    }
     
+    
+    private boolean doSaveDependent(DataIOHandleBase saveHandle){
+        return true;
+    }
+    
+    private boolean doSaveRelated(DataIOHandleBase saveHandle){
+        return true;
+    }
+
+    private boolean savePrepareLoad(DataIOHandleBase saveHandle){
+        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+        if(group != null){
+            return group.doPrepareLoad(saveHandle);
+        }
+        return false;
+    }
+    
+    @Override
+    public boolean doSave(DataIOHandleBase saveHandle){
+        if(this.savePrepareLoad(saveHandle)){
+            if(super.doSave(saveHandle)){
+                if(this.doSaveDependent(saveHandle)){
+                    if(this.doSaveStudent(saveHandle)){
+                        return this.doSaveRelated(saveHandle);
+                    }
+                }
+            }
+            
+        }
+        return false;
+    }
+    
+    @Override
+    public boolean doLoad(DataIOHandleBase loadHandle){
+        return this.doLoadStudent(loadHandle);            
+    }
+    
+    protected boolean doLoadStudent(DataIOHandleBase ioHandle){
+        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+        if(group != null){
+            return group.doLoad(ioHandle);
+        }
+        return false;
+    }
+    
+    protected boolean doSaveStudent(DataIOHandleBase saveHandle){
+        RY_IODataGroupBase group = this.getStudentDataGroup(false);
+        if(group != null){
+            return group.doSave(saveHandle);
+        }
+        return true;
+    }
+    
+    public boolean setDataToIODataStudent(DataIOHandleBase saveHandle, boolean loadOnly){
+        RM_StudentIOData ioData = this.getStudentIOData(true);
+        if(ioData != null){
+            RY_User user = this.getUser();
+            if(user != null){
+                DataIOIdentity userIOID = user.getUserIOID();
+                ioData.setUserID(userIOID);
+            }
+            
+            ioData.setPersonID(this.getPersonIOID(saveHandle, loadOnly));
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean setIODataToDataStudent(){
+        RM_StudentIOData ioData = this.getStudentIOData(false);
+        if(ioData != null){            
+            this.setPersonIOID(ioData.getPersonID());
+            return true;
+        }
+        
+        return false;
+    }
+    
+    public final boolean fillDataWithLoadedStudentIOData(RM_StudentIOData ioData){
+        if(ioData != null){
+            RY_IODataGroupBase group = this.getStudentDataGroup(true);
+            if(group != null){
+                return group.fillDataWithSavedData(ioData);
+            }
+        }
+        return false;
+    }
+    
+    public DataIOIdentity getStudentIOID() {
+        return this.getStudentIOID(null, true);
+    }
+    
+    
+    public DataIOIdentity getStudentIOID(DataIOHandleBase saveHandle, boolean loadOnly) {
+        RY_IODataGroupBase group = this.getStudentDataGroup(false);
+        if(group != null){
+            return group.getIOID(saveHandle, loadOnly);
+        }
+        return null;
+    }
     
 }
