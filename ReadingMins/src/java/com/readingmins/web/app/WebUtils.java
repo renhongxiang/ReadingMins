@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import rcommon.rdata.common.RY_User;
 import rm_lib.data.RM_Student;
+import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -70,4 +71,12 @@ public class WebUtils {
         return false;
     }
     
+    public static RM_SessDataGroup getCurSessDataGroup(HttpServletRequest request){
+        RM_SessionData sessData = WebUtils.getSessionData(request);
+        if(sessData != null){
+            return sessData.getGroupData();
+        }
+        return null;
+
+    }
 }

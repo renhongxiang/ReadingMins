@@ -6,31 +6,31 @@
 package rm_lib.application.workflow;
 
 import rcommon.data.session.RSessionDataPackage;
-import rm_lib.data.RM_Student;
-import rm_lib.sess.RM_SessDataGroup;
+import rm_lib.data.RM_ReadingMins;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_SessDataGroupStudentBase extends RM_SessDataGroup{
+public class RM_SessDataGroupLog extends RM_SessDataGroupMonthly{
     
-    private RM_Student  student;
-    
-    public RM_Student getStudent() {
-        return student;
+    private RM_ReadingMins readingLog = null;
+
+    public RM_ReadingMins getReadingLog() {
+        return readingLog;
     }
 
-    public void setStudent(RM_Student student) {
-        this.student = student;
+    public void setReadingLog(RM_ReadingMins readingLog) {
+        this.readingLog = readingLog;
     }
+    
     
     @Override
     protected boolean copyPackageDataFrom(RSessionDataPackage curPackage){
         if(super.copyPackageDataFrom(curPackage)){
-            if(curPackage instanceof RM_SessDataGroupStudentBase){
-                RM_SessDataGroupStudentBase fromPackage = (RM_SessDataGroupStudentBase)curPackage;
-                this.setStudent(fromPackage.getStudent());
+            if(curPackage instanceof RM_SessDataGroupLog){
+                RM_SessDataGroupLog fromPackage = (RM_SessDataGroupLog)curPackage;
+                this.setReadingLog(fromPackage.getReadingLog());
             }
             return true;
         }

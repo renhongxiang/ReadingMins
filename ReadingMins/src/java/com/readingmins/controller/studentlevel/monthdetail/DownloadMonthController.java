@@ -37,7 +37,8 @@ import rm_lib.sess.RM_SessionData;
 @Controller
 @Scope("session")
 public class DownloadMonthController extends StudentLevelController{
- 
+
+    
     @RequestMapping(value = "/monthInfo", method = RequestMethod.GET)
     public String monthInfoGet(HttpServletRequest request, ModelMap model) {
         this.prepareMenuInfo(request, model);

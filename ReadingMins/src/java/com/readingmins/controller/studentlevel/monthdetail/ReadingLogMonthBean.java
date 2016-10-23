@@ -5,7 +5,9 @@
  */
 package com.readingmins.controller.studentlevel.monthdetail;
 
+import java.util.Date;
 import java.util.List;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -24,5 +26,34 @@ public class ReadingLogMonthBean {
         this.readLogList = readLogList;
     }
     
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private Date date;
     
+    private String title;
+    
+    private int mins;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getMins() {
+        return mins;
+    }
+
+    public void setMins(int mins) {
+        this.mins = mins;
+    }    
 }

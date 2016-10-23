@@ -18,7 +18,6 @@ import rm_lib.data.RM_Student;
 public class LoadStudentReadingRecordByMonth {
     
     public List<RM_ReadingMins> getReadingMinsByMonth(RM_Student student, RMonth month, RY_User user){
-        
         LoaderStudentTotalMinsByMonthOperation oper = new LoaderStudentTotalMinsByMonthOperation();
         oper.setMonth(month);
         oper.setStudent(student);

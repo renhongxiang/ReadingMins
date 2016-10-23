@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rm_lib.sess;
-
-import rcommon.data.session.RSessionDataPackage;
+package rm_lib.application.workflow;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_SessDataGroup extends RSessionDataPackage{
+public class RM_SessDataGroupAddLog extends RM_SessDataGroupMonthly{
+
     
 }

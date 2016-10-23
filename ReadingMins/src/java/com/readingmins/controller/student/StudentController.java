@@ -5,6 +5,7 @@
  */
 package com.readingmins.controller.student;
 
+import com.readingmins.controller.SessionController;
 import com.readingmins.web.app.WebUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,18 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rcommon.rdata.common.RY_User;
-import rcommon.rerror.RErrorItem;
-import rcommon.rerror.RErrorManager;
-import rcommon.rerror.RErrorPair;
 import rm_lib.application.workflow.ApplicationFlow;
+import rm_lib.application.workflow.RM_SessDataGroupStudentList;
 import rm_lib.data.RM_Student;
 import rm_lib.process.loader.LoaderStudentsByUser;
-import rm_lib.process.logics.NewStudentLogic;
+import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -32,49 +29,61 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class StudentController {
-    @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
-    public String addStudentGet(ModelMap model) {
-        model.addAttribute("addStudentForm", new StudentBean());
-        return "addStudent"; // this is which page to use.
+public class StudentController extends SessionController{
+    
+    @RequestMapping(value = "/selectStudent", method = RequestMethod.GET)
+    public String selectStudentGet(HttpServletRequest request, ModelMap model) {
+        
+        this.controllerPageIn(request);
+        
+        RY_User user = WebUtils.getLoginUser(request);            
+        List<RM_Student> rmStudents = this.loadStudentsByUser(user);
+        
+        RM_SessDataGroup pageData = WebUtils.getCurSessDataGroup(request);
+        if(pageData != null){
+            if(pageData instanceof RM_SessDataGroupStudentList){
+                RM_SessDataGroupStudentList studentListGroup = (RM_SessDataGroupStudentList)pageData;
+                studentListGroup.setStudentList(rmStudents);
+            }
+        }
+        
+        List<StudentBean> studentList = buildStudentBeanList(rmStudents);
+        
+        StudentBeanList contactForm = new StudentBeanList();
+        contactForm.setStudents(studentList);
+        model.put("studentList", contactForm);
+        return "selectStudent"; // this is which page to use.
     }
+    
+    @RequestMapping(value = "/selectStudent", method = RequestMethod.POST)
+    public String selectStudentPost(HttpServletRequest request, ModelMap model) {
 
-    @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
-    public String addStudentPost(HttpServletRequest request, @ModelAttribute("addStudentForm") StudentBean bean, BindingResult result, ModelMap model) {
-        if(bean != null){
-            RY_User user = WebUtils.getLoginUser(request);
-            if(user != null){
-                RM_Student student = new RM_Student();
+        this.controllerPageIn(request);
+
+        List<RM_Student> studentList = WebUtils.getSessStudentList(request);
+        if(studentList != null){
+            for(int i=0;i<studentList.size();i++){
+                RM_Student student = studentList.get(i);
                 if(student != null){
-                    student.setUser(user);
-                    StudentBean.fillStudentInfoFromBean(student,bean);
-                    // save student
-                    NewStudentLogic logic = new NewStudentLogic();
-                    if(logic.doCreateNewStudent(student, user)){
-                        
+                    String button = request.getParameter("firstName"+i);
+                    if(button == null){
+                        button = request.getParameter("lastName"+i);
+                    }
+                    if(button != null){
+                        RM_SessionData sessData = WebUtils.getSessionData(request);
+                        ApplicationFlow.StudentSelected(sessData, student);
                         return "redirect:addRecord";
-                    }else{
-                        if(result != null){
-                            RErrorManager errMan = logic.getErrorManager();
-                            if(errMan != null){
-                                List<RErrorItem> errList = errMan.getErrorItemList();
-                                if(errList != null){
-                                    for(RErrorItem err:errList){
-                                        RErrorPair pair = err.getErrorPair();
-                                        if(pair != null){
-                                            result.rejectValue(pair.getType(),pair.getType(),pair.getMessage());
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
                 }
             }
         }
-        return "addStudent"; // this is which page to use.
+        return "selectStudent"; // this is which page to use.
     }
-    
+
+    @Override
+    protected RM_SessDataGroup createPageData(){
+        return new RM_SessDataGroupStudentList();
+    }
     
     private List<StudentBean> buildStudentBeanList(List<RM_Student> dataList){
         if(dataList != null){
@@ -98,41 +107,4 @@ public class StudentController {
         return loader.loadListByUser(user);
     }
     
-    @RequestMapping(value = "/selectStudent", method = RequestMethod.GET)
-    public String selectStudentGet(HttpServletRequest request, ModelMap model) {
-        RY_User user = WebUtils.getLoginUser(request);            
-        List<RM_Student> rmStudents = this.loadStudentsByUser(user);
-        
-        RM_SessionData sessData = WebUtils.getSessionData(request);        
-        ApplicationFlow.SelectStudentFromList(sessData, rmStudents);
-        List<StudentBean> studentList = buildStudentBeanList(rmStudents);
-        
-        StudentBeanList contactForm = new StudentBeanList();
-        contactForm.setStudents(studentList);
-        model.put("studentList", contactForm);
-        return "selectStudent"; // this is which page to use.
-    }
-    
-    @RequestMapping(value = "/selectStudent", method = RequestMethod.POST)
-    public String selectStudentPost(HttpServletRequest request, ModelMap model) {
-        List<RM_Student> studentList = WebUtils.getSessStudentList(request);
-        if(studentList != null){
-            for(int i=0;i<studentList.size();i++){
-                RM_Student student = studentList.get(i);
-                if(student != null){
-                    String button = request.getParameter("firstName"+i);
-                    if(button == null){
-                        button = request.getParameter("lastName"+i);
-                    }
-                    if(button != null){
-                        RM_SessionData sessData = WebUtils.getSessionData(request);
-                        ApplicationFlow.StudentSelected(sessData, student);
-                        return "redirect:detail";
-                    }
-                }
-            }
-        }
-        return "selectStudent"; // this is which page to use.
-    }
-
 }

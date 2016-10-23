@@ -45,29 +45,33 @@ public class LoaderStudentTotalMinsByMonthOperation extends DataIOTimerOperation
     
     @Override
     protected boolean doProcessOperation() {
-        RM_ReadingMins loadMins = new RM_ReadingMins();
-        loadMins.setStudent(getStudent());
-        loadMins.setStatus(RY_DataBase.STATUS_ACTIVE);
-        loadMins.setDataToIODataReadingMins(null, true);
-        RM_ReadingMinsIOData ioData = loadMins.getReadingMinsIOData();
-        if(ioData != null){
-            ioData.setStatus_value(R_Int_Value.createIntegerValue(RM_Student.STATUS_ACTIVE));
-            List<RY_IODataObjectBase> ioDataList = ioData.doLoadListRecordByDataInMonth(this.getDataIOHandle(), ioData, month);
-//            List<RY_IODataObjectBase> ioDataList = ioData.doLoadListRecordByData(this.getDataIOHandle(), ioData);
-            if(ioDataList != null){
-                resultList = new ArrayList<RM_ReadingMins>();
-                if(resultList != null){
-                    for(RY_IODataObjectBase ioDataItem: ioDataList){
-                        if(ioDataItem instanceof RM_ReadingMinsIOData){
-                            RM_ReadingMinsIOData loadItem = (RM_ReadingMinsIOData)ioDataItem;
-                            RM_ReadingMins objItem = new RM_ReadingMins();
-                            objItem.fillDataWithLoadedReadingMinsIOData(loadItem);
-                            objItem.setStudent(getStudent());
-                            resultList.add(objItem);
+        RM_Student student = getStudent();
+        if(student != null && month != null){        // student null will load other student's data
+                                                    // month null may load all data for the student
+            RM_ReadingMins loadMins = new RM_ReadingMins();
+            loadMins.setStudent(student);
+            loadMins.setStatus(RY_DataBase.STATUS_ACTIVE);
+            loadMins.setDataToIODataReadingMins(null, true);
+            RM_ReadingMinsIOData ioData = loadMins.getReadingMinsIOData();
+            if(ioData != null){
+                ioData.setStatus_value(R_Int_Value.createIntegerValue(RM_Student.STATUS_ACTIVE));
+                List<RY_IODataObjectBase> ioDataList = ioData.doLoadListRecordByDataInMonth(this.getDataIOHandle(), ioData, month);
+    //            List<RY_IODataObjectBase> ioDataList = ioData.doLoadListRecordByData(this.getDataIOHandle(), ioData);
+                if(ioDataList != null){
+                    resultList = new ArrayList<RM_ReadingMins>();
+                    if(resultList != null){
+                        for(RY_IODataObjectBase ioDataItem: ioDataList){
+                            if(ioDataItem instanceof RM_ReadingMinsIOData){
+                                RM_ReadingMinsIOData loadItem = (RM_ReadingMinsIOData)ioDataItem;
+                                RM_ReadingMins objItem = new RM_ReadingMins();
+                                objItem.fillDataWithLoadedReadingMinsIOData(loadItem);
+                                objItem.setStudent(getStudent());
+                                resultList.add(objItem);
+                            }
                         }
                     }
+                    return true;
                 }
-                return true;
             }
         }
         return false;

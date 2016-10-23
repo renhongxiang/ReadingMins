@@ -5,14 +5,16 @@
  */
 package rm_lib.data;
 
+import java.util.Date;
 import rcommon.rdata.common.RY_IODataGroupBase;
 import rcommon.rdata.common.RY_Person;
 import rcommon.rdata.common.RY_User;
-import rcommon.rdata.datavalue.R_Int_Value;
+import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.datavalue.R_String_Value;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rdata.structure.RY_IODataObjectBase;
+import rcommon.utils.datatype.RDateUtils;
 
 /**
  *
@@ -73,6 +75,10 @@ public class RM_Student extends RY_Person{
 
     public void setUser(RY_User user) {
         this.user = user;
+    }
+    
+    public Integer getDailyRequestReadingMins(){
+        return 30;
     }
     
     public String getStudentCode() {
@@ -189,6 +195,26 @@ public class RM_Student extends RY_Person{
             return group.getIOID(saveHandle, loadOnly);
         }
         return null;
+    }
+    
+    public Integer getShortMins(RMonth month, Integer totalMins){
+        if(month != null && totalMins != null ){
+            RMonth curMonth = RMonth.getCurrMonth();
+            int diff = RMonth.diffMonth(month, curMonth);
+            Integer minRead = this.getDailyRequestReadingMins();
+            if(diff == 0){
+                Date today = new Date();
+                int curDays = RDateUtils.GetDay(today);
+                int totalNeed = curDays * minRead;
+                return totalNeed - totalMins;
+            }else if(diff > 0){
+                Date lastDay = month.getMonthLastDate();
+                int lastDays = RDateUtils.GetDay(lastDay);
+                int totalNeed = lastDays * minRead;
+                return totalNeed - totalMins;
+            }
+        }
+        return 0;
     }
     
 }

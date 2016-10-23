@@ -12,7 +12,7 @@
     <table class="area">
         <tr>
             <td>
-                <table class="boxcenter">
+                <table class="boxcenter" >
                     <tr class="textcenter">
                         <td>
                             <div class="pagehead">Editing Reading Log</div>
@@ -21,7 +21,7 @@
                     <tr>
                         <td>
                             <form:form method="post" modelAttribute="minsForm" action="">
-                                <table class="textright">
+                                <table class="textright" id="monthlistTable">
                                     <tr>
                                         <td>
                                             <form:label path="date">Date:</form:label>

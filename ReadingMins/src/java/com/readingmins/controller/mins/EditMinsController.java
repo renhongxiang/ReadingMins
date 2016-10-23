@@ -5,6 +5,7 @@
  */
 package com.readingmins.controller.mins;
 
+import com.readingmins.controller.studentlevel.monthdetail.SubmitMins;
 import com.readingmins.controller.studentlevel.StudentLevelController;
 import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +16,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rcommon.rdata.common.RY_DataBase;
+import rm_lib.application.workflow.RM_SessDataGroupLog;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.process.logics.AddReadingRecordLogic;
+import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -27,9 +30,17 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class EditMinsController extends StudentLevelController{
 
+    @Override
+    protected RM_SessDataGroup createPageData(){
+        return new RM_SessDataGroupLog();
+    }
+    
+    
     @RequestMapping(value = "/minsEdit", method = RequestMethod.GET)
     public String editMinsGet(HttpServletRequest request, ModelMap model) {
 
+        this.controllerPageIn(request);
+        
         this.prepareMenuInfo(request, model);
         
         RM_SessionData sessData = WebUtils.getSessionData(request);
@@ -42,12 +53,14 @@ public class EditMinsController extends StudentLevelController{
                 mins.setTitle(curMin.getBookTitle());
                 model.addAttribute("minsForm", mins);
             }
-        }        
+        }
+        
         return "minsEdit"; // this is which page to use.
     }
     
-    @RequestMapping(value = "/minsEdit", params = "Save", method = RequestMethod.POST)
+    @RequestMapping(value = "/minsEdit", params = "save", method = RequestMethod.POST)
     public String editMinsPostSave(HttpServletRequest request, @ModelAttribute("minsForm") SubmitMins bean, ModelMap model) {
+        this.controllerPageIn(request);
         if(bean != null){
             RM_SessionData sessData = WebUtils.getSessionData(request);
             if(sessData != null){
@@ -57,15 +70,18 @@ public class EditMinsController extends StudentLevelController{
                     min.setBookTitle(bean.getTitle());
                     min.setReadMins(bean.getMins());
                     AddReadingRecordLogic logic = new AddReadingRecordLogic();
-                    logic.doSaveReadingInfo(min, WebUtils.getLoginUser(request));
+                    if(logic.doSaveReadingInfo(min, WebUtils.getLoginUser(request))){
+                        return "redirect:addRecord";
+                    }
                 }
             }            
         }
-        return "minsEdit"; // this is which page to use.
+        return "minsEdit";
     }    
 
     @RequestMapping(value = "/minsEdit", params = "delete", method = RequestMethod.POST)
     public String editMinsPostDelete(HttpServletRequest request, @ModelAttribute("minsForm") SubmitMins bean, ModelMap model) {
+        this.controllerPageIn(request);
         if(bean != null){
             RM_SessionData sessData = WebUtils.getSessionData(request);
             if(sessData != null){
@@ -75,11 +91,13 @@ public class EditMinsController extends StudentLevelController{
                     min.setReadMins(0);
                     min.setStatus(RY_DataBase.STATUS_INACTIVE);
                     AddReadingRecordLogic logic = new AddReadingRecordLogic();
-                    logic.doSaveReadingInfo(min, WebUtils.getLoginUser(request));
+                    if(logic.doSaveReadingInfo(min, WebUtils.getLoginUser(request))){
+                        return "redirect:addRecord";
+                    }
                 }
             }            
         }
-        return "redirect:detail"; // this is which page to use.
+        return "minsEdit";
     }    
     
 }

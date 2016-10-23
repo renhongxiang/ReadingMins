@@ -6,10 +6,11 @@
 package rm_lib.sess;
 
 import java.util.List;
-import rcommon.data.session.SessionLevelDataBase;
+import rcommon.data.session.RSessionDataBase;
+import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
-import rcommon.rdata.iosystem.DataIOIdentity;
-import rm_lib.application.workflow.RM_SessDataGroupSelectReadingLog;
+import rm_lib.application.workflow.RM_SessDataGroupLog;
+import rm_lib.application.workflow.RM_SessDataGroupMonthly;
 import rm_lib.application.workflow.RM_SessDataGroupStudentBase;
 import rm_lib.application.workflow.RM_SessDataGroupStudentList;
 import rm_lib.data.RM_ReadingMins;
@@ -19,10 +20,11 @@ import rm_lib.data.RM_Student;
  *
  * @author renhongxiang
  */
-public class RM_SessionData {
+public class RM_SessionData extends RSessionDataBase{
     
-    private RY_User loginUser = null;    
-    private RM_SessDataGroup groupData = null;
+    private RY_User loginUser = null;
+    
+//    private RM_SessDataGroup groupData = null;
 
     public RY_User getLoginUser() {
         return loginUser;
@@ -33,11 +35,15 @@ public class RM_SessionData {
     }
 
     public RM_SessDataGroup getGroupData() {
-        return groupData;
+        RSessionDataPackage sessPackage = this.getCurPackage();
+        if(sessPackage instanceof RM_SessDataGroup){
+            return (RM_SessDataGroup)sessPackage;
+        }
+        return null;
     }
 
     public void setGroupData(RM_SessDataGroup groupData) {
-        this.groupData = groupData;
+        this.setCurPackage(groupData);
     }
     
     public RM_Student getCurStudent(){
@@ -49,13 +55,6 @@ public class RM_SessionData {
         return null;
     }
 
-    public DataIOIdentity getCurReadingLogID(){
-        RM_SessDataGroup groupData = this.getGroupData();
-        if(groupData instanceof RM_SessDataGroupStudentBase){
-            return ((RM_SessDataGroupStudentBase) groupData).getReadingLogID();
-        }
-        return null;
-    }
     
     public List<RM_Student> getStudentList(){
         RM_SessDataGroup groupData = this.getGroupData();
@@ -67,30 +66,24 @@ public class RM_SessionData {
     
     public void setCurReadingLog(RM_ReadingMins min){
         RM_SessDataGroup groupData = this.getGroupData();
-        if(groupData instanceof RM_SessDataGroupStudentBase){
-            groupData.setSubData(null);
-            ((RM_SessDataGroupStudentBase) groupData).setCurReadingLog(min);
+        if(groupData instanceof RM_SessDataGroupLog){
+            ((RM_SessDataGroupLog) groupData).setReadingLog(min);
         }
     }
 
     public RM_ReadingMins getCurReadingLog(){
         RM_SessDataGroup groupData = this.getGroupData();
-        if(groupData instanceof RM_SessDataGroupStudentBase){
-            return ((RM_SessDataGroupStudentBase) groupData).getCurReadingLog();
+        if(groupData instanceof RM_SessDataGroupLog){
+            return ((RM_SessDataGroupLog) groupData).getReadingLog();
         }
         return null;
     }
 
     public List<RM_ReadingMins> getSelectMinList(){
         RM_SessDataGroup groupData = this.getGroupData();
-        if(groupData instanceof RM_SessDataGroupStudentBase){
-            RM_SessDataGroupStudentBase studentGroup = (RM_SessDataGroupStudentBase)groupData;
-            
-            SessionLevelDataBase group = studentGroup.getSubData();
-            if(group instanceof RM_SessDataGroupSelectReadingLog){
-                RM_SessDataGroupSelectReadingLog readLogGroup = (RM_SessDataGroupSelectReadingLog)group;
-                return readLogGroup.getReadingMinsList();
-            }
+        if(groupData instanceof RM_SessDataGroupMonthly){
+            RM_SessDataGroupMonthly monthlyGroup = (RM_SessDataGroupMonthly)groupData;
+            return monthlyGroup.getMonthReclist();
         }
         return null;
     }

@@ -29,6 +29,9 @@ public class EditStudentController extends StudentLevelController{
     
     @RequestMapping(value = "/editStudent", method = RequestMethod.GET)
     public String editStudentGet(HttpServletRequest request, ModelMap model) {
+        
+        this.controllerPageIn(request);
+        
         this.prepareMenuInfo(request, model);
         StudentBean bean = new StudentBean();
         RM_Student student = WebUtils.getSessCurStudent(request);
@@ -39,6 +42,9 @@ public class EditStudentController extends StudentLevelController{
 
     @RequestMapping(value = "/editStudent", params = "Save", method = RequestMethod.POST)
     public String editStudentPostSave(HttpServletRequest request, @ModelAttribute("editStudentForm") StudentBean bean, ModelMap model) {
+        
+        this.controllerPageIn(request);
+        
         this.prepareMenuInfo(request, model);
         if(bean != null){
             RM_Student student = WebUtils.getSessCurStudent(request);
@@ -54,6 +60,9 @@ public class EditStudentController extends StudentLevelController{
 
     @RequestMapping(value = "/editStudent", params = "Delete", method = RequestMethod.POST)
     public String editStudentPostDelete(HttpServletRequest request, @ModelAttribute("editStudentForm") StudentBean bean, ModelMap model) {
+
+        this.controllerPageIn(request);
+        
         RM_Student student = WebUtils.getSessCurStudent(request);
         if(student != null){
             student.setStatus(RY_DataBase.STATUS_INACTIVE);

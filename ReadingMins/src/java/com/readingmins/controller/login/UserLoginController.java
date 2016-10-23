@@ -50,6 +50,7 @@ public class UserLoginController {
                 session.setAttribute("sessdata", sessData);
                 ApplicationFlow.UserLogin(sessData, user);
                 
+                
                 List<RM_Student> students = loadStudentsByUser(user);
                 if(students != null){
                     if(students.size() == 1){
@@ -57,7 +58,7 @@ public class UserLoginController {
                         ApplicationFlow.StudentSelected(sessData, student);
                         return "redirect:addRecord";    // go to submit minutes
                     }else if(students.size() > 1){
-                        ApplicationFlow.GoToSelectStudent(sessData, students);
+                        ApplicationFlow.GotoSelectStudent(sessData, students);
                         return "redirect:selectStudent"; // select student
                     }
                 }

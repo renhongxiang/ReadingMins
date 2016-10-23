@@ -29,7 +29,6 @@
             <nav>
                 <ul id="menu" style="background-color: lightgrey">
                    <li><a href="${pageContext.request.contextPath}/monthInfo">Download Reading Log</a></li>
-                   <li><a href="${pageContext.request.contextPath}/detail">Edit Reading Log</a></li>
                    <li><a href="${pageContext.request.contextPath}/addRecord">New Reading Log</a></li>
                    <li><a href="${pageContext.request.contextPath}/selectStudent">Select Student</a></li>
                    <li><a href="${pageContext.request.contextPath}/editStudent">Edit Student</a></li>
