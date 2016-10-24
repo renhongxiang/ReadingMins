@@ -70,6 +70,9 @@ public class UserSingupController extends UserControllerBase{
                             }
                         }
                     }
+                }else{
+                    result.rejectValue("password","password","Password do not match");
+                    result.rejectValue("passwordConfirm","passwordConfirm","Password do not match");
                 }
             }
         }

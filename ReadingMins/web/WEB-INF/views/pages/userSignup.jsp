@@ -26,7 +26,10 @@
                                                     </form:label>
                                                 </td>
                                                 <td>
-                                                    <form:input path="userName" /><form:errors path="userName" cssClass="error" />
+                                                    <form:input path="userName" />
+                                                </td>
+                                                <td>
+                                                    <form:errors path="userName" cssClass="error" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -36,7 +39,10 @@
                                                     </form:label>
                                                 </td>
                                                 <td>
-                                                    <form:password path="password" /><form:errors path="password" cssClass="error" />
+                                                    <form:password path="password" />
+                                                </td>
+                                                <td>
+                                                    <form:errors path="password" cssClass="error" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -46,8 +52,11 @@
                                                     </form:label>
                                                 </td>
                                                 <td>
-                                                    <form:password path="passwordConfirm" /><form:errors path="passwordConfirm" cssClass="error" />
+                                                    <form:password path="passwordConfirm" />
                                                 </td>
+                                                <td>
+                                                    <form:errors path="passwordConfirm" cssClass="error" />
+                                                </td>                                                
                                             </tr>
                                             <tr>
                                                 <td>
@@ -56,15 +65,17 @@
                                                     </form:label>
                                                 </td>
                                                 <td>
-                                                    <form:input path="registeremail" /><form:errors path="registeremail" cssClass="error" />
+                                                    <form:input path="registeremail" />
+                                                </td>
+                                                <td>
+                                                    <form:errors path="registeremail" cssClass="error" />
                                                 </td>
                                             </tr>
                                             <tr class="textcenter">
                                                 <td>
                                                 </td>
                                                 <td>
-                                                    <button type="submit" >Submit
-                                                                </button>                
+                                                    <button type="submit" >Submit</button>                
                                                 </td>
                                             </tr>
                                         </table>
