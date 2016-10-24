@@ -57,18 +57,18 @@
                                     <tr class="textcenter">
                                         <td>
                                             <c:choose>
-                                                <c:when test="<%${overMins}) >= 0 %>">
-                                                    ${overMins} minutes more
+                                                <c:when test="${monthReadingLog.short}">
+                                                    <div class="error">${monthReadingLog.shortMins} minutes short</div>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <div class="error">${overMins} minutes short</div>
+                                                    ${monthReadingLog.moreMins} minutes more
                                                 </c:otherwise>
                                             </c:choose>
                                         </td>
                                         <td>
                                         </td>
                                         <td>
-                                            Total ${totalMins} Minutes
+                                            Total ${monthReadingLog.totalMins} Minutes
                                         </td>
                                     </tr>
                             </table>

@@ -43,13 +43,10 @@ public class MonthlyDetailControllerBase extends StudentLevelController{
         return "monthReadingLog";
     }
     
-    protected String getTotalMinsName(){
-        return "totalMins";
-    }
-
-    protected String getOverMinsName(){
-        return "overMins";
-    }
+//    protected String getOverMinsName(){
+//        return "overMins";
+//    }
+    
 
     protected ReadingLogMonthBean getBean(){
         if(pageBean == null){
@@ -82,16 +79,18 @@ public class MonthlyDetailControllerBase extends StudentLevelController{
         List<ReadingLogBean> beanList = this.buildBeanList(list);
         ReadingLogMonthBean bean = getBean();
         bean.setReadLogList(beanList);
-        model.addAttribute(getMonthListTableName(), bean);
         
         Integer totalMins = this.getTotalMins(list);
-        model.addAttribute(getTotalMinsName(), totalMins);
+        bean.setTotalMins(totalMins);
         
         RM_Student student = WebUtils.getSessCurStudent(request);
-        
         Integer shortMins = this.getShortMins(student, month, totalMins);
+
+//        model.addAttribute(getTotalMinsName(), totalMins);
+
+        bean.setShortMins(shortMins);
         
-        model.addAttribute(getOverMinsName(), -shortMins);
+        model.addAttribute(getMonthListTableName(), bean);
         
     }
     

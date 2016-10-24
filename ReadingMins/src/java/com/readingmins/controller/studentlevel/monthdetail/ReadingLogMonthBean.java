@@ -32,6 +32,10 @@ public class ReadingLogMonthBean {
     private String title;
     
     private int mins;
+    
+    private int shortMins = 0;
+    
+    private int totalMins = 0;
 
     public Date getDate() {
         return date;
@@ -55,5 +59,32 @@ public class ReadingLogMonthBean {
 
     public void setMins(int mins) {
         this.mins = mins;
-    }    
+    }
+
+    public int getTotalMins() {
+        return totalMins;
+    }
+
+    public void setTotalMins(int totalMins) {
+        this.totalMins = totalMins;
+    }
+    
+    public int getMoreMins(){
+        return -shortMins;
+    }
+    
+    public int getShortMins() {
+        return shortMins;
+    }
+
+    public void setShortMins(int shortMins) {
+        this.shortMins = shortMins;
+    }
+    
+    public boolean isShort(){
+        if(shortMins > 0){
+            return true;
+        }
+        return false;
+    }
 }

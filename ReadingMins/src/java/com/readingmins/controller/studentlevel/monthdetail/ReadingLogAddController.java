@@ -12,11 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.iosystem.DataIOIdentity;
+import rcommon.rerror.RErrorItem;
+import rcommon.rerror.RErrorManager;
+import rcommon.rerror.RErrorPair;
 import rm_lib.application.workflow.ApplicationFlow;
 import rm_lib.application.workflow.RM_SessDataGroupAddLog;
 import rm_lib.application.workflow.RM_SessDataGroupMonthly;
@@ -53,13 +57,14 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     public String submitMinsPost(HttpServletRequest request, 
                 @ModelAttribute("monthReadingLog") ReadingLogMonthBean bean, 
                 @ModelAttribute("month") String beanMonth,
+                BindingResult result, 
                 ModelMap model) {
         
         this.controllerPageIn(request);
         
         String buttonStr = request.getParameter("saveNew");
         if(buttonStr != null){
-            this.doSaveNewRec(request, bean);
+            this.doSaveNewRec(request,result, bean);
         }
         
         if(this.processEditRec(request, bean)){ 
@@ -96,7 +101,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         return false;
     }
     
-    protected boolean doSaveNewRec(HttpServletRequest request,ReadingLogMonthBean bean){
+    protected boolean doSaveNewRec(HttpServletRequest request,BindingResult result, ReadingLogMonthBean bean){
         if(bean != null){
             RM_SessionData sessData = WebUtils.getSessionData(request);
             RM_Student student = WebUtils.getSessCurStudent(request);
@@ -109,6 +114,21 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
             AddReadingRecordLogic logic = new AddReadingRecordLogic();
             if(logic.doSaveReadingInfo(readingRec, sessData.getLoginUser())){
                 return true;
+            }else{
+                if(result != null){
+                    RErrorManager errMan = logic.getErrorManager();
+                    if(errMan != null){
+                        List<RErrorItem> errList = errMan.getErrorItemList();
+                        if(errList != null){
+                            for(RErrorItem err:errList){
+                                RErrorPair pair = err.getErrorPair();
+                                if(pair != null){
+                                    result.rejectValue(pair.getType(),pair.getType(),pair.getMessage());
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         return false;
