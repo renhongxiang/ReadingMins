@@ -9,6 +9,7 @@ import java.util.List;
 import rcommon.rdata.common.RY_User;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
+import rm_lib.sess.RM_SessDataLoginGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -19,7 +20,9 @@ public class ApplicationFlow {
 
     public static void UserLogin(RM_SessionData sessData, RY_User user){
         if(sessData != null && user != null){
-            sessData.setLoginUser(user);
+            RM_SessDataLoginGroup group = new RM_SessDataLoginGroup();
+            group.setLoginUser(user);
+            sessData.setCurPackage(group);
         }
     }
     

@@ -10,7 +10,7 @@
 <%@ page import="com.readingmins.web.app.WebUtils" %>
 <% 
     if(!WebUtils.isInSession(request)){
-        response.sendRedirect("Login"); 
+        response.sendRedirect("userLogin"); 
         return;
     }
 %>    

@@ -7,6 +7,7 @@ package com.readingmins.controller;
 
 import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
+import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
 import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
@@ -21,13 +22,13 @@ public abstract class SessionController {
     public boolean controllerPageIn(HttpServletRequest request){
         RM_SessionData sess = WebUtils.getSessionData(request);
         if(sess != null){
-            RM_SessDataGroup pageData = this.createPageData();
-            sess.setGroupData(pageData);
+            RSessionDataPackage pageData = this.createPageData();
+            sess.setCurPackage(pageData);
         }
         return true;
     }
     
-    protected RM_SessDataGroup createPageData(){
+    protected RSessionDataPackage createPageData(){
         return null;
     }
     

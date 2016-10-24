@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.readingmins.controller.login;
+package com.readingmins.controller.user.login;
 
+import com.readingmins.controller.user.UserControllerBase;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
@@ -16,15 +17,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author renhongxiang
  */
 @Controller
-public class UserLogoutController {
+public class UserLogoutController extends UserControllerBase{
     
-    @RequestMapping(value = "/Logout")
+    
+    @RequestMapping(value = "/userLogout")
     public String logout(HttpServletRequest request,ModelMap model) {        
+        this.controllerPageIn(request);
         HttpSession session = request.getSession();
         if(session != null){
             session.invalidate();
         }
-        return "redirect:Login"; // this is which page to use.
+        return "redirect:userLogin"; // this is which page to use.
     }
     
 }

@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.student;
 
-import com.readingmins.controller.SessionController;
+import com.readingmins.controller.LoginedControllerBase;
 import com.readingmins.web.app.WebUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +29,9 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class StudentController extends SessionController{
+public class StudentSelectController extends LoginedControllerBase{
     
-    @RequestMapping(value = "/selectStudent", method = RequestMethod.GET)
+    @RequestMapping(value = "/studentSelect", method = RequestMethod.GET)
     public String selectStudentGet(HttpServletRequest request, ModelMap model) {
         
         this.controllerPageIn(request);
@@ -52,10 +52,10 @@ public class StudentController extends SessionController{
         StudentBeanList contactForm = new StudentBeanList();
         contactForm.setStudents(studentList);
         model.put("studentList", contactForm);
-        return "selectStudent"; // this is which page to use.
+        return "studentSelect"; // this is which page to use.
     }
     
-    @RequestMapping(value = "/selectStudent", method = RequestMethod.POST)
+    @RequestMapping(value = "/studentSelect", method = RequestMethod.POST)
     public String selectStudentPost(HttpServletRequest request, ModelMap model) {
 
         this.controllerPageIn(request);
@@ -72,12 +72,12 @@ public class StudentController extends SessionController{
                     if(button != null){
                         RM_SessionData sessData = WebUtils.getSessionData(request);
                         ApplicationFlow.StudentSelected(sessData, student);
-                        return "redirect:addRecord";
+                        return "redirect:readingLogAdd";
                     }
                 }
             }
         }
-        return "selectStudent"; // this is which page to use.
+        return "studentSelect"; // this is which page to use.
     }
 
     @Override

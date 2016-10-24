@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.readingmins.controller.login;
+package com.readingmins.controller.user.login;
 
-import com.readingmins.controller.register.UserAccountBean;
+import com.readingmins.controller.user.UserControllerBase;
+import com.readingmins.controller.user.signup.UserAccountBean;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -30,17 +32,19 @@ import rm_lib.sess.RM_SessionData;
  * @author renhongxiang
  */
 @Controller
-public class UserLoginController {
+@Scope("session")
+public class UserLoginController extends UserControllerBase{
     
-    @RequestMapping(value = "/Login", method = RequestMethod.GET)
-    public String login(ModelMap model) {
-//        RM_AppInit.initApp();
+    @RequestMapping(value = "/userLogin", method = RequestMethod.GET)
+    public String login(HttpServletRequest request, ModelMap model) {
+        this.controllerPageIn(request);
         model.addAttribute("userForm", new UserAccountBean());
-        return "Login"; // this is which page to use.
+        return "userLogin"; // this is which page to use.
     }
     
-    @RequestMapping(value = "/Login", method = RequestMethod.POST)
+    @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public String loginPost(HttpServletRequest request, @ModelAttribute("userForm") UserAccountBean bean, BindingResult result, ModelMap model) {
+        this.controllerPageIn(request);
         if(bean != null){
             RY_User user = UserAccountBean.createUserFromBean(bean);
             LoginUserLogic logic = new LoginUserLogic();
@@ -56,13 +60,13 @@ public class UserLoginController {
                     if(students.size() == 1){
                         RM_Student student = students.get(0);
                         ApplicationFlow.StudentSelected(sessData, student);
-                        return "redirect:addRecord";    // go to submit minutes
+                        return "redirect:readingLogAdd";    // go to submit minutes
                     }else if(students.size() > 1){
                         ApplicationFlow.GotoSelectStudent(sessData, students);
-                        return "redirect:selectStudent"; // select student
+                        return "redirect:studentSelect"; // select student
                     }
                 }
-                return "redirect:addStudent"; // create student
+                return "redirect:studentAdd"; // create student
                 
             }else{
                 if(result != null){
@@ -81,7 +85,7 @@ public class UserLoginController {
                 }
             }
         }
-        return "Login"; // this is which page to use.
+        return "userLogin"; // this is which page to use.
     }
     
     private List<RM_Student> loadStudentsByUser(RY_User user){

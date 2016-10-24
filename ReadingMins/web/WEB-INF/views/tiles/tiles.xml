@@ -14,14 +14,19 @@
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/baseFooter.jsp" />
    </definition>  
    
-   <definition name="Login" extends="base-definition">  
+   <definition name="userLogin" extends="base-definition">  
        <put-attribute name="title" value="Login" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/login.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userLogin.jsp" />  
    </definition>  
    
-   <definition name="SignUp" extends="base-definition">  
-       <put-attribute name="title" value="register" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/signup.jsp" />  
+   <definition name="userSignup" extends="base-definition">  
+       <put-attribute name="title" value="Register" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userSignup.jsp" />  
+   </definition>  
+
+      <definition name="userConfirm" extends="base-definition">  
+       <put-attribute name="title" value="Register success" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userConfirm.jsp" />  
    </definition>  
    
    <definition name="setting" template="/WEB-INF/views/pages/setting.jsp">  
@@ -49,39 +54,34 @@
    </definition>  
   
    <!-- Home Page -->
-   <definition name="addStudent" extends="base-user">  
+   <definition name="studentAdd" extends="base-user">  
        <put-attribute name="title" value="Add Student" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/addStudent.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/studentAdd.jsp" />  
    </definition>  
    
-   <definition name="selectStudent" extends="base-user">  
+   <definition name="studentSelect" extends="base-user">  
        <put-attribute name="title" value="Add Student" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/selectStudent.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/studentSelect.jsp" />  
    </definition>  
 
-    <definition name="editStudent" extends="base-student">  
+    <definition name="studentEdit" extends="base-student">  
        <put-attribute name="title" value="Edit Student" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/studentEdit.jsp" />  
    </definition> 
-   
-   <definition name="detail" extends="base-student">  
+ 
+   <definition name="readingLogDownload" extends="base-student">  
        <put-attribute name="title" value="Add Student" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/readingDetail.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/readingLogDownload.jsp" />  
    </definition>  
  
-   <definition name="monthInfo" extends="base-student">  
+   <definition name="readingLogAdd" extends="base-student">  
        <put-attribute name="title" value="Add Student" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/monthlyinfo.jsp" />  
-   </definition>  
- 
-   <definition name="addRecord" extends="base-student">  
-       <put-attribute name="title" value="Add Student" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/addMins.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/readingLogAdd.jsp" />  
    </definition>  
   
-   <definition name="minsEdit" extends="base-student">  
+   <definition name="readingLogEdit" extends="base-student">  
        <put-attribute name="title" value="Edit Reading Log" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/minsEdit.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/readingLogEdit.jsp" />  
    </definition>  
   
   

@@ -32,24 +32,24 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class SubmitMinsController extends DetailControllerBase{
+public class ReadingLogAddController extends MonthlyDetailControllerBase{
     
     @Override
     protected RM_SessDataGroup createPageData(){
         return new RM_SessDataGroupAddLog();
     }
     
-    @RequestMapping(value = "/addRecord", method = RequestMethod.GET)
+    @RequestMapping(value = "/readingLogAdd", method = RequestMethod.GET)
     public String submitMinsGet(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model) {
 
         this.controllerPageIn(request);
         
         this.prepareModel(request, beanMonth, model);
         
-        return "addRecord"; // this is which page to use.
+        return "readingLogAdd"; // this is which page to use.
     }
     
-    @RequestMapping(value = "/addRecord", method = RequestMethod.POST)
+    @RequestMapping(value = "/readingLogAdd", method = RequestMethod.POST)
     public String submitMinsPost(HttpServletRequest request, 
                 @ModelAttribute("monthReadingLog") ReadingLogMonthBean bean, 
                 @ModelAttribute("month") String beanMonth,
@@ -62,14 +62,13 @@ public class SubmitMinsController extends DetailControllerBase{
             this.doSaveNewRec(request, bean);
         }
         
-        if(this.processEditRec(request, bean)){
-            return "redirect:minsEdit";
+        if(this.processEditRec(request, bean)){ 
+            return "redirect:readingLogEdit";
         }
-        
         
         this.prepareModel(request, beanMonth, model);
         
-        return "addRecord"; // this is which page to use.
+        return "readingLogAdd"; // this is which page to use.
     }    
 
     protected boolean processEditRec(HttpServletRequest request,ReadingLogMonthBean bean){

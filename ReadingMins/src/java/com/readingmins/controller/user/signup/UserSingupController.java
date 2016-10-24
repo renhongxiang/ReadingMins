@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.readingmins.controller.register;
+package com.readingmins.controller.user.signup;
 
+import com.readingmins.controller.user.UserControllerBase;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import org.springframework.context.annotation.Scope;
 import rcommon.utils.datastructure.ArrayUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,24 +21,26 @@ import rcommon.rdata.common.RY_User;
 import rcommon.rerror.RErrorItem;
 import rcommon.rerror.RErrorManager;
 import rcommon.rerror.RErrorPair;
-import rm_lib.application.init.RM_AppInit;
 
 /**
  *
  * @author renhongxiang
  */
 @Controller
-public class UserAccountController {
+@Scope("session")
+public class UserSingupController extends UserControllerBase{
     
-    @RequestMapping(value = "/SignUp", method = RequestMethod.GET)
-    public String signUp(ModelMap model) {
+    @RequestMapping(value = "/userSignup", method = RequestMethod.GET)
+    public String signUp(HttpServletRequest request, ModelMap model) {
+        this.controllerPageIn(request);
         model.addAttribute("signOnForm", new UserAccountBean());
-        return "SignUp"; // this is which page to use.
+        return "userSignup"; // this is which page to use.
     }
 
     
-    @RequestMapping(value = "/SignUp", method = RequestMethod.POST)
-    public String signUpPost(@ModelAttribute("signOnForm") UserAccountBean bean, BindingResult result, ModelMap model) {
+    @RequestMapping(value = "/userSignup", method = RequestMethod.POST)
+    public String signUpPost(HttpServletRequest request, @ModelAttribute("signOnForm") UserAccountBean bean, BindingResult result, ModelMap model) {
+        this.controllerPageIn(request);
         if(bean != null){
             String userID = bean.getUserName();
             if(userID != null){
@@ -44,7 +48,7 @@ public class UserAccountController {
                     RY_User user = UserAccountBean.createUserFromBean(bean);
                     RegisterUserLogic logic = new RegisterUserLogic();
                     if(logic.doRegisterUser(user)){
-                        return "signonresultpage";
+                        return "redirect:userConfirm";
                     }else{
                         if(result != null){
                             RErrorManager errMan = logic.getErrorManager();
@@ -64,14 +68,7 @@ public class UserAccountController {
                 }
             }
         }
-        return "signonpage"; // this is which page to use.
-    }
-    
-    
-    @RequestMapping(value = "/signonresultpage", method = RequestMethod.GET)
-    public String sayHelloAgain(ModelMap model) {
-        model.addAttribute("userName", "Hello World Again, from Spring 4 MVC");
-        return "signonresultpage";
+        return "userSignup"; // this is which page to use.
     }
     
     private boolean verifyPasswordSame(UserAccountBean bean){

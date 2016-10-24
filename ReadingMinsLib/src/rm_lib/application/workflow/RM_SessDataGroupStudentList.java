@@ -8,13 +8,13 @@ package rm_lib.application.workflow;
 import java.util.List;
 import rcommon.data.session.RSessionDataPackage;
 import rm_lib.data.RM_Student;
-import rm_lib.sess.RM_SessDataGroup;
+import rm_lib.sess.RM_SessDataLoginGroup;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_SessDataGroupStudentList extends RM_SessDataGroup{
+public class RM_SessDataGroupStudentList extends RM_SessDataLoginGroup{
     private List<RM_Student> studentList = null;
 
     public List<RM_Student> getStudentList() {

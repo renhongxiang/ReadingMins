@@ -28,7 +28,7 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class EditMinsController extends StudentLevelController{
+public class ReadingLogEditController extends StudentLevelController{
 
     @Override
     protected RM_SessDataGroup createPageData(){
@@ -36,7 +36,7 @@ public class EditMinsController extends StudentLevelController{
     }
     
     
-    @RequestMapping(value = "/minsEdit", method = RequestMethod.GET)
+    @RequestMapping(value = "/readingLogEdit", method = RequestMethod.GET)
     public String editMinsGet(HttpServletRequest request, ModelMap model) {
 
         this.controllerPageIn(request);
@@ -55,10 +55,10 @@ public class EditMinsController extends StudentLevelController{
             }
         }
         
-        return "minsEdit"; // this is which page to use.
+        return "readingLogEdit"; // this is which page to use.
     }
     
-    @RequestMapping(value = "/minsEdit", params = "save", method = RequestMethod.POST)
+    @RequestMapping(value = "/readingLogEdit", params = "save", method = RequestMethod.POST)
     public String editMinsPostSave(HttpServletRequest request, @ModelAttribute("minsForm") SubmitMins bean, ModelMap model) {
         this.controllerPageIn(request);
         if(bean != null){
@@ -71,15 +71,15 @@ public class EditMinsController extends StudentLevelController{
                     min.setReadMins(bean.getMins());
                     AddReadingRecordLogic logic = new AddReadingRecordLogic();
                     if(logic.doSaveReadingInfo(min, WebUtils.getLoginUser(request))){
-                        return "redirect:addRecord";
+                        return "redirect:readingLogAdd";
                     }
                 }
             }            
         }
-        return "minsEdit";
+        return "readingLogEdit";
     }    
 
-    @RequestMapping(value = "/minsEdit", params = "delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/readingLogEdit", params = "delete", method = RequestMethod.POST)
     public String editMinsPostDelete(HttpServletRequest request, @ModelAttribute("minsForm") SubmitMins bean, ModelMap model) {
         this.controllerPageIn(request);
         if(bean != null){
@@ -92,12 +92,12 @@ public class EditMinsController extends StudentLevelController{
                     min.setStatus(RY_DataBase.STATUS_INACTIVE);
                     AddReadingRecordLogic logic = new AddReadingRecordLogic();
                     if(logic.doSaveReadingInfo(min, WebUtils.getLoginUser(request))){
-                        return "redirect:addRecord";
+                        return "redirect:readingLogAdd";
                     }
                 }
             }            
         }
-        return "minsEdit";
+        return "readingLogEdit";
     }    
     
 }

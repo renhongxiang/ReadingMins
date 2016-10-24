@@ -22,16 +22,13 @@ import rm_lib.data.RM_Student;
  */
 public class RM_SessionData extends RSessionDataBase{
     
-    private RY_User loginUser = null;
-    
-//    private RM_SessDataGroup groupData = null;
 
     public RY_User getLoginUser() {
-        return loginUser;
-    }
-
-    public void setLoginUser(RY_User loginUser) {
-        this.loginUser = loginUser;
+        RSessionDataPackage sessPackage = this.getCurPackage();
+        if(sessPackage instanceof RM_SessDataLoginGroup){
+            return ((RM_SessDataLoginGroup) sessPackage).getLoginUser();
+        }
+        return null;
     }
 
     public RM_SessDataGroup getGroupData() {

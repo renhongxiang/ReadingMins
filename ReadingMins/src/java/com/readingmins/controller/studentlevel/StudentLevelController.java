@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.studentlevel;
 
-import com.readingmins.controller.SessionController;
+import com.readingmins.controller.LoginedControllerBase;
 import com.readingmins.web.app.WebUtils;
 import java.math.BigDecimal;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import rm_lib.sess.RM_SessDataGroup;
  *
  * @author renhongxiang
  */
-public class StudentLevelController extends SessionController{
+public class StudentLevelController extends LoginedControllerBase{
     
 
     @Override

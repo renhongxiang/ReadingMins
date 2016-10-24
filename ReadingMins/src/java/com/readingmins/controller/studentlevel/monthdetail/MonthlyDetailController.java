@@ -27,7 +27,7 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class MonthlyDetailController extends DetailControllerBase{
+public class MonthlyDetailController extends MonthlyDetailControllerBase{
 
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detailGet(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model) {

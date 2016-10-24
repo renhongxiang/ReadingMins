@@ -22,7 +22,7 @@
                         <a href="help" />Help</a>
                     </td>
                     <td>                        
-                        <a href="Logout" />Logout</a>
+                        <a href="userLogout" />Logout</a>
                     </td>
                 </tr>
             </table>

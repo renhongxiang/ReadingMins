@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.readingmins.controller.register;
+package com.readingmins.controller.user.signup;
 
 import rcommon.rdata.common.RY_User;
 

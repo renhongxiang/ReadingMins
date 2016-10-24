@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.student;
 
-import com.readingmins.controller.SessionController;
+import com.readingmins.controller.LoginedControllerBase;
 import com.readingmins.web.app.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -31,16 +31,16 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class AddStudentController extends SessionController{
+public class StudentAddController extends LoginedControllerBase{
     
-    @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
+    @RequestMapping(value = "/studentAdd", method = RequestMethod.GET)
     public String addStudentGet(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request);
         model.addAttribute("addStudentForm", new StudentBean());
-        return "addStudent"; // this is which page to use.
+        return "studentAdd"; // this is which page to use.
     }
 
-    @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+    @RequestMapping(value = "/studentAdd", method = RequestMethod.POST)
     public String addStudentPost(HttpServletRequest request, @ModelAttribute("addStudentForm") StudentBean bean, BindingResult result, ModelMap model) {
         this.controllerPageIn(request);
         if(bean != null){
@@ -56,7 +56,7 @@ public class AddStudentController extends SessionController{
                         RM_SessionData sessData = WebUtils.getSessionData(request);
                         ApplicationFlow.StudentSelected(sessData, student);
                         
-                        return "redirect:addRecord";
+                        return "redirect:readingLogAdd";
                     }else{
                         if(result != null){
                             RErrorManager errMan = logic.getErrorManager();
@@ -76,7 +76,7 @@ public class AddStudentController extends SessionController{
                 }
             }
         }
-        return "addStudent"; // this is which page to use.
+        return "studentAdd"; // this is which page to use.
     }
     
 }

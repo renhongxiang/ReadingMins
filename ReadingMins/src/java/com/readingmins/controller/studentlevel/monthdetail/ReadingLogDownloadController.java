@@ -36,10 +36,10 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class DownloadMonthController extends StudentLevelController{
+public class ReadingLogDownloadController extends StudentLevelController{
 
     
-    @RequestMapping(value = "/monthInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/readingLogDownload", method = RequestMethod.GET)
     public String monthInfoGet(HttpServletRequest request, ModelMap model) {
         this.prepareMenuInfo(request, model);
         RMonth month = RMonth.getCurrMonth();
@@ -50,10 +50,10 @@ public class DownloadMonthController extends StudentLevelController{
         model.addAttribute("monthReadingLog", monthBean);
         
         
-        return "monthInfo"; // this is which page to use.
+        return "readingLogDownload"; // this is which page to use.
     }    
     
-    @RequestMapping(value = "/monthInfo", method = RequestMethod.POST)
+    @RequestMapping(value = "/readingLogDownload", method = RequestMethod.POST)
     public String monthInfoPost(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("month") String bean, ModelMap model) {
         String button = request.getParameter("download");
         if(button != null){
@@ -61,14 +61,14 @@ public class DownloadMonthController extends StudentLevelController{
             if(!res){
                 // error
             }
-            return "monthInfo"; // this is which page to use.
+            return "readingLogDownload";
         }
         
         button = request.getParameter("month");
         if(button != null){
             return this.monthInfoPostChangeMonth(request, response, model);
         }        
-        return "monthInfo"; // this is which page to use.
+        return "readingLogDownload";
     }
     
     
@@ -84,7 +84,7 @@ public class DownloadMonthController extends StudentLevelController{
         ReadingLogMonthBean monthBean = this.getMonthlyReadingLog(request, month);
         
         model.addAttribute("monthReadingLog", monthBean);
-        return "monthInfo"; // this is which page to use.
+        return "readingLogDownload"; // this is which page to use.
     }
     
     

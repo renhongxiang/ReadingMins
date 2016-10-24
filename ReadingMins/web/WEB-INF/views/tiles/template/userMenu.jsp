@@ -5,8 +5,8 @@
         <td>
             <nav>
                 <ul id="menu" style="background-color: lightgrey">
-                    <li><a href="${pageContext.request.contextPath}/selectStudent">Select Student</a></li>
-                    <li><a href="${pageContext.request.contextPath}/addStudent">Add Student</a></li>
+                    <li><a href="${pageContext.request.contextPath}/studentSelect">Select Student</a></li>
+                    <li><a href="${pageContext.request.contextPath}/studentAdd">Add Student</a></li>
                 </ul>
             </nav>            
         </td>

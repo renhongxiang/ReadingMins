@@ -63,7 +63,7 @@
                     </tr>
                     <tr class="textcenter">
                         <td>
-                            <a href="SignUp">Sign up</a>
+                            <a href="userSignup">Sign up</a>
                         </td>
                     </tr>
                 </table>

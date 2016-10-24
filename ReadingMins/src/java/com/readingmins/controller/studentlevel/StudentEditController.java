@@ -25,9 +25,9 @@ import rm_lib.process.logics.EditStudentLogic;
  */
 @Controller
 @Scope("session")
-public class EditStudentController extends StudentLevelController{
+public class StudentEditController extends StudentLevelController{
     
-    @RequestMapping(value = "/editStudent", method = RequestMethod.GET)
+    @RequestMapping(value = "/studentEdit", method = RequestMethod.GET)
     public String editStudentGet(HttpServletRequest request, ModelMap model) {
         
         this.controllerPageIn(request);
@@ -37,10 +37,10 @@ public class EditStudentController extends StudentLevelController{
         RM_Student student = WebUtils.getSessCurStudent(request);
         StudentBean.fileBeanWithStudentInfo(bean, student);
         model.addAttribute("editStudentForm", bean);
-        return "editStudent"; // this is which page to use.
+        return "studentEdit"; // this is which page to use.
     }
 
-    @RequestMapping(value = "/editStudent", params = "Save", method = RequestMethod.POST)
+    @RequestMapping(value = "/studentEdit", params = "Save", method = RequestMethod.POST)
     public String editStudentPostSave(HttpServletRequest request, @ModelAttribute("editStudentForm") StudentBean bean, ModelMap model) {
         
         this.controllerPageIn(request);
@@ -55,10 +55,10 @@ public class EditStudentController extends StudentLevelController{
                 logic.doSaveStudent(student, user);
             }
         }
-        return "editStudent"; // this is which page to use.
+        return "studentEdit"; // this is which page to use.
     }
 
-    @RequestMapping(value = "/editStudent", params = "Delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/studentEdit", params = "Delete", method = RequestMethod.POST)
     public String editStudentPostDelete(HttpServletRequest request, @ModelAttribute("editStudentForm") StudentBean bean, ModelMap model) {
 
         this.controllerPageIn(request);
@@ -70,7 +70,7 @@ public class EditStudentController extends StudentLevelController{
             RY_User user = WebUtils.getLoginUser(request);
             logic.doSaveStudent(student, user);
         }        
-        return "redirect:selectStudent"; // this is which page to use.
+        return "redirect:studentSelect"; // this is which page to use.
     }
     
 }
