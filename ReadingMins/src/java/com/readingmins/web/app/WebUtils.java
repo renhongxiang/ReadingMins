@@ -20,9 +20,13 @@ import rm_lib.sess.RM_SessionData;
  */
 public class WebUtils {
     public static RM_SessionData getSessionData(HttpServletRequest request){
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         if(session != null){
             RM_SessionData sessData = (RM_SessionData)session.getAttribute("sessdata");
+            if(sessData == null){
+                sessData = new RM_SessionData();
+                session.setAttribute("sessdata", sessData);
+            }
             return sessData;
         }
         return null;
@@ -52,6 +56,14 @@ public class WebUtils {
         return null;
     }
     
+    public static RY_User getRegisteredUser(HttpServletRequest request){
+        RM_SessionData sessData = WebUtils.getSessionData(request);
+        if(sessData != null){
+            return sessData.getRegisteredUser();
+        }
+        return null;
+    }
+    
     public static String getServerRealPath(HttpServletRequest request){
         HttpSession session = request.getSession(true);
         if(session != null){
@@ -77,6 +89,7 @@ public class WebUtils {
             return sessData.getGroupData();
         }
         return null;
-
     }
+    
+    
 }

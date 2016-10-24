@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>User Registered</title>
     </head>
     <body>
         <h1>Welcome ${userName}</h1> 
-        <a href="userLogin">go to login</a>
+        <a href="userLogin">Go to Login</a>
     </body>
 </html>

@@ -6,6 +6,7 @@
 package rm_lib.application.workflow;
 
 import java.util.List;
+import rcommon.data.session.RSessionDataSignupPackage;
 import rcommon.rdata.common.RY_User;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
@@ -21,53 +22,49 @@ public class ApplicationFlow {
     public static void UserLogin(RM_SessionData sessData, RY_User user){
         if(sessData != null && user != null){
             RM_SessDataLoginGroup group = new RM_SessDataLoginGroup();
-            group.setLoginUser(user);
             sessData.setCurPackage(group);
+            group.setLoginUser(user);
         }
     }
     
     public static void GotoSelectStudent(RM_SessionData sessData, List<RM_Student> students){
         if(sessData != null){
             RM_SessDataGroupStudentList group = new RM_SessDataGroupStudentList();
-            group.setStudentList(students);
             sessData.setGroupData(group);
+            group.setStudentList(students);
         }
     }
     
     public static void StudentSelected(RM_SessionData sessData, RM_Student student){
         if(sessData != null){
             RM_SessDataGroupStudentBase group = new RM_SessDataGroupStudentBase();
-            group.setStudent(student);
             sessData.setGroupData(group);
+            group.setStudent(student);
         }
     }
     
     public static void SelectStudentFromList(RM_SessionData sessData, List<RM_Student> students){
         if(sessData != null){
             RM_SessDataGroupStudentList group = new RM_SessDataGroupStudentList();
-            group.setStudentList(students);
             sessData.setGroupData(group);
+            group.setStudentList(students);
         }
     }
     
     public static void SelectReadingLog(RM_SessionData sessData, RM_ReadingMins min){
         if(sessData != null){
             RM_SessDataGroupLog group = new RM_SessDataGroupLog();
-            group.setReadingLog(min);
             sessData.setGroupData(group);
+            group.setReadingLog(min);
         }
     }
-    
-//    public static void IntoSelectReadingLogList(RM_SessionData sessData, RM_SessDataGroupSelectReadingLog readLogGroup){
-//        if(sessData != null){
-//            RM_SessDataGroup sessGroup = sessData.getGroupData();
-//            if(sessGroup != null){
-//                if(sessGroup instanceof RM_SessDataGroupStudentBase){
-//                    RM_SessDataGroupStudentBase studentGroup = (RM_SessDataGroupStudentBase)sessGroup;
-//                    studentGroup.setSubData(readLogGroup);
-//                }
-//            }
-//        }
-//    }
+
+    public static void UserRegistered(RM_SessionData sessData, RY_User user){
+        if(sessData != null && user != null){
+            RSessionDataSignupPackage group = new RSessionDataSignupPackage();
+            sessData.setCurPackage(group);
+            group.setRegisterUser(user);
+        }
+    }
     
 }

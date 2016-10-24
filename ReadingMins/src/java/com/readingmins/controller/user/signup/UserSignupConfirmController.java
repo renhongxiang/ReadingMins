@@ -6,11 +6,13 @@
 package com.readingmins.controller.user.signup;
 
 import com.readingmins.controller.user.UserControllerBase;
+import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import rcommon.rdata.common.RY_User;
 
 /**
  *
@@ -24,7 +26,12 @@ public class UserSignupConfirmController extends UserControllerBase{
     public String signUp(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request);
         
-        model.addAttribute("signOnForm", new UserAccountBean());
+        RY_User user = WebUtils.getRegisteredUser(request);
+        if(user != null){
+            String userName = user.getUserID();
+            model.addAttribute("userName", userName);
+        }
+        
         return "userConfirm"; // this is which page to use.
     }
     

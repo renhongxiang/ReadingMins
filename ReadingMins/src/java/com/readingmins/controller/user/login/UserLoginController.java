@@ -7,6 +7,7 @@ package com.readingmins.controller.user.login;
 
 import com.readingmins.controller.user.UserControllerBase;
 import com.readingmins.controller.user.signup.UserAccountBean;
+import com.readingmins.web.app.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -38,7 +39,15 @@ public class UserLoginController extends UserControllerBase{
     @RequestMapping(value = "/userLogin", method = RequestMethod.GET)
     public String login(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request);
-        model.addAttribute("userForm", new UserAccountBean());
+        
+        UserAccountBean bean = new UserAccountBean();
+        
+        RY_User user = WebUtils.getRegisteredUser(request);
+        if(user != null){
+            bean.setUserName(user.getUserID());
+        }
+        
+        model.addAttribute("userForm", bean);
         return "userLogin"; // this is which page to use.
     }
     
@@ -49,11 +58,8 @@ public class UserLoginController extends UserControllerBase{
             RY_User user = UserAccountBean.createUserFromBean(bean);
             LoginUserLogic logic = new LoginUserLogic();
             if(logic.doLoginUser(user)){                
-                HttpSession session = request.getSession(true);
-                RM_SessionData sessData = new RM_SessionData();
-                session.setAttribute("sessdata", sessData);
+                RM_SessionData sessData = WebUtils.getSessionData(request);
                 ApplicationFlow.UserLogin(sessData, user);
-                
                 
                 List<RM_Student> students = loadStudentsByUser(user);
                 if(students != null){

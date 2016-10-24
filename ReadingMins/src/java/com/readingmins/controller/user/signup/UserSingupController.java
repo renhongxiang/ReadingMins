@@ -6,6 +6,7 @@
 package com.readingmins.controller.user.signup;
 
 import com.readingmins.controller.user.UserControllerBase;
+import com.readingmins.web.app.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
@@ -21,6 +22,8 @@ import rcommon.rdata.common.RY_User;
 import rcommon.rerror.RErrorItem;
 import rcommon.rerror.RErrorManager;
 import rcommon.rerror.RErrorPair;
+import rm_lib.application.workflow.ApplicationFlow;
+import rm_lib.sess.RM_SessionData;
 
 /**
  *
@@ -48,6 +51,8 @@ public class UserSingupController extends UserControllerBase{
                     RY_User user = UserAccountBean.createUserFromBean(bean);
                     RegisterUserLogic logic = new RegisterUserLogic();
                     if(logic.doRegisterUser(user)){
+                        RM_SessionData sessData = WebUtils.getSessionData(request);
+                        ApplicationFlow.UserRegistered(sessData, user);
                         return "redirect:userConfirm";
                     }else{
                         if(result != null){
