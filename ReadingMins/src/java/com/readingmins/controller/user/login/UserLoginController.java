@@ -10,7 +10,6 @@ import com.readingmins.controller.user.signup.UserAccountBean;
 import com.readingmins.web.app.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -44,23 +44,25 @@ public class AddReadingRecordOperation extends DataIOTimerOperation{
         boolean res = false;
         if(readRec != null){
             res = true;
-            Date readDate = readRec.getReadDate();
-            if(readDate == null){
-                this.setErrorCode(AddReadingRecordOperationErrorTranslater.ERR_DATE_MISSING, null);
-                res = false;
-            }
-            String title = readRec.getBookTitle();
-            if(RStringUtils.isBlank(title)){
-                this.setErrorCode(AddReadingRecordOperationErrorTranslater.ERR_TITLE_MISSING, null);
-                res = false;
-            }
-            Integer mins = readRec.getReadMins();
-            if(mins == null){
-                mins = 0;
-            }
-            if(mins <= 0){
-                this.setErrorCode(AddReadingRecordOperationErrorTranslater.ERR_MINS_MISSING, null);
-                res = false;
+            if(readRec.isActive()){
+                Date readDate = readRec.getReadDate();
+                if(readDate == null){
+                    this.setErrorCode(AddReadingRecordOperationErrorTranslater.ERR_DATE_MISSING, null);
+                    res = false;
+                }
+                String title = readRec.getBookTitle();
+                if(RStringUtils.isBlank(title)){
+                    this.setErrorCode(AddReadingRecordOperationErrorTranslater.ERR_TITLE_MISSING, null);
+                    res = false;
+                }
+                Integer mins = readRec.getReadMins();
+                if(mins == null){
+                    mins = 0;
+                }
+                if(mins <= 0){
+                    this.setErrorCode(AddReadingRecordOperationErrorTranslater.ERR_MINS_MISSING, null);
+                    res = false;
+                }
             }
         }
         return res;

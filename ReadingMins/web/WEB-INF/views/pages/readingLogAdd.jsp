@@ -21,7 +21,7 @@
                     <form:form id="formId" method="post" action="" modelAttribute="monthReadingLog">
                     <tr>
                         <td class="textcenter">
-                            <label for="month">Month: </label> <input type="text" id="month" name="month" class="monthPicker" value="${month}"/>
+                            <label for="month">Month: </label> <input type="text" id="month" name="month" class="monthPicker" value="${monthReadingLog.month}"/>
                         </td>
                     </tr>                    
                     <tr class="textcenter">
@@ -82,7 +82,10 @@
                                         <form:label path="date">Date:</form:label>
                                     </td>
                                     <td>
-                                        <form:input path="date"/><form:errors path="date" cssClass="error" />
+                                        <form:input path="date"/>
+                                    </td>
+                                    <td>
+                                        <form:errors path="date" cssClass="error" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -90,7 +93,10 @@
                                         <form:label path="title"> Title: </form:label>
                                     </td>
                                     <td>
-                                    <form:input path="title" size="60" /><form:errors path="title" cssClass="error" />
+                                        <form:input path="title" size="60" />
+                                    </td>
+                                    <td>
+                                        <form:errors path="title" cssClass="error" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -98,7 +104,10 @@
                                         <form:label path="mins"> Reading Minutes: </form:label>
                                     </td>
                                     <td>
-                                        <form:input path="mins" /><form:errors path="mins" cssClass="error" />
+                                        <form:input path="mins" />
+                                    </td>
+                                    <td>
+                                        <form:errors path="mins" cssClass="error" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -106,6 +115,8 @@
                                     </td>
                                     <td>
                                         <button type="submit" name="saveNew">Save</button>                
+                                    </td>
+                                    <td>
                                     </td>
                                 </tr>
                             </table>

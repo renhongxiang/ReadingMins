@@ -36,6 +36,8 @@ public class ReadingLogMonthBean {
     private int shortMins = 0;
     
     private int totalMins = 0;
+    
+    private String month = null;
 
     public Date getDate() {
         return date;
@@ -87,4 +89,14 @@ public class ReadingLogMonthBean {
         }
         return false;
     }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+    
+    
 }

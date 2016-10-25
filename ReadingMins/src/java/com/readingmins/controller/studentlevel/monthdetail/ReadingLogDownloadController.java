@@ -24,10 +24,12 @@ import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.utils.datatype.RDateUtils;
+import rm_lib.application.workflow.RM_SessDataGroupMonthly;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
 import rm_lib.data.logicdata.RM_MonthReadingData;
 import rm_lib.process.logics.DownloadReadingLog;
+import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -39,10 +41,29 @@ import rm_lib.sess.RM_SessionData;
 public class ReadingLogDownloadController extends StudentLevelController{
 
     
+    @Override
+    protected RM_SessDataGroup createPageData(){
+        return new RM_SessDataGroupMonthly();
+    }
+    
     @RequestMapping(value = "/readingLogDownload", method = RequestMethod.GET)
-    public String monthInfoGet(HttpServletRequest request, ModelMap model) {
+    public String monthInfoGet(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model) {
+        this.controllerPageIn(request);
+        
         this.prepareMenuInfo(request, model);
-        RMonth month = RMonth.getCurrMonth();
+        
+        RMonth month = RMonth.stringToMonth(beanMonth, RMonth.MONTH_TEMPLATE_US);
+        if(month == null){
+            RM_SessDataGroup group = WebUtils.getCurSessDataGroup(request);
+            if(group instanceof RM_SessDataGroupMonthly){
+                RM_SessDataGroupMonthly detailGroup = (RM_SessDataGroupMonthly)group;
+                month = detailGroup.getCurMonth();
+            }
+        }
+        if(month == null){
+            month = RMonth.getCurrMonth();
+        }
+
         model.addAttribute("month", RMonth.monthToString(month, RMonth.MONTH_TEMPLATE_US));
         
         ReadingLogMonthBean monthBean = this.getMonthlyReadingLog(request, month);

@@ -35,18 +35,9 @@ public class MonthlyDetailControllerBase extends StudentLevelController{
     
     private ReadingLogMonthBean pageBean = null;
     
-    protected String getMonthInputName(){
-        return "month";
-    }
-    
     protected String getMonthListTableName(){
         return "monthReadingLog";
     }
-    
-//    protected String getOverMinsName(){
-//        return "overMins";
-//    }
-    
 
     protected ReadingLogMonthBean getBean(){
         if(pageBean == null){
@@ -55,6 +46,9 @@ public class MonthlyDetailControllerBase extends StudentLevelController{
         return pageBean;
     }
     
+    protected void setBean(ReadingLogMonthBean bean){
+        pageBean = bean;
+    }
     
     protected void buildMonthlyEdtailPage(HttpServletRequest request, ModelMap model, String beanMonth){
         RMonth month = RMonth.stringToMonth(beanMonth, RMonth.MONTH_TEMPLATE_US);
@@ -65,8 +59,6 @@ public class MonthlyDetailControllerBase extends StudentLevelController{
     }
     
     protected void buildMonthlyEdtailPage(HttpServletRequest request, ModelMap model, RMonth month){
-        
-        model.addAttribute(getMonthInputName(), RMonth.monthToString(month, RMonth.MONTH_TEMPLATE_US));
         
         List<RM_ReadingMins> list = this.getReadingRecordByMonth(request, month);
 

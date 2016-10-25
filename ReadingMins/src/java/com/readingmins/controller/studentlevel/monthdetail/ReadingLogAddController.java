@@ -44,7 +44,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     }
     
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.GET)
-    public String submitMinsGet(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model) {
+    public String submitMinsGet(HttpServletRequest request, @ModelAttribute("monthReadingLog") ReadingLogMonthBean beanMonth, ModelMap model) {
 
         this.controllerPageIn(request);
         
@@ -55,8 +55,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.POST)
     public String submitMinsPost(HttpServletRequest request, 
-                @ModelAttribute("monthReadingLog") ReadingLogMonthBean bean, 
-                @ModelAttribute("month") String beanMonth,
+                @ModelAttribute("monthReadingLog") ReadingLogMonthBean beanMonth, 
                 BindingResult result, 
                 ModelMap model) {
         
@@ -64,10 +63,10 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         
         String buttonStr = request.getParameter("saveNew");
         if(buttonStr != null){
-            this.doSaveNewRec(request,result, bean);
+            this.doSaveNewRec(request,result, beanMonth);
         }
         
-        if(this.processEditRec(request, bean)){ 
+        if(this.processEditRec(request, beanMonth)){ 
             return "redirect:readingLogEdit";
         }
         
@@ -134,10 +133,11 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         return false;
     }
     
-    protected void prepareModel(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model){
+    protected void prepareModel(HttpServletRequest request, ReadingLogMonthBean beanMonth, ModelMap model){
+        
         this.prepareMenuInfo(request, model);
         
-        RMonth month = RMonth.stringToMonth(beanMonth, RMonth.MONTH_TEMPLATE_US);
+        RMonth month = RMonth.stringToMonth(beanMonth.getMonth(), RMonth.MONTH_TEMPLATE_US);
         if(month == null){
             RM_SessDataGroup group = WebUtils.getCurSessDataGroup(request);
             if(group instanceof RM_SessDataGroupMonthly){
@@ -154,9 +154,12 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
             selectDate = month.getMonthLastDate();
         }
         
+        this.setBean(beanMonth);
+        
         ReadingLogMonthBean bean = this.getBean();
         bean.setDate(selectDate);
         bean.setMins(30);
+        bean.setMonth(RMonth.monthToString(month, RMonth.MONTH_TEMPLATE_US));
         
         this.buildMonthlyEdtailPage(request, model, month);
         
