@@ -6,8 +6,10 @@
 package ui.main;
 
 import java.io.File;
+import passwordconvert.PasswordConvertQueryHandler;
+import passwordconvert.PasswordQuerySQL;
+import rcommon.database.rsqlbase.RY_OprSimple;
 import rm_lib.application.init.RM_AppInit;
-import rm_lib.application.init.RM_DataBase;
 import rswin.ui.file.RSwinFileSelect;
 import rytable.RY_DataBaseExcelExport;
 import rytable.RY_TableManager;
@@ -39,6 +41,8 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem_DB_Spec = new javax.swing.JMenuItem();
         jMenuItem_DB_Script = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +65,18 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1.add(jMenuItem_DB_Script);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Tool");
+
+        jMenuItem1.setText("Convert Password Encrypt");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -103,6 +119,14 @@ public class MainFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jMenuItem_DB_ScriptActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        PasswordQuerySQL sql = new PasswordQuerySQL();
+        PasswordConvertQueryHandler handler = new PasswordConvertQueryHandler();
+        sql.setQueryHandler(handler);
+        RY_OprSimple.DoQuery(sql);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,7 +164,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem_DB_Script;
     private javax.swing.JMenuItem jMenuItem_DB_Spec;
     // End of variables declaration//GEN-END:variables
