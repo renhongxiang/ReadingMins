@@ -34,6 +34,12 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/userResetPassword.jsp" />  
    </definition>  
 
+    <definition name="userResetPasswordConfirm" extends="base-definition">  
+       <put-attribute name="title" value="Password Change" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userResetPasswordConfirm.jsp" />  
+   </definition>  
+
+
    <definition name="userForgotPwdSent" extends="base-definition">  
        <put-attribute name="title" value="Reset Password Sent" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/userForgotPwdSent.jsp" />  

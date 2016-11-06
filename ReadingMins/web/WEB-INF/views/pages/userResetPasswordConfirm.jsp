@@ -1,6 +1,6 @@
 <%-- 
-    Document   : userConfirm
-    Created on : Oct 23, 2016, 4:12:12 PM
+    Document   : userResetPasswordConfirm
+    Created on : Nov 6, 2016, 8:01:46 AM
     Author     : renhongxiang
 --%>
 
@@ -9,12 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>User Registered</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Welcome ${userName}</h1> 
+        <h1>Password Changed</h1> 
         
-        <div>An email is sent to your email address, please certify your email address and you will able to reset your user name and password base on the email.</div>
+        <div>
+            You email has been changed. 
+        </div>
+        <br>
         
         <a href="userLogin">Go to Login</a>
         

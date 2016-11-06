@@ -79,7 +79,9 @@ public class UserSaveResetPasswordController extends SessionController{
                 user.setPassword(password2);
                 SaveResetedPasswordOperation op = new SaveResetedPasswordOperation();
                 op.setUser(user);
-                op.DoOperation();
+                if(op.DoOperation()){
+                    return "redirect:userResetPasswordConfirm";
+                }
             }
         }
         
