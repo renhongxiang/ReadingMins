@@ -48,7 +48,7 @@ public class ReadingLogDownloadController extends StudentLevelController{
     
     @RequestMapping(value = "/readingLogDownload", method = RequestMethod.GET)
     public String monthInfoGet(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         this.prepareMenuInfo(request, model);
         

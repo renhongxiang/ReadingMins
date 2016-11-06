@@ -20,5 +20,5 @@ public class UserControllerBase extends SessionController{
     protected RSessionDataPackage createPageData(){
         return new RSessionDataSignupPackage();
     }
-    
+       
 }

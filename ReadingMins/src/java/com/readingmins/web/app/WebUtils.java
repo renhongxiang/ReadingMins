@@ -10,6 +10,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import rcommon.rdata.common.RY_User;
+import rcommon.utils.datatype.RStringUtils;
 import rm_lib.data.RM_Student;
 import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
@@ -91,5 +92,15 @@ public class WebUtils {
         return null;
     }
     
+    public static String getWebSite(HttpServletRequest request){
+        String url = request.getRequestURI();
+        String urLStr = null;
+        StringBuffer urL = request.getRequestURL();
+        if(urL != null){
+            urLStr = urL.toString();
+        }
+        int index = RStringUtils.indexOf(urLStr, url, 0);
+        return RStringUtils.substring(urLStr, 0, index);
+    }
     
 }

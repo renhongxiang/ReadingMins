@@ -39,9 +39,7 @@ public class ReadingLogEditController extends StudentLevelController{
     @RequestMapping(value = "/readingLogEdit", method = RequestMethod.GET)
     public String editMinsGet(HttpServletRequest request, ModelMap model) {
 
-        this.controllerPageIn(request);
-        
-        this.prepareMenuInfo(request, model);
+        this.controllerPageIn(request, model);
         
         RM_SessionData sessData = WebUtils.getSessionData(request);
         if(sessData != null){
@@ -60,7 +58,7 @@ public class ReadingLogEditController extends StudentLevelController{
     
     @RequestMapping(value = "/readingLogEdit", params = "save", method = RequestMethod.POST)
     public String editMinsPostSave(HttpServletRequest request, @ModelAttribute("minsForm") SubmitMins bean, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         if(bean != null){
             RM_SessionData sessData = WebUtils.getSessionData(request);
             if(sessData != null){
@@ -81,7 +79,7 @@ public class ReadingLogEditController extends StudentLevelController{
 
     @RequestMapping(value = "/readingLogEdit", params = "delete", method = RequestMethod.POST)
     public String editMinsPostDelete(HttpServletRequest request, @ModelAttribute("minsForm") SubmitMins bean, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         if(bean != null){
             RM_SessionData sessData = WebUtils.getSessionData(request);
             if(sessData != null){

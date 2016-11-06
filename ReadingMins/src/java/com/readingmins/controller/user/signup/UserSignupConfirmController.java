@@ -24,7 +24,7 @@ public class UserSignupConfirmController extends UserControllerBase{
     
     @RequestMapping(value = "/userConfirm")
     public String signUp(HttpServletRequest request, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         RY_User user = WebUtils.getRegisteredUser(request);
         if(user != null){

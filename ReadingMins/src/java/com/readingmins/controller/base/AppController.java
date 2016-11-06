@@ -20,10 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Scope("session")
 public class AppController {
     
-    @RequestMapping(value = "/setting", method = RequestMethod.GET)
-    public String settingGet(HttpServletRequest request, HttpServletResponse response) {
-        return "setting";
-    }    
     
     @RequestMapping(value = "/help", method = RequestMethod.GET)
     public String helpGet(HttpServletRequest request, HttpServletResponse response) {

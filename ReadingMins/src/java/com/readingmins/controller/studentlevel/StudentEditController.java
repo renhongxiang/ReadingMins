@@ -30,7 +30,7 @@ public class StudentEditController extends StudentLevelController{
     @RequestMapping(value = "/studentEdit", method = RequestMethod.GET)
     public String editStudentGet(HttpServletRequest request, ModelMap model) {
         
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         this.prepareMenuInfo(request, model);
         StudentBean bean = new StudentBean();
@@ -43,7 +43,7 @@ public class StudentEditController extends StudentLevelController{
     @RequestMapping(value = "/studentEdit", params = "Save", method = RequestMethod.POST)
     public String editStudentPostSave(HttpServletRequest request, @ModelAttribute("editStudentForm") StudentBean bean, ModelMap model) {
         
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         this.prepareMenuInfo(request, model);
         if(bean != null){
@@ -61,7 +61,7 @@ public class StudentEditController extends StudentLevelController{
     @RequestMapping(value = "/studentEdit", params = "Delete", method = RequestMethod.POST)
     public String editStudentPostDelete(HttpServletRequest request, @ModelAttribute("editStudentForm") StudentBean bean, ModelMap model) {
 
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         RM_Student student = WebUtils.getSessCurStudent(request);
         if(student != null){

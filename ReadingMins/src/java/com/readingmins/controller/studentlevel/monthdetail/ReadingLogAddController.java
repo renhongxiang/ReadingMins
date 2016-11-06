@@ -46,7 +46,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.GET)
     public String submitMinsGet(HttpServletRequest request, @ModelAttribute("monthReadingLog") ReadingLogMonthBean beanMonth, ModelMap model) {
 
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         this.prepareModel(request, beanMonth, model);
         
@@ -59,7 +59,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
                 BindingResult result, 
                 ModelMap model) {
         
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         String buttonStr = request.getParameter("saveNew");
         if(buttonStr != null){

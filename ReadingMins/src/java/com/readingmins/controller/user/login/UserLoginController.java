@@ -37,7 +37,9 @@ public class UserLoginController extends UserControllerBase{
     
     @RequestMapping(value = "/userLogin", method = RequestMethod.GET)
     public String login(HttpServletRequest request, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
+        
+        this.initBuildTType(model);
         
         UserAccountBean bean = new UserAccountBean();
         
@@ -52,7 +54,10 @@ public class UserLoginController extends UserControllerBase{
     
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
     public String loginPost(HttpServletRequest request, @ModelAttribute("userForm") UserAccountBean bean, BindingResult result, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
+        this.initBuildTType(model);
+        
+        
         if(bean != null){
             RY_User user = UserAccountBean.createUserFromBean(bean);
             LoginUserLogic logic = new LoginUserLogic();

@@ -15,5 +15,7 @@ import rm_lib.application.init.RM_AppInit;
 public class ReadMinsInitServlet extends HttpServlet{
     public ReadMinsInitServlet(){
         RM_AppInit.initApp();
+        ReadingMinsEmailCertify.InitReadingMinsEmailCertify();
+        ReadingMinsResetPassword.InitReadingMinsResetPassword();
     }
 }

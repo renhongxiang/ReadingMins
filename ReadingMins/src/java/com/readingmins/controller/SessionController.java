@@ -7,9 +7,11 @@ package com.readingmins.controller;
 
 import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import org.springframework.ui.ModelMap;
+import rcommon.app.setting.RAppSetting;
 import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
-import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -19,12 +21,16 @@ import rm_lib.sess.RM_SessionData;
 public abstract class SessionController {
     
     
-    public boolean controllerPageIn(HttpServletRequest request){
+    
+    public boolean controllerPageIn(HttpServletRequest request, ModelMap model){        
         RM_SessionData sess = WebUtils.getSessionData(request);
         if(sess != null){
             RSessionDataPackage pageData = this.createPageData();
             sess.setCurPackage(pageData);
         }
+        
+        this.initBuildTType(model);
+        
         return true;
     }
     
@@ -39,4 +45,29 @@ public abstract class SessionController {
         }
         return false;
     }
+    
+    protected void initBuildTType(ModelMap model){
+        RAppSetting setting = RAppSetting.getAppSetting();
+        if(setting != null){
+            if(setting.isDebug()){
+                model.addAttribute("buildType", "Debug");
+            }else{
+                model.addAttribute("buildType", "");
+            }
+        }
+    }
+    
+    public RM_SessionData getSessionData(HttpServletRequest request){
+        HttpSession session = request.getSession(true);
+        if(session != null){
+            RM_SessionData sessData = (RM_SessionData)session.getAttribute("sessdata");
+            if(sessData == null){
+                sessData = new RM_SessionData();
+                session.setAttribute("sessdata", sessData);
+            }
+            return sessData;
+        }
+        return null;
+    }
+        
 }

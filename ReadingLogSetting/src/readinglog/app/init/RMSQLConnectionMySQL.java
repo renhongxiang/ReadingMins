@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rm_lib.application.init;
+package readinglog.app.init;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import rcommon.app.setting.RAppSetting;
 import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
 
 /**
@@ -15,10 +16,25 @@ import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
  */
 public class RMSQLConnectionMySQL extends RY_SQLConnectionFactory{
 
-    RMSQLConnectionMySQL(){
-        this.setDbURL("jdbc:mysql://localhost:3306/readmins");
-        this.setDbUserID("DBEdit");
-        this.setDbPassword("123456");
+    public RMSQLConnectionMySQL(){
+        prepareData();
+    }
+    
+    private void prepareData(){
+        boolean develop = true;
+        RAppSetting setting = RAppSetting.getAppSetting();
+        if(setting != null){
+            develop = setting.isDebug();
+        }
+        if(develop){
+            this.setDbURL("jdbc:mysql://localhost:3306/readinglogtest");
+            this.setDbUserID("DBEdit");
+            this.setDbPassword("123456");
+        }else{
+            this.setDbURL("jdbc:mysql://localhost:3306/readmins");
+            this.setDbUserID("DBEdit");
+            this.setDbPassword("123456");
+        }
     }
     
     @Override

@@ -13,7 +13,32 @@
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/baseFooter.jsp" />
    </definition>  
-   
+
+   <definition name="userRetrieveUserID" extends="base-definition">  
+       <put-attribute name="title" value="Forgot UserID" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userForgotID.jsp" />  
+   </definition>  
+
+   <definition name="userForgotIDSent" extends="base-definition">  
+       <put-attribute name="title" value="Register success" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userForgotIDSent.jsp" />  
+   </definition>  
+
+   <definition name="userRetrievePassword" extends="base-definition">  
+       <put-attribute name="title" value="Forgot Password" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userForgotPwd.jsp" />  
+   </definition>  
+
+   <definition name="userResetPassword" extends="base-definition">  
+       <put-attribute name="title" value="Reset Password" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userResetPassword.jsp" />  
+   </definition>  
+
+   <definition name="userForgotPwdSent" extends="base-definition">  
+       <put-attribute name="title" value="Reset Password Sent" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/userForgotPwdSent.jsp" />  
+   </definition>  
+                                                
    <definition name="userLogin" extends="base-definition">  
        <put-attribute name="title" value="Login" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/userLogin.jsp" />  
@@ -24,16 +49,20 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/userSignup.jsp" />  
    </definition>  
 
-      <definition name="userConfirm" extends="base-definition">  
+    <definition name="userConfirm" extends="base-definition">  
        <put-attribute name="title" value="Register success" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/userConfirm.jsp" />  
    </definition>  
    
-   <definition name="setting" template="/WEB-INF/views/pages/setting.jsp">  
+   <definition name="setting" template="/WEB-INF/views/pages/appSetting.jsp">  
        <put-attribute name="title" value="" />
    </definition>  
 
    <definition name="help" template="/WEB-INF/views/tiles/layouts/helpLayout.jsp">  
+       <put-attribute name="title" value="" />
+   </definition>  
+
+   <definition name="emailCertify" template="/WEB-INF/views/pages/userCertifyEmail.jsp">  
        <put-attribute name="title" value="" />
    </definition>  
 

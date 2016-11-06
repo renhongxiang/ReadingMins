@@ -11,8 +11,10 @@ import rytable.RY_TableManager;
 import rytable.common.RY_AddressTB;
 import rytable.common.RY_CompanyTB;
 import rytable.common.RY_ContactInfoTB;
+import rytable.common.RY_EmailCertifyTable;
 import rytable.common.RY_EmailTB;
 import rytable.common.RY_LockIDTB;
+import rytable.common.RY_PasswordCertifyTable;
 import rytable.common.RY_PersonTB;
 import rytable.common.RY_PhoneTB;
 import rytable.common.RY_TimerTB;
@@ -30,6 +32,7 @@ public class RM_DataBase extends RY_TableManager{
         this.addTable(RY_LockIDTB.createInstance());
         this.addTable(RY_PersonTB.createInstance());
         this.addTable(RY_UserTB.createInstance());
+        this.addTable(RY_EmailCertifyTable.createInstance());
         this.addTable(RY_AddressTB.createInstance()); 
         this.addTable(RY_CompanyTB.createInstance());
         this.addTable(RY_ContactInfoTB.createInstance());
@@ -37,6 +40,7 @@ public class RM_DataBase extends RY_TableManager{
         this.addTable(RY_EmailTB.createInstance());
         this.addTable(RM_StudentTB.createInstance());
         this.addTable(RM_ReadingMinsTB.createInstance());
+        this.addTable(RY_PasswordCertifyTable.createInstance());
         return false;
     }    
 }

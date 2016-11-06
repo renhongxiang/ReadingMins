@@ -5,8 +5,11 @@
  */
 package com.readingmins.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import rcommon.data.session.RSessionDataPackage;
+import rcommon.rdata.common.RY_User;
 import rm_lib.sess.RM_SessDataLoginGroup;
+import rm_lib.sess.RM_SessionData;
 
 /**
  *
@@ -17,6 +20,15 @@ public class LoginedControllerBase extends SessionController{
     @Override
     protected RSessionDataPackage createPageData(){
         return new RM_SessDataLoginGroup();
+    }
+    
+    protected RY_User getLoginUser(HttpServletRequest request){
+        RM_SessionData sessData = this.getSessionData(request);
+        if(sessData != null){
+            return sessData.getLoginUser();
+        }
+        return null;
+        
     }
     
 }

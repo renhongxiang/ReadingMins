@@ -6,6 +6,7 @@
 <table class="area">
     <tr>
         <td style="width: 100%">
+            ${buildType}
         </td>
         <td>
             <table>

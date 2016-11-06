@@ -23,10 +23,11 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/sess/RM_SessionData.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/logics/AddReadingRecordLogic.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/RMDataIOUtilManager.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/init/RMSQLConnectionMySQL.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/init/RM_EmailSetting.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/logics/EditStudentLogic.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentsByUserOperation.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentsByUser.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/logic/RMRegisterLogic.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/logics/DownloadReadingLog.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoadStudentReadingRecordByMonth.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/logics/NewStudentLogic.java</file>

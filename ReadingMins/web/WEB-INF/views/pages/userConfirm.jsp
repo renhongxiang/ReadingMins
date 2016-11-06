@@ -13,6 +13,10 @@
     </head>
     <body>
         <h1>Welcome ${userName}</h1> 
+        
+        <div>An email is sent to your email address, please certify your email address and you will able to reset your user name and password base on the email.
+        
         <a href="userLogin">Go to Login</a>
+        
     </body>
 </html>

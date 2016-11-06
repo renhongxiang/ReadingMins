@@ -34,6 +34,12 @@ and open the template in the editor.
     .error{
         color: red;
     }
+
+    .button
+    {
+        margin: 10px;
+    }
+
     label{
         text-align: right;
     }

@@ -22,7 +22,7 @@ public class UserLogoutController extends UserControllerBase{
     
     @RequestMapping(value = "/userLogout")
     public String logout(HttpServletRequest request,ModelMap model) {        
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         HttpSession session = request.getSession();
         if(session != null){
             session.invalidate();

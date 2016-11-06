@@ -34,7 +34,7 @@ public class StudentSelectController extends LoginedControllerBase{
     @RequestMapping(value = "/studentSelect", method = RequestMethod.GET)
     public String selectStudentGet(HttpServletRequest request, ModelMap model) {
         
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
         
         RY_User user = WebUtils.getLoginUser(request);            
         List<RM_Student> rmStudents = this.loadStudentsByUser(user);
@@ -58,7 +58,7 @@ public class StudentSelectController extends LoginedControllerBase{
     @RequestMapping(value = "/studentSelect", method = RequestMethod.POST)
     public String selectStudentPost(HttpServletRequest request, ModelMap model) {
 
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
 
         List<RM_Student> studentList = WebUtils.getSessStudentList(request);
         if(studentList != null){

@@ -9,6 +9,8 @@ import rcommon.rdata.iosystem.DataIOFactoryManager;
 import rcommon.rdata.iosystem.DataIOOperationFactory;
 import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
 import rcommon.rdata.iosys.operation.common.DataIOTimerOperation;
+import readinglog.app.init.RMAppSetting;
+import readinglog.app.init.RMSQLConnectionMySQL;
 import rytable.RY_TableManager;
 import rytable.ini.DBInitBase;
 
@@ -66,7 +68,14 @@ public class RM_AppInit extends DBInitBase{
     @Override
     public void doInit(){
         if(!appInited){
+            RMAppSetting setting = new RMAppSetting();
+            RMAppSetting.setAppSetting(setting);
+
+            RM_EmailSetting emailSetting = new RM_EmailSetting();
+            RM_EmailSetting.initInstance(emailSetting);
+            
             super.doInit();
+
             DataIOFactoryManager.setDefaultDataFactory(createOperationFactory());
             RMTimerUserFactory defaultUserFact = new RMTimerUserFactory();
             DataIOTimerOperation.setUserFact(defaultUserFact);

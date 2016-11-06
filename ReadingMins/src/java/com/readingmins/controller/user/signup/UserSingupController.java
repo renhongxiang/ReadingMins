@@ -35,7 +35,8 @@ public class UserSingupController extends UserControllerBase{
     
     @RequestMapping(value = "/userSignup", method = RequestMethod.GET)
     public String signUp(HttpServletRequest request, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
+
         model.addAttribute("signOnForm", new UserAccountBean());
         return "userSignup"; // this is which page to use.
     }
@@ -43,14 +44,16 @@ public class UserSingupController extends UserControllerBase{
     
     @RequestMapping(value = "/userSignup", method = RequestMethod.POST)
     public String signUpPost(HttpServletRequest request, @ModelAttribute("signOnForm") UserAccountBean bean, BindingResult result, ModelMap model) {
-        this.controllerPageIn(request);
+        this.controllerPageIn(request, model);
+
         if(bean != null){
             String userID = bean.getUserName();
             if(userID != null){
                 if(this.verifyPasswordSame(bean)){
+                    String host = WebUtils.getWebSite(request);
                     RY_User user = UserAccountBean.createUserFromBean(bean);
                     RegisterUserLogic logic = new RegisterUserLogic();
-                    if(logic.doRegisterUser(user)){
+                    if(logic.doRegisterUser(user, host)){
                         RM_SessionData sessData = WebUtils.getSessionData(request);
                         ApplicationFlow.UserRegistered(sessData, user);
                         return "redirect:userConfirm";

@@ -7,11 +7,9 @@ package rm_lib.data;
 
 import rcommon.rdata.datavalue.R_TypeValueBase;
 import rcommon.rdata.common.RY_IODataBase;
-import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.datavalue.R_String_Value;
 import rcommon.rdata.define.RY_DataItemDefine;
 import rcommon.rdata.define.RY_DataItemDefineID;
-import rcommon.rdata.define.RY_DataItemDefineInteger;
 import rcommon.rdata.define.RY_DataItemDefineString;
 import rcommon.rdata.define.RY_IODataMappingManager;
 import rcommon.rdata.iosystem.DataIOHandleBase;
