@@ -15,7 +15,7 @@
             <table>
                 <tr>
                     <td>
-                        <a href="${pageContext.request.contextPath}/setting">Setting</a>
+                        <a href="${pageContext.request.contextPath}/settingPassword">Setting</a>
                     </td>
                         
                     <td>                        

@@ -27,6 +27,8 @@ import rm_lib.process.logics.EditStudentLogic;
 @Scope("session")
 public class StudentEditController extends StudentLevelController{
     
+    public static String PAGE_NAME = "studentEdit";
+    
     @RequestMapping(value = "/studentEdit", method = RequestMethod.GET)
     public String editStudentGet(HttpServletRequest request, ModelMap model) {
         
@@ -37,7 +39,7 @@ public class StudentEditController extends StudentLevelController{
         RM_Student student = WebUtils.getSessCurStudent(request);
         StudentBean.fileBeanWithStudentInfo(bean, student);
         model.addAttribute("editStudentForm", bean);
-        return "studentEdit"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/studentEdit", params = "Save", method = RequestMethod.POST)
@@ -55,7 +57,7 @@ public class StudentEditController extends StudentLevelController{
                 logic.doSaveStudent(student, user);
             }
         }
-        return "studentEdit"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/studentEdit", params = "Delete", method = RequestMethod.POST)
@@ -71,6 +73,11 @@ public class StudentEditController extends StudentLevelController{
             logic.doSaveStudent(student, user);
         }        
         return "redirect:studentSelect"; // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

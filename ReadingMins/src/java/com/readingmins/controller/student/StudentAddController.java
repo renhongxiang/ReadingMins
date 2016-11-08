@@ -33,11 +33,13 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class StudentAddController extends LoginedControllerBase{
     
+    public static String PAGE_NAME = "studentAdd"; 
+    
     @RequestMapping(value = "/studentAdd", method = RequestMethod.GET)
     public String addStudentGet(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
         model.addAttribute("addStudentForm", new StudentBean());
-        return "studentAdd"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/studentAdd", method = RequestMethod.POST)
@@ -76,7 +78,12 @@ public class StudentAddController extends LoginedControllerBase{
                 }
             }
         }
-        return "studentAdd"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

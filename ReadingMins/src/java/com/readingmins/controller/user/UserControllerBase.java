@@ -14,7 +14,7 @@ import rcommon.data.session.RSessionDataSignupPackage;
  *
  * @author renhongxiang
  */
-public class UserControllerBase extends SessionController{
+public abstract class UserControllerBase extends SessionController{
     
     @Override
     protected RSessionDataPackage createPageData(){

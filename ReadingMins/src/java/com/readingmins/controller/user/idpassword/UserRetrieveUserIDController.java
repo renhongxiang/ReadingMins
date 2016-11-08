@@ -22,6 +22,8 @@ import rcommon.process.logics.operation.RetrieveUserIDOperation;
 @Controller
 public class UserRetrieveUserIDController extends SessionController{
     
+    public static String PAGE_NAME = "userRetrieveUserID";
+    
     @RequestMapping(value = "/userRetrieveUserID", method = RequestMethod.GET)
     public String pwdInfoGet(HttpServletRequest request,ModelMap model) {
         
@@ -30,7 +32,7 @@ public class UserRetrieveUserIDController extends SessionController{
         UserResetPasswordBean idBean = new UserResetPasswordBean();
         model.addAttribute("retrieveUserID", idBean);
         
-        return "userRetrieveUserID"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/userRetrieveUserID",params = "sendUserID", method = RequestMethod.POST)
@@ -50,13 +52,18 @@ public class UserRetrieveUserIDController extends SessionController{
             return "redirect:userForgotIDSent";
         }
         
-        return "userRetrieveUserID"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/userRetrieveUserID",params = "cancel", method = RequestMethod.POST)
     public String cancelPost(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
         return "redirect:userLogin"; // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

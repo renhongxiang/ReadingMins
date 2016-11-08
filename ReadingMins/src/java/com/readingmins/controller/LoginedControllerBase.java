@@ -15,7 +15,7 @@ import rm_lib.sess.RM_SessionData;
  *
  * @author renhongxiang
  */
-public class LoginedControllerBase extends SessionController{
+public abstract class LoginedControllerBase extends SessionController{
     
     @Override
     protected RSessionDataPackage createPageData(){

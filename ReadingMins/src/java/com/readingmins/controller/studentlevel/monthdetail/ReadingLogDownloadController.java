@@ -40,6 +40,7 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class ReadingLogDownloadController extends StudentLevelController{
 
+    public static String PAGE_NAME = "readingLogDownload";
     
     @Override
     protected RM_SessDataGroup createPageData(){
@@ -71,7 +72,7 @@ public class ReadingLogDownloadController extends StudentLevelController{
         model.addAttribute("monthReadingLog", monthBean);
         
         
-        return "readingLogDownload"; // this is which page to use.
+        return this.getControllerPageName(); // this is which page to use.
     }    
     
     @RequestMapping(value = "/readingLogDownload", method = RequestMethod.POST)
@@ -82,14 +83,14 @@ public class ReadingLogDownloadController extends StudentLevelController{
             if(!res){
                 // error
             }
-            return "readingLogDownload";
+            return this.getControllerPageName();
         }
         
         button = request.getParameter("month");
         if(button != null){
             return this.monthInfoPostChangeMonth(request, response, model);
         }        
-        return "readingLogDownload";
+        return this.getControllerPageName();
     }
     
     
@@ -105,7 +106,7 @@ public class ReadingLogDownloadController extends StudentLevelController{
         ReadingLogMonthBean monthBean = this.getMonthlyReadingLog(request, month);
         
         model.addAttribute("monthReadingLog", monthBean);
-        return "readingLogDownload"; // this is which page to use.
+        return this.getControllerPageName(); // this is which page to use.
     }
     
     
@@ -172,6 +173,11 @@ public class ReadingLogDownloadController extends StudentLevelController{
             return beanList;
         }        
         return null;
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }
