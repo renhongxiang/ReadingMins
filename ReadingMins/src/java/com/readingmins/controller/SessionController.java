@@ -20,15 +20,17 @@ import rm_lib.sess.RM_SessionData;
  */
 public abstract class SessionController {
     
-    
+    public abstract String getControllerPageName();
     
     public boolean controllerPageIn(HttpServletRequest request, ModelMap model){        
         RM_SessionData sess = WebUtils.getSessionData(request);
         if(sess != null){
             RSessionDataPackage pageData = this.createPageData();
+            if(pageData != null){
+                pageData.setPageName(this.getControllerPageName());
+            }
             sess.setCurPackage(pageData);
         }
-        
         this.initBuildTType(model);
         
         return true;

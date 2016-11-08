@@ -20,6 +20,8 @@ import rcommon.rdata.common.RY_User;
 @Controller
 public class EmailCertifyController extends UserControllerBase{
     
+    public static String PAGE_NAME = "CertifyEmail";
+    
     @RequestMapping(value = "/CertifyEmail")
     public String logout(HttpServletRequest request,ModelMap model) {        
         this.controllerPageIn(request, model);
@@ -43,7 +45,12 @@ public class EmailCertifyController extends UserControllerBase{
         
         model.addAttribute("certifyBean", bean);
 
-        return "emailCertify"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

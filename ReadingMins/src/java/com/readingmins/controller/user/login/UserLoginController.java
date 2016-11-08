@@ -35,6 +35,8 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class UserLoginController extends UserControllerBase{
     
+    public static String PAGE_NAME = "userLogin";
+    
     @RequestMapping(value = "/userLogin", method = RequestMethod.GET)
     public String login(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
@@ -49,7 +51,7 @@ public class UserLoginController extends UserControllerBase{
         }
         
         model.addAttribute("userForm", bean);
-        return "userLogin"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/userLogin", method = RequestMethod.POST)
@@ -95,12 +97,17 @@ public class UserLoginController extends UserControllerBase{
                 }
             }
         }
-        return "userLogin"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     private List<RM_Student> loadStudentsByUser(RY_User user){
         LoaderStudentsByUser loader = new LoaderStudentsByUser();
         return loader.loadListByUser(user);
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

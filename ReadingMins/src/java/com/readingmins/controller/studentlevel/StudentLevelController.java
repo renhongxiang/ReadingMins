@@ -20,9 +20,8 @@ import rm_lib.sess.RM_SessDataGroup;
  *
  * @author renhongxiang
  */
-public class StudentLevelController extends LoginedControllerBase{
+public abstract class StudentLevelController extends LoginedControllerBase{
     
-
     @Override
     protected RM_SessDataGroup createPageData(){
         return new RM_SessDataGroupStudentBase();

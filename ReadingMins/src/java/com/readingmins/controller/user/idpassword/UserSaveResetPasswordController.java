@@ -29,6 +29,8 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class UserSaveResetPasswordController extends SessionController{
     
+    public static String PAGE_NAME = "userResetPassword";
+    
     @Override
     protected RSessionDataPackage createPageData(){
         return new RSessionDataPasswordResetPackage();
@@ -60,7 +62,7 @@ public class UserSaveResetPasswordController extends SessionController{
         UserSaveResetPasswordBean bean = new UserSaveResetPasswordBean();
         model.addAttribute("resetPassword", bean);
 
-        return "userResetPassword"; // this is which page to use.
+        return this.getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/ResetPassword", method = RequestMethod.POST)
@@ -85,7 +87,7 @@ public class UserSaveResetPasswordController extends SessionController{
             }
         }
         
-        return "userResetPassword"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     public RY_User getSetPasswordUser(RM_SessionData sessData){
@@ -105,6 +107,11 @@ public class UserSaveResetPasswordController extends SessionController{
                 ((RSessionDataPasswordResetPackage) curPackage).setResetPasswordUser(user);
             }
         }
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

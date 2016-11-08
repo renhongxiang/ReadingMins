@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserLogoutController extends UserControllerBase{
     
+    public static String PAGE_NAME = "userLogout";
     
     @RequestMapping(value = "/userLogout")
     public String logout(HttpServletRequest request,ModelMap model) {        
@@ -28,6 +29,11 @@ public class UserLogoutController extends UserControllerBase{
             session.invalidate();
         }
         return "redirect:userLogin"; // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

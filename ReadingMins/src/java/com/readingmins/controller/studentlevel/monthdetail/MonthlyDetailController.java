@@ -29,6 +29,8 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class MonthlyDetailController extends MonthlyDetailControllerBase{
 
+    public static String PAGE_NAME = "detail";
+    
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
     public String detailGet(HttpServletRequest request, @ModelAttribute("month") String beanMonth, ModelMap model) {
 
@@ -38,7 +40,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
         
         this.prepareEditingForm(request, model);
         
-        return "detail"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/detail", method = RequestMethod.POST)
@@ -80,7 +82,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
                 
         this.prepareEditingForm(request, model);
         
-        return "detail"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     
@@ -128,6 +130,11 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
             }
         }
         model.addAttribute("editMinsForm", mins);
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
     

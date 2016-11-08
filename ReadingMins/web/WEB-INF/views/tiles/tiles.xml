@@ -60,7 +60,7 @@
        <put-attribute name="body" value="/WEB-INF/views/pages/userConfirm.jsp" />  
    </definition>  
    
-   <definition name="setting" template="/WEB-INF/views/pages/appSetting.jsp">  
+   <definition name="setting" template="/WEB-INF/views/pages/userSetting.jsp">  
        <put-attribute name="title" value="" />
    </definition>  
 
@@ -82,6 +82,30 @@
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/baseFooter.jsp" />  
    </definition>  
 
+   <definition name="base-setting" extends="base-user">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/settingMenu.jsp" />  
+   </definition>  
+
+   <definition name="settingPassword" extends="base-setting">  
+       <put-attribute name="title" value="Password" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/settingPassword.jsp" />  
+   </definition>  
+
+   <definition name="settingPasswordConfirm" extends="base-setting">  
+       <put-attribute name="title" value="Password Changed" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/settingPasswordConfirm.jsp" />  
+   </definition>  
+
+   <definition name="settingEmail" extends="base-setting">  
+       <put-attribute name="title" value="Email" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/settingEmail.jsp" />  
+   </definition>  
+
+   <definition name="settingEmailConfirm" extends="base-setting">  
+       <put-attribute name="title" value="Email changed" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/settingEmailConfirm.jsp" />  
+   </definition>  
 
    <definition name="base-student" extends="base-user">  
        <put-attribute name="title" value="" />  

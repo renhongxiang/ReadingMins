@@ -22,6 +22,8 @@ import rcommon.process.logics.operation.ResetPasswordEmailOperation;
 @Controller
 public class UserSendResetPasswordController extends SessionController{
     
+    public static String PAGE_NAME = "userRetrievePassword";
+    
     @RequestMapping(value = "/userRetrievePassword", method = RequestMethod.GET)
     public String pwdInfoGet(HttpServletRequest request,ModelMap model) {
         
@@ -30,7 +32,7 @@ public class UserSendResetPasswordController extends SessionController{
         UserResetPasswordBean pwdBean = new UserResetPasswordBean();
         model.addAttribute("resetPwdReq", pwdBean);
         
-        return "userRetrievePassword"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/userRetrievePassword",params = "resetPwd", method = RequestMethod.POST)
@@ -50,13 +52,18 @@ public class UserSendResetPasswordController extends SessionController{
             return "redirect:userForgotPwdSent";
         }
         
-        return "userRetrievePassword"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/userRetrievePassword",params = "cancel", method = RequestMethod.POST)
     public String cancelPost(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
         return "redirect:userLogin"; // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
     

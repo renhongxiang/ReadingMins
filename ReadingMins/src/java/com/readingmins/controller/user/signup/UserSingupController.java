@@ -33,12 +33,14 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class UserSingupController extends UserControllerBase{
     
+    public static String PAGE_NAME = "userSignup";
+    
     @RequestMapping(value = "/userSignup", method = RequestMethod.GET)
     public String signUp(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
 
         model.addAttribute("signOnForm", new UserAccountBean());
-        return "userSignup"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     
@@ -79,7 +81,7 @@ public class UserSingupController extends UserControllerBase{
                 }
             }
         }
-        return "userSignup"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     private boolean verifyPasswordSame(UserAccountBean bean){
@@ -91,6 +93,11 @@ public class UserSingupController extends UserControllerBase{
             }
         }
         return false;
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

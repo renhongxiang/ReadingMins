@@ -31,6 +31,8 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class StudentSelectController extends LoginedControllerBase{
     
+    public static String PAGE_NAME = "studentSelect";
+    
     @RequestMapping(value = "/studentSelect", method = RequestMethod.GET)
     public String selectStudentGet(HttpServletRequest request, ModelMap model) {
         
@@ -52,7 +54,7 @@ public class StudentSelectController extends LoginedControllerBase{
         StudentBeanList contactForm = new StudentBeanList();
         contactForm.setStudents(studentList);
         model.put("studentList", contactForm);
-        return "studentSelect"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/studentSelect", method = RequestMethod.POST)
@@ -77,7 +79,7 @@ public class StudentSelectController extends LoginedControllerBase{
                 }
             }
         }
-        return "studentSelect"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
 
     @Override
@@ -105,6 +107,11 @@ public class StudentSelectController extends LoginedControllerBase{
     private List<RM_Student> loadStudentsByUser(RY_User user){
         LoaderStudentsByUser loader = new LoaderStudentsByUser();
         return loader.loadListByUser(user);
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

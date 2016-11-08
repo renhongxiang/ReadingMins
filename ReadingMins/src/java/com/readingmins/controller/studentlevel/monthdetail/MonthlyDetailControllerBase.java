@@ -26,7 +26,7 @@ import rm_lib.sess.RM_SessDataGroup;
  *
  * @author renhongxiang
  */
-public class MonthlyDetailControllerBase extends StudentLevelController{
+public abstract class MonthlyDetailControllerBase extends StudentLevelController{
     
     @Override
     protected RM_SessDataGroup createPageData(){

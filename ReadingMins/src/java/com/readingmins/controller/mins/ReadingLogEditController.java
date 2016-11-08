@@ -30,9 +30,12 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class ReadingLogEditController extends StudentLevelController{
 
+    public static String PAGE_NAME = "readingLogEdit";
+    
     @Override
     protected RM_SessDataGroup createPageData(){
-        return new RM_SessDataGroupLog();
+        RM_SessDataGroup group = new RM_SessDataGroupLog();
+        return group;
     }
     
     
@@ -53,7 +56,7 @@ public class ReadingLogEditController extends StudentLevelController{
             }
         }
         
-        return "readingLogEdit"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/readingLogEdit", params = "save", method = RequestMethod.POST)
@@ -74,7 +77,7 @@ public class ReadingLogEditController extends StudentLevelController{
                 }
             }            
         }
-        return "readingLogEdit";
+        return getControllerPageName();
     }    
 
     @RequestMapping(value = "/readingLogEdit", params = "delete", method = RequestMethod.POST)
@@ -95,7 +98,12 @@ public class ReadingLogEditController extends StudentLevelController{
                 }
             }            
         }
-        return "readingLogEdit";
+        return getControllerPageName();
     }    
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
+    }
     
 }

@@ -38,6 +38,8 @@ import rm_lib.sess.RM_SessionData;
 @Scope("session")
 public class ReadingLogAddController extends MonthlyDetailControllerBase{
     
+    public static String PAGE_NAME = "readingLogAdd";
+    
     @Override
     protected RM_SessDataGroup createPageData(){
         return new RM_SessDataGroupAddLog();
@@ -50,7 +52,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         
         this.prepareModel(request, beanMonth, model);
         
-        return "readingLogAdd"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }
     
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.POST)
@@ -72,7 +74,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         
         this.prepareModel(request, beanMonth, model);
         
-        return "readingLogAdd"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
     }    
 
     protected boolean processEditRec(HttpServletRequest request,ReadingLogMonthBean bean){
@@ -163,6 +165,11 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         
         this.buildMonthlyEdtailPage(request, model, month);
         
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }

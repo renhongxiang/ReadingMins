@@ -22,6 +22,8 @@ import rcommon.rdata.common.RY_User;
 @Scope("session")
 public class UserSignupConfirmController extends UserControllerBase{
     
+    public static String PAGE_NAME = "userConfirm";
+    
     @RequestMapping(value = "/userConfirm")
     public String signUp(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
@@ -32,7 +34,12 @@ public class UserSignupConfirmController extends UserControllerBase{
             model.addAttribute("userName", userName);
         }
         
-        return "userConfirm"; // this is which page to use.
+        return getControllerPageName(); // this is which page to use.
+    }
+
+    @Override
+    public String getControllerPageName() {
+        return PAGE_NAME;
     }
     
 }
