@@ -28,6 +28,7 @@ import rm_lib.application.workflow.RM_SessDataGroupMonthly;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
 import rm_lib.data.logicdata.RM_MonthReadingData;
+import rm_lib.document.RM_ReadingMinsDocData;
 import rm_lib.process.logics.DownloadReadingLog;
 import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
@@ -139,12 +140,12 @@ public class ReadingLogDownloadController extends StudentLevelController{
     }
     
     public List<ReadingLogBean> getMonthlyReadingLogByMonth(HttpServletRequest request, RMonth month){
-        List<RM_ReadingMins> list = this.getMonthlyReadingRecordByMonth(request, month);
+        List<RM_ReadingMinsDocData> list = this.getMonthlyReadingRecordByMonth(request, month);
         List<ReadingLogBean> beanList = this.buildBeanList(list);
         return beanList;
     }
     
-    private List<RM_ReadingMins> getMonthlyReadingRecordByMonth(HttpServletRequest request, RMonth month){
+    private List<RM_ReadingMinsDocData> getMonthlyReadingRecordByMonth(HttpServletRequest request, RMonth month){
         RY_User user = WebUtils.getLoginUser(request);
         RM_Student student = WebUtils.getSessCurStudent(request);
         RM_MonthReadingData monthData = new RM_MonthReadingData();
@@ -152,21 +153,22 @@ public class ReadingLogDownloadController extends StudentLevelController{
     }
  
     
-    private List<ReadingLogBean> buildBeanList(List<RM_ReadingMins> list){
+    private List<ReadingLogBean> buildBeanList(List<RM_ReadingMinsDocData> list){
         List<ReadingLogBean> beanList = new ArrayList<ReadingLogBean>();
         if(beanList != null && list != null){
             for(int i = 0; i<list.size(); i++){
-                RM_ReadingMins min = list.get(i);
+                RM_ReadingMinsDocData min = list.get(i);
                 if(min != null){
                     ReadingLogBean bean = new ReadingLogBean();
-                    Date day = min.getReadDate();
-                    bean.setDay(RDateUtils.GetDay(day));
+//                    Date day = min.getReadDate();
+                    bean.setDay(i+1);
                     bean.setMins(min.getReadMins());
-                    bean.setTitle(min.getBookTitle());
-                    DataIOIdentity ioID = min.getMinsIOID();
-                    if(ioID != null && ioID.isValueValid()){
-                        bean.setId(ioID.getIndentifyID());
-                    }
+                    bean.setTitle(min.getReadingTitle());
+                    
+//                    DataIOIdentity ioID = min.getMinsIOID();
+//                    if(ioID != null && ioID.isValueValid()){
+//                        bean.setId(ioID.getIndentifyID());
+//                    }
                     beanList.add(bean);
                 }
             }

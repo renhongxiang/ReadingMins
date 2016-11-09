@@ -7,6 +7,7 @@ package com.readingmins.controller.setting;
 
 import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.commons.validator.EmailValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rcommon.process.logics.operation.CertifyEmailOperation;
-import rcommon.process.logics.operation.SaveResetedPasswordOperation;
+import rcommon.process.logics.operation.ChangeAccountEmailOperation;
 import rcommon.rdata.common.RY_User;
+import rcommon.utils.datatype.RStringUtils;
 
 /**
  *
@@ -54,26 +56,37 @@ public class SettingEmailController extends SettingController{
         
         this.controllerPageIn(request, model);
         
+        String host = WebUtils.getWebSite(request);
+        
         bean.setEmailSent(false);
 
         String newEmail = bean.getNewEmail();
-        if(validateEmail(newEmail)){
+        if(validateEmail(newEmail, result)){
             RY_User user = this.getLoginUser(request);
             RY_User testUser = new RY_User();
             testUser.setUserIOID(user.getUserIOID());
             testUser.setAcctEmail(newEmail);
             testUser.setEmailCertified(false);
-            SaveResetedPasswordOperation op = new SaveResetedPasswordOperation();
+            ChangeAccountEmailOperation op = new ChangeAccountEmailOperation();
+            op.setHostURL(host);
+            op.setAcctUser(testUser);
             op.setUser(testUser);
             if(op.DoOperation()){
                 user.setAcctEmail(testUser.getAcctEmail());
                 user.setEmailCertified(false);
-                return "redirect:" + getControllerPageName();
+                return "redirect:" + SettingEmailChangeConfirmController.getPAGE_NAME();
             }
-        }else{
-            result.rejectValue("newEmail","newEmail","Email format is not valid.");
         }
         
+        RY_User user = this.getLoginUser(request);
+        if(user != null){
+            bean.setCurEmail(user.getAcctEmail());
+            if(user.isEmailCertified()){
+                bean.setEmailCertified(true);
+            }else{
+                bean.setEmailCertified(false);
+            }
+        }        
         return getControllerPageName(); // this is which page to use.
     }
 
@@ -109,8 +122,20 @@ public class SettingEmailController extends SettingController{
         return this.doBack(request);
     }
     
-    private boolean validateEmail(String email){
-        return true;
+    private boolean validateEmail(String email, BindingResult result){
+        if(result != null){
+            if(RStringUtils.isNotBlank(email)){
+                EmailValidator validator = EmailValidator.getInstance();
+                if (validator.isValid(email)) {
+                    return true;
+                } else {
+                   result.rejectValue("newEmail","newEmail","Email format is not valid");
+                }                
+            }else{
+                result.rejectValue("newEmail","newEmail","Email is missing");
+            }
+        }
+        return false;
     }
 
     @Override

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class SettingChangePasswordConfirmController {
-    public static String PAGE_NAME = "settingPasswordConfirm";
+    private static String PAGE_NAME = "settingPasswordConfirm";
     
     @RequestMapping(value = "/settingPasswordConfirm", method = RequestMethod.GET)
     public String settingPasswordConfirmGet(HttpServletRequest request,ModelMap model) {        
@@ -30,4 +30,13 @@ public class SettingChangePasswordConfirmController {
         
         return "redirect:" + SettingChangePasswordController.PAGE_NAME; // this is which page to use.
     }
+
+    public static String getPAGE_NAME() {
+        return PAGE_NAME;
+    }
+
+    public static void setPAGE_NAME(String PAGE_NAME) {
+        SettingChangePasswordConfirmController.PAGE_NAME = PAGE_NAME;
+    }
+    
 }

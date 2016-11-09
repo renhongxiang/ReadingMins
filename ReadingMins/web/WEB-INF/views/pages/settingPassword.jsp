@@ -37,7 +37,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <form:errors path="oldPassword" />
+                                            <form:errors path="oldPassword" cssClass="error"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -54,7 +54,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <form:errors path="newPassword" />
+                                            <form:errors path="newPassword" cssClass="error"/>
                                         </td>
                                     </tr>
                                     <tr>
@@ -71,7 +71,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <form:errors path="newPassword2" />
+                                            <form:errors path="newPassword2" cssClass="error"/>
                                         </td>
                                     </tr>
                                     <tr class="textcenter">

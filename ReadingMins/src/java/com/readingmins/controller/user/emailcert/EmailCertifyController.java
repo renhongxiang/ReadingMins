@@ -20,9 +20,9 @@ import rcommon.rdata.common.RY_User;
 @Controller
 public class EmailCertifyController extends UserControllerBase{
     
-    public static String PAGE_NAME = "CertifyEmail";
+    public static String PAGE_NAME = "emailCertify";
     
-    @RequestMapping(value = "/CertifyEmail")
+    @RequestMapping(value = "/emailCertify")
     public String logout(HttpServletRequest request,ModelMap model) {        
         this.controllerPageIn(request, model);
         

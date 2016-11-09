@@ -20,7 +20,7 @@ public class ReadingMinsEmailCertify extends EmailCertify{
     
     @Override
     protected String getCertifyPageURL(String host){
-        return host + "/ReadingLog/CertifyEmail?";
+        return host + "/ReadingLog/emailCertify?";
     }
     
     @Override

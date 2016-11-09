@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class SettingEmailChangeConfirmController {
     
-    public static String PAGE_NAME = "settingEmailConfirm";
+    private static String PAGE_NAME = "settingEmailConfirm";
     
     @RequestMapping(value = "/settingEmailConfirm", method = RequestMethod.GET)
     public String settingPasswordConfirmGet(HttpServletRequest request,ModelMap model) {        
@@ -30,6 +30,14 @@ public class SettingEmailChangeConfirmController {
     public String settingPasswordConfirmPost(HttpServletRequest request,ModelMap model) {        
         
         return "redirect:" + SettingEmailController.PAGE_NAME; // this is which page to use.
+    }
+
+    public static String getPAGE_NAME() {
+        return PAGE_NAME;
+    }
+
+    public static void setPAGE_NAME(String PAGE_NAME) {
+        SettingEmailChangeConfirmController.PAGE_NAME = PAGE_NAME;
     }
     
 }

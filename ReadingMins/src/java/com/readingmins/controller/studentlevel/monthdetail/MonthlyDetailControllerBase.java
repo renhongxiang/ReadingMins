@@ -116,6 +116,7 @@ public abstract class MonthlyDetailControllerBase extends StudentLevelController
         RM_Student student = WebUtils.getSessCurStudent(request);
         RM_MonthReadingData monthData = new RM_MonthReadingData();
         List<RM_ReadingMins> list = monthData.loadDataListByMonth(month, student, user);
+        RM_MonthReadingData.sortListData(list);
         return list;
     }
     
