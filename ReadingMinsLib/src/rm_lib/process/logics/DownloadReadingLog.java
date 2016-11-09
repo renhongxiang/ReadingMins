@@ -14,6 +14,7 @@ import rm_lib.data.RM_Student;
 import rm_lib.data.logicdata.RM_MonthReadingData;
 import rm_lib.document.RJRPDFReadingLog;
 import rm_lib.document.RJRPDFReadingLogData;
+import rm_lib.document.RM_ReadingMinsDocData;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -47,7 +48,7 @@ public class DownloadReadingLog {
 //                parameters.put(name, user)
 
                 RM_MonthReadingData monthData = new RM_MonthReadingData();
-                List<RM_ReadingMins> monthlyList = monthData.loadMonthlyData(month, student, user);
+                List<RM_ReadingMinsDocData> monthlyList = monthData.loadMonthlyData(month, student, user);
 
                 docData.setMonthList(monthlyList);
                 

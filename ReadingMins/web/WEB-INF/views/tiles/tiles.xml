@@ -68,9 +68,11 @@
        <put-attribute name="title" value="" />
    </definition>  
 
-   <definition name="emailCertify" template="/WEB-INF/views/pages/userCertifyEmail.jsp">  
-       <put-attribute name="title" value="" />
+   <definition name="emailCertify" extends="base-definition">  
+       <put-attribute name="title" value="Certify Email" />
+       <put-attribute name="body" value="/WEB-INF/views/pages/userCertifyEmail.jsp" />  
    </definition>  
+
 
    <definition name="base-user"
        template="/WEB-INF/views/tiles/layouts/sessLayout.jsp">  

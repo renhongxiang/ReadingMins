@@ -29,6 +29,9 @@
                                             <c:if test="${!changeEmail.emailCertified}">
                                                 <button type="submit" name="certifyEmail">Certify Email</button>
                                             </c:if>
+                                            <c:if test="${changeEmail.emailCertified}">
+                                                <div>Certified</div>
+                                            </c:if>
                                         </td>
                                     </tr>
                                     <tr>
@@ -50,7 +53,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <form:errors path="newEmail" />
+                                            <form:errors path="newEmail" cssClass="error"/>
                                         </td>
                                         <td>
                                         </td>

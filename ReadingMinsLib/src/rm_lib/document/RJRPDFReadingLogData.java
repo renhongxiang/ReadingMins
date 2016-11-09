@@ -31,13 +31,13 @@ public class RJRPDFReadingLogData extends RJRReportDataBase{
     private static final String SUB_PARA_TITLE = "BookTitle";
     private static final String SUB_PARA_MINS = "dailymins";
     
-    private List<RM_ReadingMins> monthDataList = null;
+    private List<RM_ReadingMinsDocData> monthDataList = null;
     
-    public List<RM_ReadingMins> getMonthList(){
+    public List<RM_ReadingMinsDocData> getMonthList(){
         return monthDataList;
     }
     
-    public void setMonthList(List<RM_ReadingMins> monthList){
+    public void setMonthList(List<RM_ReadingMinsDocData> monthList){
         this.monthDataList = monthList;
     }
     
@@ -65,17 +65,17 @@ public class RJRPDFReadingLogData extends RJRReportDataBase{
     }
     
     public void buildDailyList(){
-        List<RM_ReadingMins> list = getMonthList();
+        List<RM_ReadingMinsDocData> list = getMonthList();
         if(list != null){
             RJRSubReportDataBase dailySubData = new RJRSubReportDataBase();
             this.addSubReportData(KEY_SUBMINS, dailySubData);
-            for(RM_ReadingMins min : list){
+            for(int i=0; i<list.size(); i++){
+                RM_ReadingMinsDocData min = list.get(i);
                 if(min != null){
                     RJRReportDataBase reportData = new RJRReportDataBase();
                     dailySubData.addReportData(reportData);
-                    Date readDate = min.getReadDate();
-                    reportData.addDataMap(SUB_PARA_DAY, "" + RDateUtils.GetDay(readDate));
-                    reportData.addDataMap(SUB_PARA_TITLE, min.getBookTitle());
+                    reportData.addDataMap(SUB_PARA_DAY, "" + (i+1));
+                    reportData.addDataMap(SUB_PARA_TITLE, min.getReadingTitle());
                     reportData.addDataMap(SUB_PARA_MINS, "" + min.getReadMins());
                 }
             }

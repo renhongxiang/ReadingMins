@@ -46,24 +46,35 @@ public class SettingChangePasswordController extends SettingController{
 
         String newPassword = bean.getNewPassword();
         String newPassword2 = bean.getNewPassword2();
-        if(RStringUtils.isNotBlank(newPassword) &&
-                RStringUtils.equals(newPassword, newPassword2)){
-            RY_User user = this.getLoginUser(request);
-            RY_User testUser = new RY_User();
-            testUser.setUserID(user.getUserID());
-            testUser.setPassword(bean.getOldPassword());
-            if(this.loginVerify(testUser)){
-                user.setPassword(newPassword);
-                SaveResetedPasswordOperation op = new SaveResetedPasswordOperation();
-                op.setUser(user);
-                if(op.DoOperation()){
-                    return "redirect:" + getControllerPageName();
+        boolean pass = true;
+        if(RStringUtils.isBlank(newPassword)){
+            pass = false;
+            result.rejectValue("newPassword","newPassword","Password is missing");
+        }
+        if(RStringUtils.isBlank(newPassword2)){
+            pass = false;
+            result.rejectValue("newPassword2","newPassword2","Password is missing");
+        }
+        if(pass){
+            if(RStringUtils.equals(newPassword, newPassword2)){
+                RY_User user = this.getLoginUser(request);
+                RY_User testUser = new RY_User();
+                testUser.setUserID(user.getUserID());
+                testUser.setPassword(bean.getOldPassword());
+                if(this.loginVerify(testUser)){
+                    user.setPassword(newPassword);
+                    SaveResetedPasswordOperation op = new SaveResetedPasswordOperation();
+                    op.setUser(user);
+                    if(op.DoOperation()){
+                        return "redirect:" + SettingChangePasswordConfirmController.getPAGE_NAME();
+                    }
+                }else{
+                    result.rejectValue("oldPassword", "oldPassword", "Password is not correct");
                 }
-                
+            }else{
+                result.rejectValue("newPassword","newPassword","Password do not match");
+                result.rejectValue("newPassword2","newPassword2","Password do not match");
             }
-        }else{
-            result.rejectValue("newPassword","newPassword","Password do not match");
-            result.rejectValue("passwordConfirm","newPassword2","Password do not match");
         }
         return getControllerPageName(); // this is which page to use.
     }
