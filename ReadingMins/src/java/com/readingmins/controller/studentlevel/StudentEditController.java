@@ -6,7 +6,6 @@
 package com.readingmins.controller.studentlevel;
 
 import com.readingmins.controller.student.StudentBean;
-import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -36,7 +35,9 @@ public class StudentEditController extends StudentLevelController{
         
         this.prepareMenuInfo(request, model);
         StudentBean bean = new StudentBean();
-        RM_Student student = WebUtils.getSessCurStudent(request);
+        
+        
+        RM_Student student = this.getStudent(request);
         StudentBean.fileBeanWithStudentInfo(bean, student);
         model.addAttribute("editStudentForm", bean);
         return getControllerPageName(); // this is which page to use.
@@ -49,11 +50,11 @@ public class StudentEditController extends StudentLevelController{
         
         this.prepareMenuInfo(request, model);
         if(bean != null){
-            RM_Student student = WebUtils.getSessCurStudent(request);
+            RM_Student student = this.getStudent(request);
             if(student != null){
                 StudentBean.fillStudentInfoFromBean(student, bean);
                 EditStudentLogic logic = new EditStudentLogic();
-                RY_User user = WebUtils.getLoginUser(request);
+                RY_User user = this.getLoginUser(request);
                 logic.doSaveStudent(student, user);
             }
         }
@@ -65,11 +66,11 @@ public class StudentEditController extends StudentLevelController{
 
         this.controllerPageIn(request, model);
         
-        RM_Student student = WebUtils.getSessCurStudent(request);
+        RM_Student student = this.getStudent(request);
         if(student != null){
             student.setStatus(RY_DataBase.STATUS_INACTIVE);
             EditStudentLogic logic = new EditStudentLogic();
-            RY_User user = WebUtils.getLoginUser(request);
+            RY_User user = this.getLoginUser(request);
             logic.doSaveStudent(student, user);
         }        
         return "redirect:studentSelect"; // this is which page to use.

@@ -8,6 +8,7 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentSelectController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserRetrieveUserIDController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadingMinsResetPassword.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/MonthlyDetailController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/AppController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/helpLayout.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/login/UserLogoutController.java</file>
@@ -20,14 +21,12 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/SubmitMins.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserSendResetPasswordSentController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadMinsInitServlet.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingDetail.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogEdit.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogBean.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogAdd.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/ChangePasswordBean.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userLogin.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/nbproject/build-impl.xml</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/LoginedControllerBase.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/sessHeader.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/mins/ReadingLogEditController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadingMinsConfig.java</file>
@@ -37,6 +36,7 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseFooter.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/sessLayout.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingPassword.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/SettingEmailChangeConfirmController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogDownloadController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/blank.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/login/UserLoginController.java</file>
@@ -44,13 +44,14 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/studentMenu.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/StudentLevelController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/META-INF/context.xml</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/SubPackController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/SettingChangePasswordConfirmController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/js/jquery-ui.min.js</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentAddController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/web/app/RMWebUtils.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadingMinsEmailCertify.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/MonthlyDetailControllerBase.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userForgotPwd.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseCss.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentSelect.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/signup/UserSignupConfirmController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/SettingEmailSubPackage.java</file>
@@ -59,33 +60,31 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogAddController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/emailcert/EmailCertifyController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userCertifyEmail.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userSignup.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserResetPasswordBean.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/dispatcher-servlet.xml</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/UserControllerBase.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentAdd.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentBeanList.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/SessionController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserSendResetPasswordController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userResetPassword.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userConfirm.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userForgotIDSent.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/body.css</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/base.css</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/SettingController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingEmail.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogMonthBean.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/RM_LoginedControllerBase.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseHeader.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserRetrieveUserIDSentController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/SettingEmailController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/SettingController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/setting/ChangeEmailBean.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingEmailConfirm.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/emailcert/EmailCertifyBean.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserSaveResetPasswordController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/settingMenu.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/web/app/WebUtils.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogDownload.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/UserSaveResetPasswordBean.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/SettingBean.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userForgotPwdSent.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/userMenu.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/StudentEditController.java</file>

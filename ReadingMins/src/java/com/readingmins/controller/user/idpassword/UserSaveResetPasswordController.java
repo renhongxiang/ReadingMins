@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.user.idpassword;
 
-import com.readingmins.controller.SessionController;
+import com.framework.controller.SessionController;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;
@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rcommon.data.session.RSessionDataBase;
 import rcommon.data.session.RSessionDataPackage;
 import rcommon.data.session.RSessionDataPasswordResetPackage;
 import rcommon.process.logics.operation.SaveResetedPasswordOperation;
@@ -46,7 +47,7 @@ public class UserSaveResetPasswordController extends SessionController{
         VerifyResetPasswordOperation op = new VerifyResetPasswordOperation();
         op.setCertiryCode(code);
         if(op.DoOperation()){
-            RM_SessionData sessData = this.getSessionData(request);
+            RSessionDataBase sessData = this.getSessionData(request);
             RY_User user = op.getUser();
             this.setSetPasswordUser(sessData, user);
 //            bean.setCertified(true);
@@ -75,7 +76,8 @@ public class UserSaveResetPasswordController extends SessionController{
             String password1 = pwdBean.getPassword1();
             String password2 = pwdBean.getPassword2();
             
-            RM_SessionData sessData = this.getSessionData(request);
+            RSessionDataBase sessData = 
+                    this.getSessionData(request);
             RY_User user = this.getSetPasswordUser(sessData);
             if(StringUtils.equals(password1, password2)){
                 user.setPassword(password2);
@@ -90,7 +92,7 @@ public class UserSaveResetPasswordController extends SessionController{
         return getControllerPageName(); // this is which page to use.
     }
     
-    public RY_User getSetPasswordUser(RM_SessionData sessData){
+    public RY_User getSetPasswordUser(RSessionDataBase sessData){
         RSessionDataPackage curPackage = sessData.getCurPackage();
         if(curPackage != null){
             if(curPackage instanceof RSessionDataPasswordResetPackage){
@@ -100,7 +102,7 @@ public class UserSaveResetPasswordController extends SessionController{
         return null;
     }
 
-    public void setSetPasswordUser(RM_SessionData sessData, RY_User user){
+    public void setSetPasswordUser(RSessionDataBase sessData, RY_User user){
         RSessionDataPackage curPackage = sessData.getCurPackage();
         if(curPackage != null){
             if(curPackage instanceof RSessionDataPasswordResetPackage){

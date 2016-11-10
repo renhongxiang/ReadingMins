@@ -5,21 +5,20 @@
  */
 package com.readingmins.controller.setting;
 
-import com.readingmins.controller.SubPackController;
-import com.readingmins.web.app.WebUtils;
+import com.framework.controller.SubPackController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.ModelMap;
+import rcommon.data.session.RSessionDataBase;
 import rcommon.data.session.RSessionDataPackage;
+import rcommon.data.session.RSessionDataSubPackage;
 import rcommon.rdata.common.RY_User;
-import rm_lib.sess.RM_SessionData;
 
 /**
  *
  * @author renhongxiang
  */
-public abstract class SettingController extends SubPackController{
-    
-    
+public class SettingController extends SubPackController{
+        
     @Override
     public boolean controllerPageIn(HttpServletRequest request, ModelMap model){
         boolean res = super.controllerPageIn(request, model);
@@ -30,16 +29,13 @@ public abstract class SettingController extends SubPackController{
         return false;
     }
     
+    @Override
     public RY_User getLoginUser(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
-        if(sessData != null){
-            return sessData.getLoginUser();
-        }
-        return null;
+        return super.getLoginUser(request);
     }
     
     public String doBack(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+        RSessionDataBase sessData = this.getSessionData(request);
         if(sessData != null){
             RSessionDataPackage packageData = sessData.getCurPackage();
             if(packageData != null){
@@ -47,6 +43,16 @@ public abstract class SettingController extends SubPackController{
                 return "redirect:" + pageName;
             }
         }
+        return null;
+    }
+
+    @Override
+    protected RSessionDataSubPackage createPageData() {
+        return null;
+    }
+
+    @Override
+    public String getControllerPageName() {
         return null;
     }
 }

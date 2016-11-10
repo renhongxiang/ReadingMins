@@ -7,8 +7,6 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/workflow/RM_SessDataGroupStudentBase.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/workflow/RM_SessDataGroupStudentList.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/init/RMTimerUserFactory.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/DataIOUtilReadMins.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/database/DBUtilReadMins.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/workflow/RM_SessDataGroupLog.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/workflow/ApplicationFlow.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/workflow/RM_SessDataGroupAddLog.java</file>
@@ -37,6 +35,7 @@
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/workflow/RM_SessDataGroupSelectReadingLog.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/data/RM_StudentIODataGroup.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/document/RJRPDFReadingLog.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentTotalMinsByMonth.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/init/RM_DataIOOperationFactory.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/logics/operation/AddReadingRecordOperation.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/document/RJRPDFReadingLogData.java</file>
