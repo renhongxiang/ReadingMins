@@ -5,15 +5,15 @@
  */
 package rm_lib.application.workflow;
 
+import rcommon.data.session.RSessionDataLoginPackage;
 import rcommon.data.session.RSessionDataPackage;
 import rm_lib.data.RM_Student;
-import rm_lib.sess.RM_SessDataLoginGroup;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_SessDataGroupStudentBase extends RM_SessDataLoginGroup{
+public class RM_SessDataGroupStudentBase extends RSessionDataLoginPackage{
     
     private RM_Student  student;
     

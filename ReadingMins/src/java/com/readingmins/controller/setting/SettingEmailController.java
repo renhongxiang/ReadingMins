@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.setting;
 
-import com.readingmins.web.app.WebUtils;
+import com.framework.utils.WebUtils;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

@@ -5,35 +5,12 @@
  */
 package rm_lib.sess;
 
-import rcommon.data.session.RSessionDataPackage;
-import rcommon.rdata.common.RY_User;
+import rcommon.data.session.RSessionDataLoginPackage;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_SessDataLoginGroup extends RM_SessDataGroup{
-    
-    private RY_User loginUser = null;
-
-    public RY_User getLoginUser() {
-        return loginUser;
-    }
-
-    public void setLoginUser(RY_User loginUser) {
-        this.loginUser = loginUser;
-    }
-    
-    @Override
-    protected boolean copyPackageDataFrom(RSessionDataPackage curPackage){
-        if(super.copyPackageDataFrom(curPackage)){
-            if(curPackage instanceof RM_SessDataLoginGroup){
-                RM_SessDataLoginGroup fromPackage = (RM_SessDataLoginGroup)curPackage;
-                this.setLoginUser(fromPackage.getLoginUser());
-            }
-            return true;
-        }
-        return false;
-    }
+public class RM_SessDataLoginGroup extends RSessionDataLoginPackage{
     
 }

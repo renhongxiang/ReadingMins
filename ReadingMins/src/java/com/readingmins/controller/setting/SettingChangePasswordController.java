@@ -85,4 +85,5 @@ public class SettingChangePasswordController extends SettingController{
         return PAGE_NAME;
     }
     
+    
 }

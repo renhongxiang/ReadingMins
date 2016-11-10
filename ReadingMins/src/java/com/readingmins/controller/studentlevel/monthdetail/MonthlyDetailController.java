@@ -5,7 +5,6 @@
  */
 package com.readingmins.controller.studentlevel.monthdetail;
 
-import com.readingmins.web.app.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
@@ -47,7 +46,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
     public String detailPost(HttpServletRequest request, ModelMap model,
                             @ModelAttribute("month") String beanMonth, 
                             @ModelAttribute("editMinsForm") SubmitMins minbean ) {
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+        RM_SessionData sessData = this.getRMSessionData(request);
         List<RM_ReadingMins> minsList = sessData.getSelectMinList();
         if(minsList != null){
             for(RM_ReadingMins item : minsList){
@@ -87,7 +86,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
 
     
     private boolean deleteCurRec(HttpServletRequest request, SubmitMins minbean){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+        RM_SessionData sessData = this.getRMSessionData(request);
         if(sessData != null){
             RM_ReadingMins curMin = sessData.getCurReadingLog();
             if(curMin != null){
@@ -96,7 +95,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
                 curMin.setReadMins(0);
                 curMin.setStatus(RY_DataBase.STATUS_INACTIVE);
                 AddReadingRecordLogic logic = new AddReadingRecordLogic();
-                return logic.doSaveReadingInfo(curMin, WebUtils.getLoginUser(request));
+                return logic.doSaveReadingInfo(curMin, this.getLoginUser(request));
             }
         }
         return false;
@@ -104,7 +103,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
     
     
     private boolean saveCurRec(HttpServletRequest request, SubmitMins minbean){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+        RM_SessionData sessData = this.getRMSessionData(request);
         if(sessData != null){
             RM_ReadingMins curMin = sessData.getCurReadingLog();
             if(curMin != null){
@@ -112,7 +111,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
                 curMin.setBookTitle(minbean.getTitle());
                 curMin.setReadMins(minbean.getMins());
                 AddReadingRecordLogic logic = new AddReadingRecordLogic();
-                return logic.doSaveReadingInfo(curMin, WebUtils.getLoginUser(request));
+                return logic.doSaveReadingInfo(curMin, this.getLoginUser(request));
             }
         }
         return false;
@@ -120,7 +119,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
     
     protected void prepareEditingForm(HttpServletRequest request, ModelMap model){
         SubmitMins mins = new SubmitMins();
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+        RM_SessionData sessData = this.getRMSessionData(request);
         if(sessData != null){
             RM_ReadingMins curMin = sessData.getCurReadingLog();
             if(curMin != null){

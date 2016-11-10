@@ -7,7 +7,7 @@ package com.readingmins.controller.user.login;
 
 import com.readingmins.controller.user.UserControllerBase;
 import com.readingmins.controller.user.signup.UserAccountBean;
-import com.readingmins.web.app.WebUtils;
+import com.framework.utils.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rcommon.data.session.RSessionDataBase;
 import rcommon.process.logics.LoginUserLogic;
 import rcommon.rdata.common.RY_User;
 import rcommon.rerror.RErrorItem;
@@ -45,7 +46,9 @@ public class UserLoginController extends UserControllerBase{
         
         UserAccountBean bean = new UserAccountBean();
         
-        RY_User user = WebUtils.getRegisteredUser(request);
+        WebUtils util = WebUtils.getInstance();
+        
+        RY_User user = util.getRegisteredUser(request);
         if(user != null){
             bean.setUserName(user.getUserID());
         }
@@ -64,7 +67,7 @@ public class UserLoginController extends UserControllerBase{
             RY_User user = UserAccountBean.createUserFromBean(bean);
             LoginUserLogic logic = new LoginUserLogic();
             if(logic.doLoginUser(user)){                
-                RM_SessionData sessData = WebUtils.getSessionData(request);
+                RSessionDataBase sessData = this.getSessionData(request);
                 ApplicationFlow.UserLogin(sessData, user);
                 
                 List<RM_Student> students = loadStudentsByUser(user);
