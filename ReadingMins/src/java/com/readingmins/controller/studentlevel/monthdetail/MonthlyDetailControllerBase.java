@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.ModelMap;
+import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.iosystem.DataIOIdentity;
@@ -20,7 +21,6 @@ import rm_lib.application.workflow.RM_SessDataGroupMonthly;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
 import rm_lib.data.logicdata.RM_MonthReadingData;
-import rm_lib.sess.RM_SessDataGroup;
 
 /**
  *
@@ -29,7 +29,7 @@ import rm_lib.sess.RM_SessDataGroup;
 public abstract class MonthlyDetailControllerBase extends StudentLevelController{
     
     @Override
-    protected RM_SessDataGroup createPageData(){
+    protected RSessionDataPackage createPageData(){
         return new RM_SessDataGroupMonthly();
     }
     
@@ -62,7 +62,7 @@ public abstract class MonthlyDetailControllerBase extends StudentLevelController
         
         List<RM_ReadingMins> list = this.getReadingRecordByMonth(request, month);
 
-        RM_SessDataGroup pageData = WebUtils.getCurSessDataGroup(request);
+        RSessionDataPackage pageData = this.getCurPackage(request);
         if(pageData instanceof RM_SessDataGroupMonthly){
             ((RM_SessDataGroupMonthly) pageData).setMonthReclist(list);
             ((RM_SessDataGroupMonthly) pageData).setCurMonth(month);
@@ -75,7 +75,7 @@ public abstract class MonthlyDetailControllerBase extends StudentLevelController
         Integer totalMins = this.getTotalMins(list);
         bean.setTotalMins(totalMins);
         
-        RM_Student student = WebUtils.getSessCurStudent(request);
+        RM_Student student = this.getStudent(request);
         Integer shortMins = this.getShortMins(student, month, totalMins);
 
 //        model.addAttribute(getTotalMinsName(), totalMins);
@@ -112,8 +112,8 @@ public abstract class MonthlyDetailControllerBase extends StudentLevelController
     }
     
     protected List<RM_ReadingMins> getReadingRecordByMonth(HttpServletRequest request, RMonth month){
-        RY_User user = WebUtils.getLoginUser(request);
-        RM_Student student = WebUtils.getSessCurStudent(request);
+        RY_User user = this.getLoginUser(request);
+        RM_Student student = this.getStudent(request);
         RM_MonthReadingData monthData = new RM_MonthReadingData();
         List<RM_ReadingMins> list = monthData.loadDataListByMonth(month, student, user);
         RM_MonthReadingData.sortListData(list);

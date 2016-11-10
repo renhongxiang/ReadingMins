@@ -5,8 +5,7 @@
  */
 package com.readingmins.controller.student;
 
-import com.readingmins.controller.LoginedControllerBase;
-import com.readingmins.web.app.WebUtils;
+import com.readingmins.controller.base.RM_LoginedControllerBase;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;
@@ -31,7 +30,7 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class StudentAddController extends LoginedControllerBase{
+public class StudentAddController extends RM_LoginedControllerBase{
     
     public static String PAGE_NAME = "studentAdd"; 
     
@@ -46,7 +45,7 @@ public class StudentAddController extends LoginedControllerBase{
     public String addStudentPost(HttpServletRequest request, @ModelAttribute("addStudentForm") StudentBean bean, BindingResult result, ModelMap model) {
         this.controllerPageIn(request, model);
         if(bean != null){
-            RY_User user = WebUtils.getLoginUser(request);
+            RY_User user = this.getLoginUser(request);
             if(user != null){
                 RM_Student student = new RM_Student();
                 if(student != null){
@@ -55,7 +54,7 @@ public class StudentAddController extends LoginedControllerBase{
                     // save student
                     NewStudentLogic logic = new NewStudentLogic();
                     if(logic.doCreateNewStudent(student, user)){
-                        RM_SessionData sessData = WebUtils.getSessionData(request);
+                        RM_SessionData sessData = this.getRMSessionData(request);
                         ApplicationFlow.StudentSelected(sessData, student);
                         
                         return "redirect:readingLogAdd";

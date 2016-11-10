@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rcommon.data.session.RSessionDataBase;
 import rcommon.process.logics.RegisterUserLogic;
 import rcommon.rdata.common.RY_User;
 import rcommon.rerror.RErrorItem;
@@ -56,7 +57,7 @@ public class UserSingupController extends UserControllerBase{
                     RY_User user = UserAccountBean.createUserFromBean(bean);
                     RegisterUserLogic logic = new RegisterUserLogic();
                     if(logic.doRegisterUser(user, host)){
-                        RM_SessionData sessData = WebUtils.getSessionData(request);
+                        RSessionDataBase sessData = this.getSessionData(request);
                         ApplicationFlow.UserRegistered(sessData, user);
                         return "redirect:userConfirm";
                     }else{

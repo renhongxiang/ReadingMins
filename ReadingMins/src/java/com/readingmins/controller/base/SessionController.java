@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.readingmins.controller;
+package com.readingmins.controller.base;
 
+import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import org.springframework.ui.ModelMap;
 import rcommon.app.setting.RAppSetting;
+import rcommon.data.session.RSessionDataBase;
 import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
-import rm_lib.sess.RM_SessionData;
 
 /**
  *
@@ -21,8 +21,8 @@ public abstract class SessionController {
     
     public abstract String getControllerPageName();
     
-    public boolean controllerPageIn(HttpServletRequest request, ModelMap model){        
-        RM_SessionData sess = this.getSessionData(request);
+    public boolean controllerPageIn(HttpServletRequest request, ModelMap model){
+        RSessionDataBase sess = this.getSessionData(request);
         if(sess != null){
             RSessionDataPackage pageData = this.createPageData();
             if(pageData != null){
@@ -39,8 +39,16 @@ public abstract class SessionController {
         return null;
     }
     
+    protected RY_User getLoginUser(HttpServletRequest request){
+        RSessionDataBase sess = this.getSessionData(request);
+        if(sess != null){
+            return sess.getLoginUser();
+        }
+        return null;
+    }
+    
     protected boolean isSessionLogin(HttpServletRequest request){
-        RY_User user = this.getLoginUser(request);
+        RY_User user = getLoginUser(request);
         if(user != null){
             return true;
         }
@@ -58,26 +66,21 @@ public abstract class SessionController {
         }
     }
     
-    public RM_SessionData getSessionData(HttpServletRequest request){
-        HttpSession session = request.getSession(true);
-        if(session != null){
-            RM_SessionData sessData = (RM_SessionData)session.getAttribute("sessdata");
-            if(sessData == null){
-                sessData = new RM_SessionData();
-                session.setAttribute("sessdata", sessData);
-            }
-            return sessData;
+    public RSessionDataBase getSessionData(HttpServletRequest request){
+        WebUtils util = WebUtils.getInstance();
+        if(util != null){
+            RSessionDataBase sess = util.getSessionData(request);
+            return sess;
         }
         return null;
     }
-        
-    protected RY_User getLoginUser(HttpServletRequest request){
-        RM_SessionData sessData = this.getSessionData(request);
+
+    public RSessionDataPackage getCurPackage(HttpServletRequest request){
+        RSessionDataBase sessData = this.getSessionData(request);
         if(sessData != null){
-            return sessData.getLoginUser();
+            return sessData.getCurPackage();
         }
         return null;
-        
     }
     
 }

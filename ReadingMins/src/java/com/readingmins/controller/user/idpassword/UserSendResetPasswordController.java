@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.user.idpassword;
 
-import com.readingmins.controller.SessionController;
+import com.readingmins.controller.base.SessionController;
 import com.readingmins.web.app.WebUtils;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;

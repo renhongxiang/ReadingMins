@@ -9,7 +9,8 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ page import="com.readingmins.web.app.WebUtils" %>
 <% 
-    if(!WebUtils.isInSession(request)){
+    WebUtils util = new WebUtils();
+    if(!util.isInSession(request)){
         response.sendRedirect("userLogin"); 
         return;
     }

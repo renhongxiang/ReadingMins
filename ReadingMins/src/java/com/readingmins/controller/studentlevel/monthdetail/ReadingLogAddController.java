@@ -5,7 +5,6 @@
  */
 package com.readingmins.controller.studentlevel.monthdetail;
 
-import com.readingmins.web.app.WebUtils;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rerror.RErrorItem;
@@ -27,7 +27,6 @@ import rm_lib.application.workflow.RM_SessDataGroupMonthly;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
 import rm_lib.process.logics.AddReadingRecordLogic;
-import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -41,7 +40,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     public static String PAGE_NAME = "readingLogAdd";
     
     @Override
-    protected RM_SessDataGroup createPageData(){
+    protected RSessionDataPackage createPageData(){
         return new RM_SessDataGroupAddLog();
     }
     
@@ -79,7 +78,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
 
     protected boolean processEditRec(HttpServletRequest request,ReadingLogMonthBean bean){
         if(request != null){
-            RM_SessionData sessData = WebUtils.getSessionData(request);
+            RM_SessionData sessData = this.getRMSessionData(request);
             List<RM_ReadingMins> minsList = sessData.getSelectMinList();
             if(minsList != null){
                 for(RM_ReadingMins item : minsList){
@@ -104,8 +103,8 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     
     protected boolean doSaveNewRec(HttpServletRequest request,BindingResult result, ReadingLogMonthBean bean){
         if(bean != null){
-            RM_SessionData sessData = WebUtils.getSessionData(request);
-            RM_Student student = WebUtils.getSessCurStudent(request);
+            RM_SessionData sessData = this.getRMSessionData(request);
+            RM_Student student = this.getStudent(request);
             RM_ReadingMins readingRec = new RM_ReadingMins();
             readingRec.setStudent(student);
             readingRec.setBookTitle(bean.getTitle());
@@ -141,7 +140,7 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         
         RMonth month = RMonth.stringToMonth(beanMonth.getMonth(), RMonth.MONTH_TEMPLATE_US);
         if(month == null){
-            RM_SessDataGroup group = WebUtils.getCurSessDataGroup(request);
+            RSessionDataPackage group = this.getCurPackage(request);
             if(group instanceof RM_SessDataGroupMonthly){
                 RM_SessDataGroupMonthly detailGroup = (RM_SessDataGroupMonthly)group;
                 month = detailGroup.getCurMonth();

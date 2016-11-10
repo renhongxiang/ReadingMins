@@ -5,8 +5,7 @@
  */
 package com.readingmins.controller.student;
 
-import com.readingmins.controller.LoginedControllerBase;
-import com.readingmins.web.app.WebUtils;
+import com.readingmins.controller.base.RM_LoginedControllerBase;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -15,13 +14,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rcommon.data.session.RSessionDataBase;
+import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
 import rm_lib.application.workflow.ApplicationFlow;
 import rm_lib.application.workflow.RM_SessDataGroupStudentList;
 import rm_lib.data.RM_Student;
 import rm_lib.process.loader.LoaderStudentsByUser;
-import rm_lib.sess.RM_SessDataGroup;
-import rm_lib.sess.RM_SessionData;
 
 /**
  *
@@ -29,7 +28,7 @@ import rm_lib.sess.RM_SessionData;
  */
 @Controller
 @Scope("session")
-public class StudentSelectController extends LoginedControllerBase{
+public class StudentSelectController extends RM_LoginedControllerBase{
     
     public static String PAGE_NAME = "studentSelect";
     
@@ -38,16 +37,17 @@ public class StudentSelectController extends LoginedControllerBase{
         
         this.controllerPageIn(request, model);
         
-        RY_User user = WebUtils.getLoginUser(request);            
+        RY_User user = this.getLoginUser(request);            
         List<RM_Student> rmStudents = this.loadStudentsByUser(user);
         
-        RM_SessDataGroup pageData = WebUtils.getCurSessDataGroup(request);
-        if(pageData != null){
-            if(pageData instanceof RM_SessDataGroupStudentList){
-                RM_SessDataGroupStudentList studentListGroup = (RM_SessDataGroupStudentList)pageData;
-                studentListGroup.setStudentList(rmStudents);
-            }
+//        this.getRMSessionData(request).getCurPackage();
+
+        RSessionDataPackage curDataGroup = this.getCurPackage(request);
+        if(curDataGroup instanceof RM_SessDataGroupStudentList){
+            RM_SessDataGroupStudentList studentListGroup = (RM_SessDataGroupStudentList)curDataGroup;
+            studentListGroup.setStudentList(rmStudents);
         }
+
         
         List<StudentBean> studentList = buildStudentBeanList(rmStudents);
         
@@ -62,7 +62,13 @@ public class StudentSelectController extends LoginedControllerBase{
 
         this.controllerPageIn(request, model);
 
-        List<RM_Student> studentList = WebUtils.getSessStudentList(request);
+        List<RM_Student> studentList = null;
+        RSessionDataPackage curDataGroup = this.getCurPackage(request);
+        if(curDataGroup instanceof RM_SessDataGroupStudentList){
+            RM_SessDataGroupStudentList studentListGroup = (RM_SessDataGroupStudentList)curDataGroup;
+            studentList = studentListGroup.getStudentList();
+        }
+        
         if(studentList != null){
             for(int i=0;i<studentList.size();i++){
                 RM_Student student = studentList.get(i);
@@ -72,7 +78,7 @@ public class StudentSelectController extends LoginedControllerBase{
                         button = request.getParameter("lastName"+i);
                     }
                     if(button != null){
-                        RM_SessionData sessData = WebUtils.getSessionData(request);
+                        RSessionDataBase sessData = this.getSessionData(request);
                         ApplicationFlow.StudentSelected(sessData, student);
                         return "redirect:readingLogAdd";
                     }
@@ -83,7 +89,7 @@ public class StudentSelectController extends LoginedControllerBase{
     }
 
     @Override
-    protected RM_SessDataGroup createPageData(){
+    protected RSessionDataPackage createPageData(){
         return new RM_SessDataGroupStudentList();
     }
     

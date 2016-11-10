@@ -9,7 +9,6 @@ import com.readingmins.controller.studentlevel.StudentLevelController;
 import com.readingmins.web.app.WebUtils;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -20,17 +19,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import rcommon.data.session.RSessionDataPackage;
 import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
-import rcommon.rdata.iosystem.DataIOIdentity;
-import rcommon.utils.datatype.RDateUtils;
 import rm_lib.application.workflow.RM_SessDataGroupMonthly;
-import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
 import rm_lib.data.logicdata.RM_MonthReadingData;
 import rm_lib.document.RM_ReadingMinsDocData;
 import rm_lib.process.logics.DownloadReadingLog;
-import rm_lib.sess.RM_SessDataGroup;
 import rm_lib.sess.RM_SessionData;
 
 /**
@@ -44,7 +40,7 @@ public class ReadingLogDownloadController extends StudentLevelController{
     public static String PAGE_NAME = "readingLogDownload";
     
     @Override
-    protected RM_SessDataGroup createPageData(){
+    protected RSessionDataPackage createPageData(){
         return new RM_SessDataGroupMonthly();
     }
     
@@ -56,7 +52,7 @@ public class ReadingLogDownloadController extends StudentLevelController{
         
         RMonth month = RMonth.stringToMonth(beanMonth, RMonth.MONTH_TEMPLATE_US);
         if(month == null){
-            RM_SessDataGroup group = WebUtils.getCurSessDataGroup(request);
+            RSessionDataPackage group = this.getCurPackage(request);
             if(group instanceof RM_SessDataGroupMonthly){
                 RM_SessDataGroupMonthly detailGroup = (RM_SessDataGroupMonthly)group;
                 month = detailGroup.getCurMonth();
@@ -116,7 +112,7 @@ public class ReadingLogDownloadController extends StudentLevelController{
         RMonth month = RMonth.stringToMonth(monthStr, RMonth.MONTH_TEMPLATE_US);
         if(month != null){
             try {            
-                RM_SessionData sessData = WebUtils.getSessionData(request);
+                RM_SessionData sessData = this.getRMSessionData(request);
                 ServletOutputStream outputStream = response.getOutputStream();
                 if(outputStream != null){
                     String path = WebUtils.getServerRealPath(request);
@@ -146,8 +142,8 @@ public class ReadingLogDownloadController extends StudentLevelController{
     }
     
     private List<RM_ReadingMinsDocData> getMonthlyReadingRecordByMonth(HttpServletRequest request, RMonth month){
-        RY_User user = WebUtils.getLoginUser(request);
-        RM_Student student = WebUtils.getSessCurStudent(request);
+        RY_User user = this.getLoginUser(request);
+        RM_Student student = this.getStudent(request);
         RM_MonthReadingData monthData = new RM_MonthReadingData();
         return monthData.loadMonthlyData(month, student, user);
     }

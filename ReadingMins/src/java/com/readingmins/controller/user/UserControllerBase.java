@@ -1,6 +1,6 @@
 package com.readingmins.controller.user;
 
-import com.readingmins.controller.SessionController;
+import com.readingmins.controller.base.SessionController;
 import rcommon.data.session.RSessionDataPackage;
 import rcommon.data.session.RSessionDataSignupPackage;
 

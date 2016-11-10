@@ -5,27 +5,39 @@
  */
 package com.readingmins.web.app;
 
-import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import rcommon.data.session.RSessionDataBase;
 import rcommon.rdata.common.RY_User;
 import rcommon.utils.datatype.RStringUtils;
-import rm_lib.data.RM_Student;
-import rm_lib.sess.RM_SessDataGroup;
-import rm_lib.sess.RM_SessionData;
 
 /**
  *
  * @author renhongxiang
  */
 public class WebUtils {
-    public static RM_SessionData getSessionData(HttpServletRequest request){
+    
+    private static WebUtils instance = null;
+
+    public static WebUtils getInstance() {
+        return instance;
+    }
+
+    public static void setInstance(WebUtils instance) {
+        WebUtils.instance = instance;
+    }
+    
+    protected RSessionDataBase createSessionData(){
+        return new RSessionDataBase();
+    }
+    
+    public RSessionDataBase getSessionData(HttpServletRequest request){
         HttpSession session = request.getSession(true);
         if(session != null){
-            RM_SessionData sessData = (RM_SessionData)session.getAttribute("sessdata");
+            RSessionDataBase sessData = (RSessionDataBase)session.getAttribute("sessdata");
             if(sessData == null){
-                sessData = new RM_SessionData();
+                sessData = createSessionData();
                 session.setAttribute("sessdata", sessData);
             }
             return sessData;
@@ -33,32 +45,16 @@ public class WebUtils {
         return null;
     }
     
-    public static RM_Student getSessCurStudent(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
-        if(sessData != null){
-            return sessData.getCurStudent();
-        }
-        return null;
-    }
-
-    public static List<RM_Student> getSessStudentList(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
-        if(sessData != null){
-            return sessData.getStudentList();
-        }
-        return null;
-    }
-    
-    public static RY_User getLoginUser(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+    public RY_User getLoginUser(HttpServletRequest request){
+        RSessionDataBase sessData = getSessionData(request);
         if(sessData != null){
             return sessData.getLoginUser();
         }
         return null;
     }
     
-    public static RY_User getRegisteredUser(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
+    public RY_User getRegisteredUser(HttpServletRequest request){
+        RSessionDataBase sessData = getSessionData(request);
         if(sessData != null){
             return sessData.getRegisteredUser();
         }
@@ -76,20 +72,12 @@ public class WebUtils {
         return null;
     }
     
-    public static boolean isInSession(HttpServletRequest request){
-        RY_User user = WebUtils.getLoginUser(request);
+    public boolean isInSession(HttpServletRequest request){
+        RY_User user = this.getLoginUser(request);
         if(user != null){
             return true;
         }
         return false;
-    }
-    
-    public static RM_SessDataGroup getCurSessDataGroup(HttpServletRequest request){
-        RM_SessionData sessData = WebUtils.getSessionData(request);
-        if(sessData != null){
-            return sessData.getGroupData();
-        }
-        return null;
     }
     
     public static String getWebSite(HttpServletRequest request){

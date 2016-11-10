@@ -28,7 +28,9 @@ public class UserSignupConfirmController extends UserControllerBase{
     public String signUp(HttpServletRequest request, ModelMap model) {
         this.controllerPageIn(request, model);
         
-        RY_User user = WebUtils.getRegisteredUser(request);
+        WebUtils util = WebUtils.getInstance();
+        
+        RY_User user = util.getRegisteredUser(request);
         if(user != null){
             String userName = user.getUserID();
             model.addAttribute("userName", userName);
