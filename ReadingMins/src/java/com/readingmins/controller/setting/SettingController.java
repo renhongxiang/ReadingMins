@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.setting;
 
-import com.readingmins.controller.base.SubPackController;
+import com.framework.controller.SubPackController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.ModelMap;
 import rcommon.data.session.RSessionDataBase;

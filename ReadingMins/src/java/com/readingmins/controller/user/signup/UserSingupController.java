@@ -6,7 +6,7 @@
 package com.readingmins.controller.user.signup;
 
 import com.readingmins.controller.user.UserControllerBase;
-import com.readingmins.web.app.WebUtils;
+import com.framework.utils.WebUtils;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Scope;

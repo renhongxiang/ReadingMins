@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.user.idpassword;
 
-import com.readingmins.controller.base.SessionController;
+import com.framework.controller.SessionController;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Scope;

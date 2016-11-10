@@ -5,6 +5,7 @@
  */
 package com.readingmins.controller.base;
 
+import com.framework.controller.LoginedControllerBase;
 import javax.servlet.http.HttpServletRequest;
 import rcommon.data.session.RSessionDataBase;
 import rm_lib.sess.RM_SessionData;

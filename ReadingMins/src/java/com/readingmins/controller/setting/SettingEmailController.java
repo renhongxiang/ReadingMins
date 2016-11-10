@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.setting;
 
-import com.readingmins.web.app.WebUtils;
+import com.framework.utils.WebUtils;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.validator.EmailValidator;
 import org.springframework.stereotype.Controller;
