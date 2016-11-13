@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.readingmins.controller.setting;
+package com.readingmins.workflow;
 
-import rcommon.data.session.RSessionDataSubPackage;
+import com.framework.workflow.FrameWorkFlowBase;
 
 /**
  *
  * @author renhongxiang
  */
-public class SettingEmailSubPackage extends RSessionDataSubPackage{
-    
+public class RMWorkFlow extends FrameWorkFlowBase{
     
 }

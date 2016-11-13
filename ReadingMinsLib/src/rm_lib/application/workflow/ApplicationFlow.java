@@ -7,7 +7,6 @@ package rm_lib.application.workflow;
 
 import java.util.List;
 import rcommon.data.session.RSessionDataBase;
-import rcommon.data.session.RSessionDataSignupPackage;
 import rcommon.rdata.common.RY_User;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.data.RM_Student;
@@ -59,12 +58,5 @@ public class ApplicationFlow {
         }
     }
 
-    public static void UserRegistered(RSessionDataBase sessData, RY_User user){
-        if(sessData != null && user != null){
-            RSessionDataSignupPackage group = new RSessionDataSignupPackage();
-            sessData.setCurPackage(group);
-            group.setRegisterUser(user);
-        }
-    }
     
 }

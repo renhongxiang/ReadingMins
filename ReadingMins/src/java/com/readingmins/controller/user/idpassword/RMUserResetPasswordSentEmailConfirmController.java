@@ -5,6 +5,7 @@
  */
 package com.readingmins.controller.user.idpassword;
 
+import com.framework.controller.account.idpasswordreset.UserResetPasswordSentEmailConfirmController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,12 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author renhongxiang
  */
 @Controller
-public class UserSendResetPasswordSentController {
+public class RMUserResetPasswordSentEmailConfirmController extends UserResetPasswordSentEmailConfirmController{
     
     @RequestMapping(value = "/userForgotPwdSent")
     public String userIDSent(HttpServletRequest request,ModelMap model) {
-        
-        return "userForgotPwdSent"; // this is which page to use.
+        return this.pageRequestHandle(request, model);
     }
     
 }

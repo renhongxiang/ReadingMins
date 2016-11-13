@@ -7,9 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ page import="com.readingmins.web.app.WebUtils" %>
+<%@ page import="com.framework.utils.WebUtils" %>
 <% 
-    WebUtils util = new WebUtils();
+    WebUtils util = WebUtils.getInstance();
     if(!util.isInSession(request)){
         response.sendRedirect("userLogin"); 
         return;

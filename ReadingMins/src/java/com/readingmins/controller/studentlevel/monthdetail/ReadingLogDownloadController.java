@@ -6,7 +6,7 @@
 package com.readingmins.controller.studentlevel.monthdetail;
 
 import com.readingmins.controller.studentlevel.StudentLevelController;
-import com.readingmins.web.app.WebUtils;
+import com.framework.utils.WebUtils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

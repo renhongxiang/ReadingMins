@@ -5,7 +5,7 @@
  */
 package com.readingmins.controller.studentlevel;
 
-import com.readingmins.web.app.WebUtils;
+import com.framework.utils.WebUtils;
 import com.readingmins.controller.base.RM_LoginedControllerBase;
 import com.readingmins.web.app.RMWebUtils;
 import java.math.BigDecimal;
