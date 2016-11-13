@@ -5,6 +5,7 @@
  */
 package com.readingmins.config;
 
+import com.readingmins.debug.RM_DebugUtil;
 import com.readingmins.web.app.RMWebUtils;
 import javax.servlet.http.HttpServlet;
 import rm_lib.application.init.RM_AppInit;
@@ -18,6 +19,10 @@ public class ReadMinsInitServlet extends HttpServlet{
         RM_AppInit.initApp();
         RMWebUtils util = new RMWebUtils();
         RMWebUtils.setInstance(util);
+        
+        RM_DebugUtil debugUtil = new RM_DebugUtil();
+        RM_DebugUtil.setDebugUtil(debugUtil);
+        
         ReadingMinsEmailCertify.InitReadingMinsEmailCertify();
         ReadingMinsResetPassword.InitReadingMinsResetPassword();
     }

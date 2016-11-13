@@ -21,7 +21,7 @@ import rytable.ini.DBInitBase;
 public class RM_AppInit extends DBInitBase{
 
     private static boolean appInited = false;
-    private static Object lock = new Object();
+    private static final Object lock = new Object();
     
     public static void initApp(){
         if(!appInited){

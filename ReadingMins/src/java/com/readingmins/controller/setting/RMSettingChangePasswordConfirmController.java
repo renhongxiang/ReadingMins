@@ -5,6 +5,7 @@
  */
 package com.readingmins.controller.setting;
 
+import com.framework.controller.account.setting.UserSettingChangePasswordConfirmController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,27 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author renhongxiang
  */
 @Controller
-public class SettingChangePasswordConfirmController {
-    private static String PAGE_NAME = "settingPasswordConfirm";
-    
+public class RMSettingChangePasswordConfirmController extends UserSettingChangePasswordConfirmController{
     @RequestMapping(value = "/settingPasswordConfirm", method = RequestMethod.GET)
     public String settingPasswordConfirmGet(HttpServletRequest request,ModelMap model) {        
-        
-        return PAGE_NAME; // this is which page to use.
+        return this.pagerRequestHandleGet(request, model);
     }
     
     @RequestMapping(value = "/settingPasswordConfirm", method = RequestMethod.POST)
     public String settingPasswordConfirmPost(HttpServletRequest request,ModelMap model) {        
-        
-        return "redirect:" + SettingChangePasswordController.PAGE_NAME; // this is which page to use.
-    }
-
-    public static String getPAGE_NAME() {
-        return PAGE_NAME;
-    }
-
-    public static void setPAGE_NAME(String PAGE_NAME) {
-        SettingChangePasswordConfirmController.PAGE_NAME = PAGE_NAME;
+        return this.pagerRequestHandlePost(request, model);
     }
     
 }

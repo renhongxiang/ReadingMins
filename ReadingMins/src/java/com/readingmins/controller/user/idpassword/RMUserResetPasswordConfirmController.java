@@ -5,6 +5,7 @@
  */
 package com.readingmins.controller.user.idpassword;
 
+import com.framework.controller.account.idpasswordreset.UserResetPasswordConfirmController;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -15,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author renhongxiang
  */
 @Controller
-public class UserSaveResetPasswordConfirmController {
+public class RMUserResetPasswordConfirmController extends UserResetPasswordConfirmController{
     
     @RequestMapping(value = "/userResetPasswordConfirm")
     public String confirmPasswordChange(HttpServletRequest request,ModelMap model) {
         
-        return "userResetPasswordConfirm"; // this is which page to use.
+        return this.pageRequestHandle(request, model);
     }
     
 }
