@@ -21,6 +21,7 @@ import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rerror.RErrorItem;
 import rcommon.rerror.RErrorManager;
 import rcommon.rerror.RErrorPair;
+import rcommon.utils.datatype.RStringUtils;
 import rm_lib.application.workflow.ApplicationFlow;
 import rm_lib.application.workflow.RM_SessDataGroupAddLog;
 import rm_lib.application.workflow.RM_SessDataGroupMonthly;
@@ -57,10 +58,15 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.POST)
     public String submitMinsPost(HttpServletRequest request, 
                 @ModelAttribute("monthReadingLog") ReadingLogMonthBean beanMonth, 
+                @ModelAttribute("monthpost") String hiddenMonth, 
                 BindingResult result, 
                 ModelMap model) {
         
         this.controllerPageIn(request, model);
+        
+        if(RStringUtils.isNotBlank(hiddenMonth)){
+            beanMonth.setMonth(hiddenMonth);
+        }
         
         String buttonStr = request.getParameter("saveNew");
         if(buttonStr != null){

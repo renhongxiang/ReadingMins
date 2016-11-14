@@ -21,7 +21,9 @@
                     <form:form id="formId" method="post" action="" modelAttribute="monthReadingLog">
                     <tr>
                         <td class="textcenter">
-                            <label for="month">Month: </label> <input type="text" id="month" name="month" class="monthPicker" value="${monthReadingLog.month}"/>
+                            <label for="month">Month: </label> 
+                            <input type="hidden" id="monthpost" name="monthpost" value="${monthhidden}" >
+                            <input type="text" id="month" name="month" class="monthPicker" value="${monthReadingLog.month}"/>
                         </td>
                     </tr>                    
                     <tr class="textcenter">
@@ -140,7 +142,10 @@
             changeYear: true,
             showButtonPanel: true,
             onClose: function (dateText, inst) {
-                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
+                var month = inst.selectedMonth + 1;
+                var hiddendate =  month + "/" + inst.selectedYear;
+                $('#monthpost').val(hiddendate);
+//                $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
                 $('#formId').submit(); // <-- SUBMIT            
             },
             beforeShow: function (input, inst) {
