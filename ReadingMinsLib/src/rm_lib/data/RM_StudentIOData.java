@@ -7,9 +7,11 @@ package rm_lib.data;
 
 import rcommon.rdata.datavalue.R_TypeValueBase;
 import rcommon.rdata.common.RY_IODataBase;
+import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.datavalue.R_String_Value;
 import rcommon.rdata.define.RY_DataItemDefine;
 import rcommon.rdata.define.RY_DataItemDefineID;
+import rcommon.rdata.define.RY_DataItemDefineInteger;
 import rcommon.rdata.define.RY_DataItemDefineString;
 import rcommon.rdata.define.RY_IODataMappingManager;
 import rcommon.rdata.iosystem.DataIOHandleBase;
@@ -30,11 +32,13 @@ public class RM_StudentIOData extends RY_IODataBase{
     public static final String FN_PERSON_ID = "Person_ID";
     public static final String FN_SCHOOL_ID = "School_ID";
     public static final String FN_STUDENT_IDCODE = "Student_IDCODE";
+    public static final String FN_DAILY_MINS = "Daily_Mins";
     
     public static final String DES_USER_ID = "user id of the student";
     public static final String DES_PERSON_ID = "student person id of the student personal info";
     public static final String DES_SCHOOL_ID = "student school id";
     public static final String DES_STUDENT_IDCODE = "Student ID code to indentify same name statudent";
+    public static final String DES_DAILY_MINS = "Student daily reading target";
     
     
     private static RY_IODataMappingManager bankAccountIODataMapManager = null;
@@ -61,7 +65,7 @@ public class RM_StudentIOData extends RY_IODataBase{
             man.addItem(RY_DataItemDefineID.createItem(FN_PERSON_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_PERSON_ID, DES_PERSON_ID, RY_DataItemDefine.TABLE_ID_NO));
             man.addItem(RY_DataItemDefineID.createItem(FN_SCHOOL_ID, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_SCHOOL_ID, DES_SCHOOL_ID, RY_DataItemDefine.TABLE_ID_NO));
             man.addItem(RY_DataItemDefineString.createItem(FN_STUDENT_IDCODE, 10, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_STUDENT_IDCODE, DES_STUDENT_IDCODE, false));
-            
+            man.addItem(RY_DataItemDefineInteger.createItem(FN_DAILY_MINS, 3, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_DAILY_MINS, DES_DAILY_MINS));
             return true;
         }
         return false;
@@ -137,6 +141,18 @@ public class RM_StudentIOData extends RY_IODataBase{
 
     public void setIDCode(R_String_Value code) {
         this.setValueByName(FN_STUDENT_IDCODE, code);
+    }
+    
+    public R_Int_Value getDailyMins() {
+        R_TypeValueBase value = this.getValueByName(FN_DAILY_MINS);
+        if (value instanceof R_Int_Value) {
+            return (R_Int_Value) value;
+        }
+        return null;
+    }
+
+    public void setDailyMins(R_Int_Value type) {
+        this.setValueByName(FN_DAILY_MINS, type);
     }
     
 // </editor-fold>

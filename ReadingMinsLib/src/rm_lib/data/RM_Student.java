@@ -10,6 +10,7 @@ import rcommon.rdata.common.RY_IODataGroupBase;
 import rcommon.rdata.common.RY_Person;
 import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
+import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.datavalue.R_String_Value;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
@@ -77,7 +78,18 @@ public class RM_Student extends RY_Person{
         this.user = user;
     }
     
+    public void setDailyRequestReadingMins(Integer mins){
+        RM_StudentIOData ioData = this.getStudentIOData();
+        if(ioData != null){
+            ioData.setDailyMins(R_Int_Value.createIntegerValue(mins));
+        }
+    }
+    
     public Integer getDailyRequestReadingMins(){
+        RM_StudentIOData ioData = this.getStudentIOData();
+        if(ioData != null){
+            return R_Int_Value.getIntValue(ioData.getDailyMins(), 30);
+        }
         return 30;
     }
     

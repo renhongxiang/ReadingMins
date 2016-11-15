@@ -46,6 +46,15 @@
                                         <form:errors path="studentID" />
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <p>Daily Target Minutes</p>
+                                    </td>
+                                    <td>
+                                        <form:input path="dailyMins" /> <!-- bind to user.name-->
+                                        <form:errors path="dailyMins" />
+                                    </td>
+                                </tr>
                             </table>
                         </td>
                     </tr>

@@ -58,8 +58,8 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.POST)
     public String submitMinsPost(HttpServletRequest request, 
                 @ModelAttribute("monthReadingLog") ReadingLogMonthBean beanMonth, 
-                @ModelAttribute("monthpost") String hiddenMonth, 
                 BindingResult result, 
+                @ModelAttribute("monthpost") String hiddenMonth, 
                 ModelMap model) {
         
         this.controllerPageIn(request, model);
@@ -163,9 +163,11 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         
         this.setBean(beanMonth);
         
+        RM_Student student = this.getStudent(request);
+        
         ReadingLogMonthBean bean = this.getBean();
         bean.setDate(selectDate);
-        bean.setMins(30);
+        bean.setMins(student.getDailyRequestReadingMins());
         bean.setMonth(RMonth.monthToString(month, RMonth.MONTH_TEMPLATE_US));
         
         this.buildMonthlyEdtailPage(request, model, month);

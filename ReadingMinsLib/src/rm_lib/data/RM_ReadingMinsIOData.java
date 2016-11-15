@@ -37,6 +37,7 @@ public class RM_ReadingMinsIOData extends RY_IODataBase{
     public static final String FN_TITLE = "TITLE";
     public static final String FN_STUDENT_ID = "Student_ID";
     
+    
     public static final String DES_DATE = "Date of reading";
     public static final String DES_MINS = "How many minutes student readed";
     public static final String DES_TITLE = "Title of the book";
@@ -63,7 +64,7 @@ public class RM_ReadingMinsIOData extends RY_IODataBase{
             RY_IODataBase.buildMapManager(man);
             man.addItem(RY_DataItemDefineDate.createItem(FN_DATE, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_DATE, DES_DATE));
             man.addItem(RY_DataItemDefineString.createItem(FN_TITLE, 40, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_TITLE, DES_TITLE, false));
-            man.addItem(RY_DataItemDefineInteger.createItem(FN_MINS, 2, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_MINS, DES_MINS));
+            man.addItem(RY_DataItemDefineInteger.createItem(FN_MINS, 4, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_MINS, DES_MINS));
             man.addItem(RY_DataItemDefineID.createItem(FN_STUDENT_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_STUDENT_ID, DES_STUDENT_ID, RY_DataItemDefine.TABLE_ID_NO));
             return true;
         }

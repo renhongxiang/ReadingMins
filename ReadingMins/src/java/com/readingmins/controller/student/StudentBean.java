@@ -16,6 +16,7 @@ public class StudentBean {
     private String firstName;
     private String lastName;
     private String studentID;
+    private int dailyMins = 0;
     private int orderID = 0;
 
     public String getFirstName() {
@@ -50,12 +51,21 @@ public class StudentBean {
         this.orderID = orderID;
     }
 
+    public int getDailyMins() {
+        return dailyMins;
+    }
+
+    public void setDailyMins(int dailyMins) {
+        this.dailyMins = dailyMins;
+    }
+
 
     public static void fillStudentInfoFromBean(RM_Student student, StudentBean bean){
         if(student != null && bean != null){
             student.setFirstName(bean.getFirstName());
             student.setLastName(bean.getLastName());
             student.setStudentCode(bean.getStudentID());
+            student.setDailyRequestReadingMins(bean.getDailyMins());
         }
     }
     
@@ -64,6 +74,7 @@ public class StudentBean {
             bean.setFirstName(student.getFirstName());
             bean.setLastName(student.getLastName());
             bean.setStudentID(student.getStudentCode());
+            bean.setDailyMins(student.getDailyRequestReadingMins());
         }
     }
 }
