@@ -13,7 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import rcommon.rdata.common.RY_DataBase;
+import rcommon.rdata.common.base.RY_DataBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rm_lib.application.workflow.ApplicationFlow;
 import rm_lib.data.RM_ReadingMins;
@@ -93,7 +93,7 @@ public class MonthlyDetailController extends MonthlyDetailControllerBase{
                 sessData.setCurReadingLog(null);
                 curMin.setBookTitle(null);
                 curMin.setReadMins(0);
-                curMin.setStatus(RY_DataBase.STATUS_INACTIVE);
+                curMin.setStatus(RM_ReadingMins.STATUS_INACTIVE);
                 AddReadingRecordLogic logic = new AddReadingRecordLogic();
                 return logic.doSaveReadingInfo(curMin, this.getLoginUser(request));
             }

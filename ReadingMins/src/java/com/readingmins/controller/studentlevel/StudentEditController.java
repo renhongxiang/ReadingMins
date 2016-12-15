@@ -13,7 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import rcommon.rdata.common.RY_DataBase;
+import rcommon.rdata.common.base.RY_DataBase;
 import rcommon.rdata.common.RY_User;
 import rm_lib.data.RM_Student;
 import rm_lib.process.logics.EditStudentLogic;
@@ -68,7 +68,7 @@ public class StudentEditController extends StudentLevelController{
         
         RM_Student student = this.getStudent(request);
         if(student != null){
-            student.setStatus(RY_DataBase.STATUS_INACTIVE);
+            student.setStatus(RM_Student.STATUS_INACTIVE);
             EditStudentLogic logic = new EditStudentLogic();
             RY_User user = this.getLoginUser(request);
             logic.doSaveStudent(student, user);

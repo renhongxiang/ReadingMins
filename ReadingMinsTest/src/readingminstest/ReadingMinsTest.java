@@ -5,7 +5,6 @@
  */
 package readingminstest;
 
-import rm_lib.application.init.RM_AppInit;
 import ui.main.MainFrame;
 
 /**
@@ -25,7 +24,7 @@ public class ReadingMinsTest {
     }
     
     private static boolean initOperation(){        
-        RM_AppInit ini = new RM_AppInit();
+        RM_AppInitTest ini = new RM_AppInitTest();
         ini.doInit();
         return true;
     }

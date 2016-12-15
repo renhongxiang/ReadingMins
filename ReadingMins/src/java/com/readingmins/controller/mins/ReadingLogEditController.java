@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import rcommon.data.session.RSessionDataPackage;
-import rcommon.rdata.common.RY_DataBase;
+import rcommon.rdata.common.base.RY_DataBase;
 import rm_lib.application.workflow.RM_SessDataGroupLog;
 import rm_lib.data.RM_ReadingMins;
 import rm_lib.process.logics.AddReadingRecordLogic;
@@ -89,7 +89,7 @@ public class ReadingLogEditController extends StudentLevelController{
                 if(min != null){
                     min.setBookTitle(null);
                     min.setReadMins(0);
-                    min.setStatus(RY_DataBase.STATUS_INACTIVE);
+                    min.setStatus(RM_ReadingMins.STATUS_INACTIVE);
                     AddReadingRecordLogic logic = new AddReadingRecordLogic();
                     if(logic.doSaveReadingInfo(min, this.getLoginUser(request))){
                         return "redirect:readingLogAdd";

@@ -6,21 +6,17 @@
 package rm_lib.data;
 
 import rcommon.rdata.datavalue.R_TypeValueBase;
-import rcommon.rdata.common.RY_IODataBase;
 import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.datavalue.R_String_Value;
-import rcommon.rdata.define.RY_DataItemDefine;
-import rcommon.rdata.define.RY_DataItemDefineID;
-import rcommon.rdata.define.RY_DataItemDefineInteger;
-import rcommon.rdata.define.RY_DataItemDefineString;
-import rcommon.rdata.define.RY_IODataMappingManager;
-import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
-import rcommon.rdata.iosystem.DataIOUtilsBase;
+import rcommon.rdata.structure.RY_IODataBase;
+import rcommon.rdata.structure.RY_IODataDefine;
 import rcommon.rdata.structure.RY_IODataObjectBase;
-import rm_lib.application.init.RM_DataIOHandle;
-import rm_lib.dataio.utils.DataIOUtilStudent;
-import rm_lib.dataio.utils.RMDataIOUtilManager;
+import static rm_lib.data.RM_StudentIODataDefine.FN_DAILY_MINS;
+import static rm_lib.data.RM_StudentIODataDefine.FN_PERSON_ID;
+import static rm_lib.data.RM_StudentIODataDefine.FN_SCHOOL_ID;
+import static rm_lib.data.RM_StudentIODataDefine.FN_STUDENT_IDCODE;
+import static rm_lib.data.RM_StudentIODataDefine.FN_USER_ID;
 
 /**
  *
@@ -28,65 +24,43 @@ import rm_lib.dataio.utils.RMDataIOUtilManager;
  */
 public class RM_StudentIOData extends RY_IODataBase{
 
-    public static final String FN_USER_ID = "User_ID";
-    public static final String FN_PERSON_ID = "Person_ID";
-    public static final String FN_SCHOOL_ID = "School_ID";
-    public static final String FN_STUDENT_IDCODE = "Student_IDCODE";
-    public static final String FN_DAILY_MINS = "Daily_Mins";
+//    @Override
+//    protected DataIOUtilsBase getDataIOUtil(DataIOHandleBase ioHandle) {
+//        return this.getStudentSaveUtil(ioHandle);
+//    }
+//
+//    protected DataIOUtilStudent getStudentSaveUtil(DataIOHandleBase saveHandle){
+//        if(saveHandle != null){
+//            if(saveHandle instanceof RM_DataIOHandle){
+//                RM_DataIOHandle rmIOHandle = (RM_DataIOHandle)saveHandle;
+//                RMDataIOUtilManager ioMan =rmIOHandle.getRmDataIOManager();
+//                if(ioMan != null){
+//                    return ioMan.getStudentDataIOUtil();
+//                }
+//            }
+//        }
+//        return null;
+//    }
     
-    public static final String DES_USER_ID = "user id of the student";
-    public static final String DES_PERSON_ID = "student person id of the student personal info";
-    public static final String DES_SCHOOL_ID = "student school id";
-    public static final String DES_STUDENT_IDCODE = "Student ID code to indentify same name statudent";
-    public static final String DES_DAILY_MINS = "Student daily reading target";
-    
-    
-    private static RY_IODataMappingManager bankAccountIODataMapManager = null;
-    
-    @Override
-    public RY_IODataMappingManager getDataManagerMan(){
-        return getStaticMapManager();
-    }
-    
-    public static RY_IODataMappingManager getStaticMapManager(){
-        if(bankAccountIODataMapManager == null){
-            bankAccountIODataMapManager = new RY_IODataMappingManager();
-            if(!buildMapManager(bankAccountIODataMapManager)){
-            }
-        }
-        return bankAccountIODataMapManager;
-    }
-    
-    protected static boolean buildMapManager(RY_IODataMappingManager man){
-        if(man != null){
-            RY_IODataBase.buildMapManager(man);
-            
-            man.addItem(RY_DataItemDefineID.createItem(FN_USER_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_USER_ID, DES_USER_ID, RY_DataItemDefine.TABLE_ID_NO));
-            man.addItem(RY_DataItemDefineID.createItem(FN_PERSON_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_PERSON_ID, DES_PERSON_ID, RY_DataItemDefine.TABLE_ID_NO));
-            man.addItem(RY_DataItemDefineID.createItem(FN_SCHOOL_ID, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_SCHOOL_ID, DES_SCHOOL_ID, RY_DataItemDefine.TABLE_ID_NO));
-            man.addItem(RY_DataItemDefineString.createItem(FN_STUDENT_IDCODE, 10, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_STUDENT_IDCODE, DES_STUDENT_IDCODE, false));
-            man.addItem(RY_DataItemDefineInteger.createItem(FN_DAILY_MINS, 3, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_DAILY_MINS, DES_DAILY_MINS));
-            return true;
-        }
-        return false;
-    }
+    private static RM_StudentIODataDefine studentDataDefine = null;
     
     @Override
-    protected DataIOUtilsBase getDataIOUtil(DataIOHandleBase ioHandle) {
-        return this.getStudentSaveUtil(ioHandle);
+    public RY_IODataDefine getDataDefine() {
+//        studentDataDefine = (RM_StudentIODataDefine)this.getDataDefine(studentDataDefine);
+        return studentDataDefine;
     }
 
-    protected DataIOUtilStudent getStudentSaveUtil(DataIOHandleBase saveHandle){
-        if(saveHandle != null){
-            if(saveHandle instanceof RM_DataIOHandle){
-                RM_DataIOHandle rmIOHandle = (RM_DataIOHandle)saveHandle;
-                RMDataIOUtilManager ioMan =rmIOHandle.getRmDataIOManager();
-                if(ioMan != null){
-                    return ioMan.getStudentDataIOUtil();
-                }
-            }
-        }
-        return null;
+//    @Override
+//    protected RY_IODataDefine createDataDefine() {
+//        return new RM_StudentIODataDefine();
+//    }
+
+    public static RM_StudentIODataDefine getStudentDataDefine() {
+        if(studentDataDefine == null){
+            studentDataDefine = new RM_StudentIODataDefine();
+            studentDataDefine.buildDataDefine();
+        }        
+        return studentDataDefine;
     }
     
     @Override

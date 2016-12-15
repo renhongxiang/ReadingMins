@@ -7,7 +7,7 @@ package rm_lib.process.loader;
 
 import java.util.ArrayList;
 import java.util.List;
-import rcommon.rdata.common.RY_DataBase;
+import rcommon.rdata.common.base.RY_DataCommonBase;
 import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.iosys.operation.common.DataIOTimerOperation;
@@ -50,7 +50,7 @@ public class LoaderStudentTotalMinsByMonthOperation extends DataIOTimerOperation
                                                     // month null may load all data for the student
             RM_ReadingMins loadMins = new RM_ReadingMins();
             loadMins.setStudent(student);
-            loadMins.setStatus(RY_DataBase.STATUS_ACTIVE);
+            loadMins.setStatus(RY_DataCommonBase.STATUS_ACTIVE);
             loadMins.setDataToIODataReadingMins(null, true);
             RM_ReadingMinsIOData ioData = loadMins.getReadingMinsIOData();
             if(ioData != null){

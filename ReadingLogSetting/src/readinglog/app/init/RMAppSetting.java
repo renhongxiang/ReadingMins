@@ -15,6 +15,8 @@ public class RMAppSetting extends RAppSetting{
 
     public static boolean developInstance = true;
 
+//    public static boolean autoTestInstance = true;
+    
     public static boolean isDevelopInstance() {
         return developInstance;
     }
@@ -27,5 +29,11 @@ public class RMAppSetting extends RAppSetting{
     public boolean isDebug() {
         return developInstance;
     }
+
+//    @Override
+//    public boolean isAutoTest() {
+//        return autoTestInstance;
+//    }
+    
     
 }

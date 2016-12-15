@@ -47,7 +47,7 @@ public class StudentAddController extends RM_LoginedControllerBase{
         if(bean != null){
             RY_User user = this.getLoginUser(request);
             if(user != null){
-                RM_Student student = new RM_Student();
+                RM_Student student = RM_Student.createInstance();
                 if(student != null){
                     student.setUser(user);
                     StudentBean.fillStudentInfoFromBean(student,bean);

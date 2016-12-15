@@ -7,8 +7,8 @@ package readinglog.app.init;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import rcommon.app.setting.RAppSetting;
 import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
+import rcommon.database.rsqlbase.RY_SQLConnectionSetting;
 
 /**
  *
@@ -17,25 +17,10 @@ import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
 public class RMSQLConnectionMySQL extends RY_SQLConnectionFactory{
 
     public RMSQLConnectionMySQL(){
-        prepareData();
+        RMMaySQLConnectionSetting setting = new RMMaySQLConnectionSetting();
+        RMSQLConnectionMySQL.setSetting(setting);
     }
     
-    private void prepareData(){
-        boolean develop = true;
-        RAppSetting setting = RAppSetting.getAppSetting();
-        if(setting != null){
-            develop = setting.isDebug();
-        }
-        if(develop){
-            this.setDbURL("jdbc:mysql://localhost:3306/readinglogtest");
-            this.setDbUserID("DBEdit");
-            this.setDbPassword("123456");
-        }else{
-            this.setDbURL("jdbc:mysql://localhost:3306/readmins");
-            this.setDbUserID("DBEdit");
-            this.setDbPassword("123456");
-        }
-    }
     
     @Override
     public synchronized Connection getConnection(){
@@ -43,15 +28,18 @@ public class RMSQLConnectionMySQL extends RY_SQLConnectionFactory{
     }
     
     public Connection getDBConnection(){
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = null;
-            conn = DriverManager.getConnection(this.getDbURL(), this.getDbUserID(), this.getDbPassword());
-            return conn;
-        } catch (Exception e) {
-            e.printStackTrace();
+        RY_SQLConnectionSetting setting = RMSQLConnectionMySQL.getSetting();
+        if(setting != null){
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conn = null;
+                conn = DriverManager.getConnection(setting.getDbURL(), setting.getDbUserID(), setting.getDbPassword());
+                return conn;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            this.setErrorMessage("MySQL connection create failed");
         }
-        this.setErrorMessage("MySQL connection create failed");
         return null;
     }    
     

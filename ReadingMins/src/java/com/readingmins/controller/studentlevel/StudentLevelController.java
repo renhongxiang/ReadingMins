@@ -37,7 +37,7 @@ public abstract class StudentLevelController extends RM_LoginedControllerBase{
                 RMWebUtils rmUtils = (RMWebUtils)util;
                 RM_Student student = rmUtils.getSessCurStudent(request);
                 if(student != null){
-                    student.doLoad();
+                    student.doLoad(null);
                     String name = student.getFirstLastName();
                     model.addAttribute("studentName", name);
                 }
@@ -47,7 +47,9 @@ public abstract class StudentLevelController extends RM_LoginedControllerBase{
 
                 LoaderStudentTotalMinsByMonth monthMinsLogic = new LoaderStudentTotalMinsByMonth();
                 BigDecimal totalMins = monthMinsLogic.getTotalMinsByMonth(student, month, rmUtils.getLoginUser(request));
-                model.addAttribute("curmins", totalMins.toString());
+                if(totalMins != null){
+                    model.addAttribute("curmins", totalMins.toString());
+                }
             }
         }
     }

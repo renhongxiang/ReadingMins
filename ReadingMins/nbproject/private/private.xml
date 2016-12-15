@@ -4,39 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogAddController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/baseLayout.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/tiles.xml</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userCertifyEmail.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/RMUserResetPasswordSentEmailController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/signup/RMUserSignupController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/web.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/RMUserResetPasswordController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentSelectController.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/MonthlyDetailController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/AppController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/helpLayout.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentBean.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentAdd.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userResetPasswordConfirm.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentBeanList.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/idpassword/RMUserResetPasswordConfirmController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/SubmitMins.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userResetPassword.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadMinsInitServlet.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogBean.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/debug/RM_DebugUtil.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/sessHeader.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/mins/ReadingLogEditController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/redirect.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/userForgotIDSent.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/web.xml</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/base/RM_LoginedControllerBase.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/ReadingLogMonthBean.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/sessLayout.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseFooter.jsp</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseHeader.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingPassword.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogDownload.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/sessLayout.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/login/RMUserLoginController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/StudentLevelController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/user/signup/RMUserSignupConfirmController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadMinsInitServlet.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/student/StudentAddController.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/web/app/RMWebUtils.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/ReadingMinsEmailCertify.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/monthdetail/MonthlyDetailControllerBase.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/controller/studentlevel/StudentEditController.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseCss.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentSelect.jsp</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/nbproject/build-impl.xml</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/sessHeader.jsp</file>
         </group>
     </open-files>
 </project-private>

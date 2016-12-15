@@ -6,20 +6,20 @@
 package rm_lib.data;
 
 import java.util.Date;
-import rcommon.rdata.common.RY_DataBase;
-import rcommon.rdata.common.RY_IODataGroupBase;
+import rcommon.rdata.common.base.RY_DataCommonBase;
 import rcommon.rdata.datavalue.R_Date_Value;
 import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.datavalue.R_String_Value;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
+import rcommon.rdata.structure.RY_IODataGroupBase;
 import rcommon.rdata.structure.RY_IODataObjectBase;
 
 /**
  *
  * @author renhongxiang
  */
-public class RM_ReadingMins extends RY_DataBase{
+public class RM_ReadingMins extends RY_DataCommonBase{
     
     private RM_Student student = null;
     
@@ -112,6 +112,16 @@ public class RM_ReadingMins extends RY_DataBase{
 
     public void setStudent(RM_Student student) {
         this.student = student;
+        if(student != null){
+            RM_StudentIOData ioData = student.getStudentIOData();
+            if(ioData != null){
+                DataIOIdentity id = ioData.getIoID();
+                RY_IODataGroupBase group = this.getReadingMinsDataGroup(true);
+                if(group != null){
+                    group.setDataByName(RM_ReadingMinsIODataDefine.FN_STUDENT_ID, id);
+                }
+            }
+        }
     }
     
     
@@ -195,6 +205,11 @@ public class RM_ReadingMins extends RY_DataBase{
         if(group != null){
             group.setIOID(ioID);
         }
+    }
+
+    @Override
+    protected RY_IODataGroupBase getDefaultGroup() {
+        return this.getReadingMinsDataGroup(true);
     }
     
 }

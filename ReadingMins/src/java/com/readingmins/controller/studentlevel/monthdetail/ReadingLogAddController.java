@@ -164,11 +164,12 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
         this.setBean(beanMonth);
         
         RM_Student student = this.getStudent(request);
-        
-        ReadingLogMonthBean bean = this.getBean();
-        bean.setDate(selectDate);
-        bean.setMins(student.getDailyRequestReadingMins());
-        bean.setMonth(RMonth.monthToString(month, RMonth.MONTH_TEMPLATE_US));
+        if(student != null){
+            ReadingLogMonthBean bean = this.getBean();
+            bean.setDate(selectDate);
+            bean.setMins(student.getDailyRequestReadingMins());
+            bean.setMonth(RMonth.monthToString(month, RMonth.MONTH_TEMPLATE_US));
+        }
         
         this.buildMonthlyEdtailPage(request, model, month);
         

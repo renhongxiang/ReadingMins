@@ -6,7 +6,7 @@
 
 package ui.database;
 
-import rm_lib.application.init.RM_AppInit;
+import readingminstest.RM_AppInitTest;
 import rswin.utils.dialog.confirm.R_ConfirmDlg;
 import rswin.utils.dialog.message.MessageDlg;
 import rytable.RY_TableManager;
@@ -33,7 +33,7 @@ public class DBScriptDlg extends javax.swing.JDialog {
     }
     
     protected RY_TableManager getDataBaseManager(){
-        RM_AppInit appIni = new RM_AppInit();
+        RM_AppInitTest appIni = new RM_AppInitTest();
         return appIni.getTableManager();
     }
     /**

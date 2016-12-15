@@ -6,14 +6,18 @@
 package ui.main;
 
 import develop.EmailTest;
+import ini.RMExportDBSpecFolder;
+import ini.RMTestIniFileHandler;
 import java.io.File;
 import passwordconvert.PasswordConvertQueryHandler;
 import passwordconvert.PasswordQuerySQL;
 import rcommon.database.rsqlbase.RY_OprSimple;
-import rm_lib.application.init.RM_AppInit;
+import rcommon.fileIO.txt.RIniFile2;
+import readingminstest.RM_AppInitTest;
 import rswin.ui.file.RSwinFileSelect;
 import rytable.RY_DataBaseExcelExport;
 import rytable.RY_TableManager;
+import test.database.RMResetDataBaseModule;
 import ui.database.DBScriptDlg;
 
 /**
@@ -27,8 +31,27 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        loadIni();
     }
 
+    public static void loadIni(){
+        
+        RMTestIniFileHandler iniHandler = new RMTestIniFileHandler();
+        iniHandler.BuildInitHandle();
+        RIniFile2 inifile = new RIniFile2();        
+        inifile.setIniHandler(iniHandler);
+        inifile.doLoadIniAuto();
+        
+    }
+    
+    public static void saveIni(){
+        RMTestIniFileHandler iniHandler = new RMTestIniFileHandler();
+        iniHandler.BuildInitHandle();
+        RIniFile2 inifile = new RIniFile2();        
+        inifile.setIniHandler(iniHandler);
+        inifile.doSaveIniAuto();        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,8 +68,20 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu_ResetDB = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jMenu1.setText("DataBase");
 
@@ -68,7 +103,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Tool");
+        jMenu2.setText("Develop Tool");
 
         jMenuItem1.setText("Convert Password Encrypt");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +123,29 @@ public class MainFrame extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setText("Testing");
+
+        jMenu_ResetDB.setText("ResetDataBase");
+        jMenu_ResetDB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu_ResetDBActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenu_ResetDB);
+
+        jMenuItem3.setText("Register User");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
+        jMenuItem4.setText("Login User");
+        jMenu3.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu3);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -106,12 +164,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jMenuItem_DB_SpecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem_DB_SpecActionPerformed
         // TODO add your handling code here:
-        
-        File selectFile = RSwinFileSelect.doSelectSaveFile(this);
+        RMExportDBSpecFolder specFolder = new RMExportDBSpecFolder();
+        File selectFile = RSwinFileSelect.doSelectSaveFile(this, specFolder);
         if(selectFile != null){
             RY_DataBaseExcelExport export = new RY_DataBaseExcelExport();
             if(export != null){
-                RM_AppInit ini = new RM_AppInit();
+                RM_AppInitTest ini = new RM_AppInitTest();
                 RY_TableManager db = ini.getTableManager();
                 if(db!=null){
                     export.setDataBase(db);
@@ -142,6 +200,26 @@ public class MainFrame extends javax.swing.JFrame {
         EmailTest test = new EmailTest();
         test.doEmailTest();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu_ResetDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu_ResetDBActionPerformed
+        // TODO add your handling code here:
+        RMResetDataBaseModule module = new RMResetDataBaseModule();
+        module.buildModule();
+        module.RunTest();
+    }//GEN-LAST:event_jMenu_ResetDBActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        saveIni();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -181,10 +259,14 @@ public class MainFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem_DB_Script;
     private javax.swing.JMenuItem jMenuItem_DB_Spec;
+    private javax.swing.JMenuItem jMenu_ResetDB;
     // End of variables declaration//GEN-END:variables
 }
