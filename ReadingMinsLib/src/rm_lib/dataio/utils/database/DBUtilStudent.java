@@ -15,10 +15,6 @@ import rm_lib.dataio.utils.DataIOUtilStudent;
  */
 public class DBUtilStudent extends DataIOUtilStudent{
 
-    @Override
-    public RY_IODataStorage getIODataStorage() {
-        return getDataTable();
-    }
     
     private RM_StudentTB getDataTable(){
         return RM_StudentTB.createInstance();

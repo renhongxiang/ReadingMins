@@ -59,6 +59,7 @@ public abstract class RM_AppInit extends DBInitBase{
             DataIOFactoryManager.setDefaultDataFactory(createOperationFactory());
             RMTimerUserFactory defaultUserFact = new RMTimerUserFactory();
             DataIOTimerOperation.setUserFact(defaultUserFact);
+            appInited = true;
         }
     }
 }

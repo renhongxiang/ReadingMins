@@ -3,17 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/init/RM_AppInit.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/data/RM_Student.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentsByUser.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/data/RM_ReadingMinsIODataDefine.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/database/RM_StudentTB.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/data/RM_StudentIODataDefine.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/database/RM_ReadingMinsTB.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentTotalMinsByMonth.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/data/RM_ReadingMinsIOData.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/application/init/RM_DataBase.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/data/RM_StudentIOData.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/database/DBUtilReadMins.java</file>
+            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/database/DBUtilStudent.java</file>
             <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentsByUserOperation.java</file>
         </group>
     </open-files>

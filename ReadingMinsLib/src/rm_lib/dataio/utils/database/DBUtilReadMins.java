@@ -15,7 +15,6 @@ import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.iosys.db.DataIODBHandleUtil;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.structure.RY_IODataObjectBase;
-import rcommon.rdata.structure.RY_IODataStorage;
 import rcommon.rerror.RErrorSupportObject;
 import rm_lib.data.RM_ReadingMinsIOData;
 import rm_lib.database.RM_ReadingMinsTB;
@@ -32,10 +31,6 @@ import rytable.data.iosys.dbutils.sqls.conditions.DBUtilsConditionColCompareImpu
  */
 public class DBUtilReadMins extends DataIOUtilReadMins{
 
-    @Override
-    public RY_IODataStorage getIODataStorage() {
-        return getReadingMinsTable();
-    }
     
     public RM_ReadingMinsTB getReadingMinsTable(){
         return RM_ReadingMinsTB.createInstance();
