@@ -19,6 +19,8 @@ public class ReadMinsInitServlet extends HttpServlet{
         RMWebUtils util = new RMWebUtils();
         RMWebUtils.setInstance(util);
         
+        RM_EmailUserID.initInstance();
+        
         RM_DebugUtil debugUtil = new RM_DebugUtil();
         RM_DebugUtil.setDebugUtil(debugUtil);
         
