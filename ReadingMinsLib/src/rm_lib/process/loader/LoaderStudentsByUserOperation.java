@@ -8,6 +8,7 @@ package rm_lib.process.loader;
 import java.util.ArrayList;
 import java.util.List;
 import rcommon.rdata.common.RY_User;
+import rcommon.rdata.common.base.RY_DataCommonBase;
 import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.iosys.operation.common.DataIOTimerOperation;
 import rcommon.rdata.structure.RY_IODataObjectBase;
@@ -41,6 +42,7 @@ public class LoaderStudentsByUserOperation extends DataIOTimerOperation{
     protected boolean doProcessOperation() {
         RM_Student student = RM_Student.createInstance();
         student.setUser(user);
+        student.setStatus(RY_DataCommonBase.STATUS_ACTIVE);
 //        student.setDataToIODataStudent(null, true);
         RM_StudentIOData ioData = student.getStudentIOData();
         if(ioData != null){

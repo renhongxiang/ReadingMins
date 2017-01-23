@@ -2,10 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/database/DBUtilReadMins.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/dataio/utils/database/DBUtilStudent.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMinsLib/src/rm_lib/process/loader/LoaderStudentsByUserOperation.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
