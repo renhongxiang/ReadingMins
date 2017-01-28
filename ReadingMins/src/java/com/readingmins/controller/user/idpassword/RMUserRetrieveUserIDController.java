@@ -31,7 +31,6 @@ public class RMUserRetrieveUserIDController extends UserRetrieveUserIDController
     public String rmResetPwdPost(HttpServletRequest request,
             @ModelAttribute("retrieveUserID") UserRetrieveIDPasswordBean pwdBean,
             ModelMap model) {
-        
         return this.retrieveUserIDPost(request, pwdBean, model);
     }
 
