@@ -11,12 +11,11 @@ import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
 import rcommon.rdata.datavalue.R_Int_Value;
 import rcommon.rdata.datavalue.R_String_Value;
-import rcommon.rdata.datavalue.R_TypeValueBase;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rdata.structure.RY_IODataGroupBase;
+import rcommon.rdata.structure.RY_IODataGroupLinkPack;
 import rcommon.rdata.structure.RY_IODataObjectBase;
-import rcommon.rdata.structure.RY_IODataStorage;
 import rcommon.utils.datatype.RDateUtils;
 
 /**
@@ -257,18 +256,25 @@ public class RM_Student extends RY_Person{
         return 0;
     }
     
+//    @Override
+//    protected R_TypeValueBase getPersonLinkIOID(){
+//        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+//        if(group != null){
+//            RM_StudentIODataDefine define = RM_StudentIOData.getStudentDataDefine();
+//            if(define != null){
+//                RY_IODataStorage storage = define.getStorage();
+//                DataIOIdentityReference ioData = storage.createIOIdentifyreference();
+//                return group.getDataByNameCreate(RM_StudentIODataDefine.FN_PERSON_ID, ioData);
+//            }
+//        }
+//        return null;
+//    }
+    
     @Override
-    protected R_TypeValueBase getPersonLinkIOID(){
+    protected RY_IODataGroupLinkPack getPersonRefLinkPack(){
         RY_IODataGroupBase group = this.getStudentDataGroup(true);
-        if(group != null){
-            RM_StudentIODataDefine define = RM_StudentIOData.getStudentDataDefine();
-            if(define != null){
-                RY_IODataStorage storage = define.getStorage();
-                DataIOIdentity ioData = storage.createIOIdentify();
-                return group.getDataByNameCreate(RM_StudentIODataDefine.FN_PERSON_ID, ioData);
-            }
-        }
-        return null;
+        RY_IODataGroupLinkPack pack = new RY_IODataGroupLinkPack(group, RM_StudentIODataDefine.FN_PERSON_ID);        
+        return pack;
     }
     
 }
