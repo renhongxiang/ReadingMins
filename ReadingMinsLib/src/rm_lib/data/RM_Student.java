@@ -197,22 +197,6 @@ public class RM_Student extends RY_Person{
         return true;
     }
     
-    public boolean setDataToIODataStudent(DataIOHandleBase saveHandle, boolean loadOnly){
-        RM_StudentIOData ioData = this.getStudentIOData(true);
-        if(ioData != null){
-            RY_User user = this.getUser();
-            if(user != null){
-                DataIOIdentity userIOID = user.getUserIOID();
-                ioData.setUserID(userIOID);
-            }
-            
-            ioData.setPersonID(this.getPersonIOID(saveHandle, loadOnly));
-            return true;
-        }
-        return false;
-    }
-    
-    
     public final boolean fillDataWithLoadedStudentIOData(RM_StudentIOData ioData){
         if(ioData != null){
             RY_IODataGroupBase group = this.getStudentDataGroup(true);
@@ -224,14 +208,14 @@ public class RM_Student extends RY_Person{
     }
     
     public DataIOIdentity getStudentIOID() {
-        return this.getStudentIOID(null, true);
+        return this.getStudentIOID(null);
     }
     
     
-    public DataIOIdentity getStudentIOID(DataIOHandleBase saveHandle, boolean loadOnly) {
+    public DataIOIdentity getStudentIOID(DataIOHandleBase saveHandle) {
         RY_IODataGroupBase group = this.getStudentDataGroup(false);
         if(group != null){
-            return group.getIOID(saveHandle, loadOnly);
+            return group.getIOID(saveHandle);
         }
         return null;
     }
