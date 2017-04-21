@@ -13,7 +13,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import rcommon.rdata.common.base.RY_DataBase;
 import rcommon.rdata.common.RY_User;
 import rm_lib.data.RM_Student;
 import rm_lib.process.logics.EditStudentLogic;

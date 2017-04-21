@@ -46,7 +46,7 @@ public class RM_ReadingMinsIODataDefine extends RY_IODataCommonDataDefine{
         this.addItem(RY_DataItemDefineDate.createItem(FN_DATE, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_DATE, DES_DATE));
         this.addItem(RY_DataItemDefineString.createItem(FN_TITLE, 40, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_TITLE, DES_TITLE, false));
         this.addItem(RY_DataItemDefineInteger.createItem(FN_MINS, 4, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_MINS, DES_MINS));
-        this.addItem(RY_DataItemDefineID.createItem(FN_STUDENT_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_STUDENT_ID, DES_STUDENT_ID, RY_DataItemDefine.TABLE_ID_NO));
+        this.addItem(RY_DataItemDefineID.createItem_1(FN_STUDENT_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_STUDENT_ID, DES_STUDENT_ID, RY_DataItemDefine.TABLE_ID_NO));
     }
 
     @Override

@@ -43,7 +43,7 @@ public class LoaderStudentsByUserOperation extends DataIOTimerOperation{
         RM_Student student = RM_Student.createInstance();
         student.setUser(user);
         student.setStatus(RY_DataCommonBase.STATUS_ACTIVE);
-//        student.setDataToIODataStudent(null, true);
+
         RM_StudentIOData ioData = student.getStudentIOData();
         if(ioData != null){
             ioData.setStatus_value(R_Int_Value.createIntegerValue(RM_Student.STATUS_ACTIVE));

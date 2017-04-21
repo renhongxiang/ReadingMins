@@ -10,6 +10,7 @@ import rcommon.rdata.common.RY_PersonIOData;
 import rcommon.rdata.common.RY_UserIOData;
 import rcommon.rdata.define.RY_DataItemDefine;
 import rcommon.rdata.define.RY_DataItemDefineID;
+import rcommon.rdata.define.RY_DataItemDefineIDReference;
 import rcommon.rdata.define.RY_DataItemDefineInteger;
 import rcommon.rdata.define.RY_DataItemDefineString;
 import rcommon.rdata.hb_base.HB_ForeignKey;
@@ -45,9 +46,10 @@ public class RM_StudentIODataDefine extends RY_IODataCommonDataDefine{
     @Override
     public void buildDataDefine() {
         super.buildDataDefine();
-        this.addItem(RY_DataItemDefineID.createItem(FN_USER_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_USER_ID, DES_USER_ID, RY_DataItemDefine.TABLE_ID_NO));
-        this.addItem(RY_DataItemDefineID.createItem(FN_PERSON_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_PERSON_ID, DES_PERSON_ID, RY_DataItemDefine.TABLE_ID_NO));
-        this.addItem(RY_DataItemDefineID.createItem(FN_SCHOOL_ID, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_SCHOOL_ID, DES_SCHOOL_ID, RY_DataItemDefine.TABLE_ID_NO));
+        
+        this.addItem(RY_DataItemDefineIDReference.createItem(FN_USER_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_USER_ID, DES_USER_ID));
+        this.addItem(RY_DataItemDefineIDReference.createItem(FN_PERSON_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_PERSON_ID, DES_PERSON_ID));
+        this.addItem(RY_DataItemDefineIDReference.createItem(FN_SCHOOL_ID, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_SCHOOL_ID, DES_SCHOOL_ID));
         this.addItem(RY_DataItemDefineString.createItem(FN_STUDENT_IDCODE, 10, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_STUDENT_IDCODE, DES_STUDENT_IDCODE, false));
         this.addItem(RY_DataItemDefineInteger.createItem(FN_DAILY_MINS, 3, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_DAILY_MINS, DES_DAILY_MINS));
     }

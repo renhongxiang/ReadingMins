@@ -6,8 +6,6 @@
 package rm_lib.data;
 
 import rcommon.rdata.common.base.RY_DataBase;
-import rcommon.rdata.iosystem.DataIOHandleBase;
-import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rdata.structure.RY_IODataGroupBase;
 import rcommon.rdata.structure.RY_IODataObjectBase;
 

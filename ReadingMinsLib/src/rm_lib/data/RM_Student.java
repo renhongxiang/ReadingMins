@@ -9,14 +9,11 @@ import java.util.Date;
 import rcommon.rdata.common.RY_Person;
 import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
-import rcommon.rdata.datavalue.R_Int_Value;
-import rcommon.rdata.datavalue.R_String_Value;
-import rcommon.rdata.datavalue.R_TypeValueBase;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rdata.structure.RY_IODataGroupBase;
+import rcommon.rdata.structure.RY_IODataGroupLinkPack;
 import rcommon.rdata.structure.RY_IODataObjectBase;
-import rcommon.rdata.structure.RY_IODataStorage;
 import rcommon.utils.datatype.RDateUtils;
 
 /**
@@ -67,17 +64,6 @@ public class RM_Student extends RY_Person{
         return null;
     }    
     
-    public RM_StudentIOData getSavedStudentIOData(boolean createIfNull){        
-        RY_IODataObjectBase ioData = null;
-        RY_IODataGroupBase group = this.getStudentDataGroup(createIfNull);
-        if(group != null){
-            ioData = group.getLastSavedData(createIfNull);
-        }
-        if(ioData != null && ioData instanceof RM_StudentIOData){
-            return (RM_StudentIOData)ioData;
-        }        
-        return null;
-    }    
     
 // </editor-fold>
 
@@ -87,65 +73,52 @@ public class RM_Student extends RY_Person{
 
     public void setUser(RY_User user) {
         this.user = user;
-        RM_StudentIOData ioData = this.getStudentIOData(true);
-        if(ioData != null){
-            if(user != null){
-                DataIOIdentity userIOID = user.getUserIOID();
-                ioData.setUserID(userIOID);
-            }
+        buildUserIDLinker();
+    }
+    
+    protected void buildUserIDLinker(){
+        RY_User user = this.getUser();
+        if(user != null){
+            RY_IODataGroupBase itemGroup = user.getUserDataGroup(true);
+            RY_IODataGroupBase group = this.getStudentDataGroup(true);
+            this.buildIDDataLink(itemGroup, group, RM_StudentIODataDefine.FN_USER_ID);
         }
     }
     
+    
     public void setDailyRequestReadingMins(Integer mins){
-        RM_StudentIOData ioData = this.getStudentIOData();
-        if(ioData != null){
-            ioData.setDailyMins(R_Int_Value.createIntegerValue(mins));
+        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+        if(group != null){
+            group.setIntegerByName(RM_StudentIODataDefine.FN_DAILY_MINS, mins);
         }
     }
     
     public Integer getDailyRequestReadingMins(){
-        RM_StudentIOData ioData = this.getStudentIOData();
-        if(ioData != null){
-            return R_Int_Value.getIntValue(ioData.getDailyMins(), 30);
+        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+        if(group != null){
+            Integer value = group.getIntegerByName(RM_StudentIODataDefine.FN_DAILY_MINS, null);
+            if(value != null){
+                return value;
+            }
         }
         return 30;
     }
     
-    public DataIOIdentity getPersonID(DataIOHandleBase ioHandle){
-        DataIOIdentity id = null;
-        RY_IODataGroupBase group = this.getStudentDataGroup(true);        
-        if(group != null){
-            id = (DataIOIdentity)group.getDataByName(RM_StudentIODataDefine.FN_PERSON_ID, ioHandle);
-        }
-        if(id == null){
-            id = this.getPersonIOID();
-        }
-        return id;
-    }
-    
-    public void setPersonID(DataIOIdentity personID){
+    public String getStudentCode() {
         RY_IODataGroupBase group = this.getStudentDataGroup(true);
         if(group != null){
-            group.setDataByName(RM_StudentIODataDefine.FN_PERSON_ID, personID);
-        }
-    }
-    
-    public String getStudentCode() {
-        RM_StudentIOData ioData = this.getStudentIOData();
-        if(ioData != null){
-            return R_String_Value.getStringValue(ioData.getIDCode());
+            return group.getStringByName(RM_StudentIODataDefine.FN_STUDENT_IDCODE, null);
         }
         return null;
     }
 
     public void setStudentCode(String code) {
-        RM_StudentIOData ioData = this.getStudentIOData(true);
-        if(ioData != null){
-            ioData.setIDCode(R_String_Value.createValueFromString(code));
+        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+        if(group != null){
+            group.setStringByName(RM_StudentIODataDefine.FN_STUDENT_IDCODE, code);
         }
     }
-    
-    
+
     private boolean doSaveDependent(DataIOHandleBase saveHandle){
         return true;
     }
@@ -198,22 +171,6 @@ public class RM_Student extends RY_Person{
         return true;
     }
     
-    public boolean setDataToIODataStudent(DataIOHandleBase saveHandle, boolean loadOnly){
-        RM_StudentIOData ioData = this.getStudentIOData(true);
-        if(ioData != null){
-            RY_User user = this.getUser();
-            if(user != null){
-                DataIOIdentity userIOID = user.getUserIOID();
-                ioData.setUserID(userIOID);
-            }
-            
-            ioData.setPersonID(this.getPersonIOID(saveHandle, loadOnly));
-            return true;
-        }
-        return false;
-    }
-    
-    
     public final boolean fillDataWithLoadedStudentIOData(RM_StudentIOData ioData){
         if(ioData != null){
             RY_IODataGroupBase group = this.getStudentDataGroup(true);
@@ -232,7 +189,7 @@ public class RM_Student extends RY_Person{
     public DataIOIdentity getStudentIOID(DataIOHandleBase saveHandle, boolean loadOnly) {
         RY_IODataGroupBase group = this.getStudentDataGroup(false);
         if(group != null){
-            return group.getIOID(saveHandle, loadOnly);
+            return group.getIOID(saveHandle);
         }
         return null;
     }
@@ -257,18 +214,34 @@ public class RM_Student extends RY_Person{
         return 0;
     }
     
-    @Override
-    protected R_TypeValueBase getPersonLinkIOID(){
-        RY_IODataGroupBase group = this.getStudentDataGroup(true);
-        if(group != null){
-            RM_StudentIODataDefine define = RM_StudentIOData.getStudentDataDefine();
-            if(define != null){
-                RY_IODataStorage storage = define.getStorage();
-                DataIOIdentity ioData = storage.createIOIdentify();
-                return group.getDataByNameCreate(RM_StudentIODataDefine.FN_PERSON_ID, ioData);
+    public static RM_Student createWithIOData(RM_StudentIOData ioData){
+        RM_Student student = createInstance();
+        if(student != null){
+            RY_IODataGroupBase group = student.getStudentDataGroup(true);
+            if(group != null){
+                RY_IODataObjectBase curData = group.getCurrData(true);
+                if(curData != null){
+                    curData.FillDataFromData(ioData, false);
+                }                
+                RY_IODataObjectBase lastData = group.getLastSavedData(true);
+                if(lastData != null){
+                    lastData.FillDataFromData(ioData, true);
+                }                
             }
         }
-        return null;
+        return student;
+    }
+    
+    @Override
+    protected RY_IODataGroupLinkPack getPersonRefLinkPack(){
+        RY_IODataGroupBase group = this.getStudentDataGroup(true);
+        RY_IODataGroupLinkPack pack = new RY_IODataGroupLinkPack(group, RM_StudentIODataDefine.FN_PERSON_ID);        
+        return pack;
+    }
+    
+    @Override
+    protected RY_IODataGroupBase getDefaultGroup() {
+        return this.getStudentDataGroup(true);
     }
     
 }
