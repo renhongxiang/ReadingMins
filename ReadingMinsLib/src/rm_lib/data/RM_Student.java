@@ -9,8 +9,6 @@ import java.util.Date;
 import rcommon.rdata.common.RY_Person;
 import rcommon.rdata.common.RY_User;
 import rcommon.rdata.dataformat.RMonth;
-import rcommon.rdata.datavalue.R_Int_Value;
-import rcommon.rdata.datavalue.R_String_Value;
 import rcommon.rdata.iosystem.DataIOHandleBase;
 import rcommon.rdata.iosystem.DataIOIdentity;
 import rcommon.rdata.structure.RY_IODataGroupBase;
