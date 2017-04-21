@@ -9,6 +9,7 @@ import java.util.List;
 import rcommon.rdata.define.RY_DataItemDefine;
 import rcommon.rdata.define.RY_DataItemDefineDate;
 import rcommon.rdata.define.RY_DataItemDefineID;
+import rcommon.rdata.define.RY_DataItemDefineIDReference;
 import rcommon.rdata.define.RY_DataItemDefineInteger;
 import rcommon.rdata.define.RY_DataItemDefineString;
 import rcommon.rdata.hb_base.HB_ForeignKey;
@@ -46,7 +47,7 @@ public class RM_ReadingMinsIODataDefine extends RY_IODataCommonDataDefine{
         this.addItem(RY_DataItemDefineDate.createItem(FN_DATE, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_DATE, DES_DATE));
         this.addItem(RY_DataItemDefineString.createItem(FN_TITLE, 40, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_TITLE, DES_TITLE, false));
         this.addItem(RY_DataItemDefineInteger.createItem(FN_MINS, 4, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_MINS, DES_MINS));
-        this.addItem(RY_DataItemDefineID.createItem_1(FN_STUDENT_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_STUDENT_ID, DES_STUDENT_ID, RY_DataItemDefine.TABLE_ID_NO));
+        this.addItem(RY_DataItemDefineIDReference.createItem(FN_STUDENT_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_STUDENT_ID, DES_STUDENT_ID));
     }
 
     @Override

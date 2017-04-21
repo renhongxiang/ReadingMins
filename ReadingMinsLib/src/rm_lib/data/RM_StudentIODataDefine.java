@@ -46,7 +46,6 @@ public class RM_StudentIODataDefine extends RY_IODataCommonDataDefine{
     @Override
     public void buildDataDefine() {
         super.buildDataDefine();
-        
         this.addItem(RY_DataItemDefineIDReference.createItem(FN_USER_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_USER_ID, DES_USER_ID));
         this.addItem(RY_DataItemDefineIDReference.createItem(FN_PERSON_ID, RY_DataItemDefine.NULL_ALLOW_FALSE, FN_PERSON_ID, DES_PERSON_ID));
         this.addItem(RY_DataItemDefineIDReference.createItem(FN_SCHOOL_ID, RY_DataItemDefine.NULL_ALLOW_TRUE, FN_SCHOOL_ID, DES_SCHOOL_ID));

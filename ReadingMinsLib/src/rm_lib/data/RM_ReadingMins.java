@@ -188,11 +188,11 @@ public class RM_ReadingMins extends RY_DataCommonBase{
     }
     
     public DataIOIdentity getMinsIOID() {
-        return this.getMinsIOID(null, true);
+        return this.getMinsIOID(null);
     }
     
     
-    public DataIOIdentity getMinsIOID(DataIOHandleBase saveHandle, boolean loadOnly) {
+    public DataIOIdentity getMinsIOID(DataIOHandleBase saveHandle) {
         RY_IODataGroupBase group = this.getReadingMinsDataGroup(false);
         if(group != null){
             return group.getIOID(saveHandle);
