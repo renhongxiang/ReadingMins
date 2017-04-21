@@ -18,6 +18,7 @@ import rswin.ui.file.RSwinFileSelect;
 import rytable.RY_DataBaseExcelExport;
 import rytable.RY_TableManager;
 import test.database.RMResetDataBaseModule;
+import ui.database.DBSchemaChangeDlg;
 import ui.database.DBScriptDlg;
 
 /**
@@ -65,6 +66,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem_DB_Spec = new javax.swing.JMenuItem();
         jMenuItem_DB_Script = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -100,6 +102,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem_DB_Script);
+
+        jMenuItem5.setText("DataBase Modify Script");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem5);
 
         jMenuBar1.add(jMenu1);
 
@@ -221,6 +231,12 @@ public class MainFrame extends javax.swing.JFrame {
         saveIni();
     }//GEN-LAST:event_formWindowClosing
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        DBSchemaChangeDlg dlg = new DBSchemaChangeDlg(this, true);
+        dlg.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +281,7 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem_DB_Script;
     private javax.swing.JMenuItem jMenuItem_DB_Spec;
     private javax.swing.JMenuItem jMenu_ResetDB;
