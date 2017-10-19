@@ -17,7 +17,7 @@ import rcommon.database.rsqlbase.RY_SQLConnectionSetting;
 public class RMSQLConnectionMySQL extends RY_SQLConnectionFactory{
 
     public RMSQLConnectionMySQL(){
-        RMMaySQLConnectionSetting setting = new RMMaySQLConnectionSetting();
+        RMMySQLConnectionSetting setting = new RMMySQLConnectionSetting();
         RMSQLConnectionMySQL.setSetting(setting);
     }
     

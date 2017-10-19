@@ -20,7 +20,7 @@ public class PasswordConvertQueryHandler extends RY_SQLQueryHandler{
     REncryptPwd passwordEncryptor = new REncryptPwd();
 
     @Override
-    public void queryProcessRowDataProcess(ResultSet result, int row, int[] typeList, int width, ResultSetMetaData metaData) throws Exception{
+    public boolean queryProcessRowDataProcess(ResultSet result, int row, int[] typeList, int width, ResultSetMetaData metaData) throws Exception{
         if(result != null){
             Long id = result.getLong("ID");
             String password = result.getString("Password");
@@ -29,8 +29,9 @@ public class PasswordConvertQueryHandler extends RY_SQLQueryHandler{
             PasswordQuerySQL sql = new PasswordQuerySQL();
             sql.setId(id);
             sql.setNewPassword(encryptedPassword);
-            RY_OprSimple.DoUpdate(sql);
+            return RY_OprSimple.DoUpdate(sql);
         }
+        return false;
     }    
     
 }

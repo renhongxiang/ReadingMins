@@ -9,9 +9,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import rcommon.database.rsqlbase.RPooledConnectionPool;
 import rcommon.rdata.iosys.db.DBConnectionSupport;
 import rcommon.rdata.iosystem.DataIOHandleBase;
-import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
 import rm_lib.dataio.utils.RMDataIOUtilManager;
 
 /**
@@ -33,32 +33,34 @@ public class RM_DataIOHandle extends DataIOHandleBase implements DBConnectionSup
     
     
     public Connection createConnection() {
-        RY_SQLConnectionFactory fact = RY_SQLConnectionFactory.getFactory();
-        if(fact != null){
-            Connection conn = fact.getConnection();
-            if(conn != null){
-                try {
-                    conn.setAutoCommit(false);
-                } catch (SQLException ex) {
-                    Logger.getLogger(RM_DataIOHandle.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                return conn;
-            }
-        }
-        return null;
+        return RPooledConnectionPool.getPooledConnection();        
+//        RY_SQLConnectionFactory fact = RY_SQLConnectionFactory.getFactory();
+//        if(fact != null){
+//            Connection conn = fact.getConnection();
+//            if(conn != null){
+//                try {
+//                    conn.setAutoCommit(false);
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(RM_DataIOHandle.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//                return conn;
+//            }
+//        }
+//        return null;
     }
 
     @Override
     public boolean release(Connection conn) {
-        if(conn != null){
-            RY_SQLConnectionFactory fact = RY_SQLConnectionFactory.getFactory();
-            if(fact != null){
-                fact.releaseConnection(conn);
-                return true;
-            }
-            return false;
-        }
-        return true;
+        return RPooledConnectionPool.releasePooledConnection(conn);
+//        if(conn != null){
+//            RY_SQLConnectionFactory fact = RY_SQLConnectionFactory.getFactory();
+//            if(fact != null){
+//                fact.releaseConnection(conn);
+//                return true;
+//            }
+//            return false;
+//        }
+//        return true;
     }
     
     @Override
