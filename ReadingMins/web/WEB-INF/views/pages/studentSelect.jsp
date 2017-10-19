@@ -10,13 +10,16 @@
      <table class="area">
         <tr>
             <td>
+                <table class="boxcenter">
+                    <tr class="textcenter">
+                        <td>
+                            <div class="pagehead">Select a Student</div>
+                        </td>
+                    </tr>
+                </table>
+                <fieldset>
                 <form:form method="post" action="" modelAttribute="studentList">
                     <table class="boxcenter">
-                        <tr class="textcenter">
-                            <td>
-                                <div class="pagehead">Select a Student</div>
-                            </td>
-                        </tr>
                         <tr>
                             <td>
                                 <table>
@@ -39,6 +42,8 @@
                         </tr>
                     </table>                
                 </form:form>
+                </fieldset>
+                    
             </td>
         </tr>
     </table>

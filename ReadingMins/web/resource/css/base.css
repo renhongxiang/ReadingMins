@@ -39,7 +39,12 @@ and open the template in the editor.
     {
         margin: 10px;
     }
-
+    
+    li
+    {
+        margin-top: 10px;
+    }
+    
     label{
         text-align: right;
     }

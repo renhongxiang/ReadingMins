@@ -32,14 +32,22 @@
         <table class="area">
             <tr>
                 <td style="width: 200px" class="top">
-                    <section id="sidemenu">
-                        <tiles:insertAttribute name="menu" />
-                    </section>
+                    <table cellpadding ="0" cellspacing = "0" width ="100%" align = "center">
+                        <tr>
+                            <td>
+                                <tiles:insertAttribute name="menu" />
+                            </td>
+                        </tr>
+                    </table>                            
                 </td>
                 <td>
-                    <section id="site-content">
-                        <tiles:insertAttribute name="body" />
-                    </section>
+                    <table cellpadding ="0" cellspacing = "0" width ="100%" align = "center">
+                        <tr>
+                            <td>
+                                <tiles:insertAttribute name="body" />
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
         </table>

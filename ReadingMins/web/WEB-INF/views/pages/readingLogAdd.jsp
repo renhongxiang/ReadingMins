@@ -18,6 +18,9 @@
                             <div class="pagehead">Enter Reading Log</div>
                         </td>
                     </tr>
+                </table>                
+                <fieldset>
+                <table class="boxcenter, area" >
                     <form:form id="formId" method="post" action="" modelAttribute="monthReadingLog">
                     <tr>
                         <td class="textcenter">
@@ -126,6 +129,7 @@
                     </tr>
                     </form:form>
                 </table>                
+                </fieldset>
             </td>
         </tr>
     </table>

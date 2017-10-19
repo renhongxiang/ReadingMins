@@ -27,7 +27,7 @@
     <tr>
         <td>
             <nav>
-                <ul id="menu" style="background-color: lightgrey">
+                <ul id="menu" style="background-color: lightcyan">
                    <li><a href="${pageContext.request.contextPath}/readingLogDownload">Download Reading Log</a></li>
                    <li><a href="${pageContext.request.contextPath}/readingLogAdd">New Reading Log</a></li>
                    <li><a href="${pageContext.request.contextPath}/studentSelect">Select Student</a></li>

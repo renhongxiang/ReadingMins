@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="<c:url value="/resource/css/jquery-ui.min.css" />"></link>
   <script src="<c:url value="/resource/js/jquery-3.1.1.min.js" />"></script>
   <script src="<c:url value="/resource/js/jquery-ui.min.js" />"></script>
+    
     <table class="area">
         <tr>
             <td>
@@ -17,7 +18,10 @@
                         <td>
                             <div class="pagehead">Editing Reading Log</div>
                         </td>
-                    </tr>                    
+                    </tr>
+                </table>
+                <fieldset>
+                <table class="boxcenter" >
                     <tr>
                         <td>
                             <form:form method="post" modelAttribute="minsForm" action="">
@@ -58,7 +62,9 @@
                             </form:form>
                         </td>
                     </tr>
-                </table>                
+                </table>      
+                </fieldset>
+                    
             </td>
         </tr>
     </table>

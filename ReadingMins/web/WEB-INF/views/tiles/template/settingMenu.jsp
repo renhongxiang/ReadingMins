@@ -8,7 +8,7 @@
     <tr>
         <td>
             <nav>
-                <ul id="menu" style="background-color: lightgrey">
+                <ul id="menu" style="background-color: lightcyan">
                    <li><a href="${pageContext.request.contextPath}/settingPassword">Change Password</a></li>
                    <li><a href="${pageContext.request.contextPath}/settingEmail">Change Email</a></li>
                 </ul>

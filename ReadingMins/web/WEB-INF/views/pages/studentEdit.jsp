@@ -15,6 +15,9 @@
                             <div class="pagehead">Add New Student</div>
                         </td>
                     </tr>
+                </table>
+                <fieldset>
+                <table class="boxcenter">
                     <form:form method="post" modelAttribute="editStudentForm" action="">
                     <tr>
                         <td>
@@ -65,7 +68,8 @@
                         </td>
                     </tr>
                     </form:form>
-                </table>                
+                </table>
+                </fieldset>
             </td>
         </tr>
     </table>

@@ -12,6 +12,9 @@
                             <div class="pagehead">Reading Log Info</div>
                         </td>
                     </tr>                    
+                </table>
+                <fieldset>
+                <table class="boxcenter" style="width: 80%">
                     <form:form id="formId" method="post" action="" modelAttribute="monthReadingLog">
                     <tr>
                         <td class="textcenter">
@@ -50,7 +53,9 @@
                         </td>
                     </tr>
                     </form:form>
-                </table>                
+                </table>   
+                </fieldset>
+                    
             </td>
         </tr>
     </table>
