@@ -11,7 +11,7 @@ import rcommon.database.rsqlbase.RY_SQLConnectionSetting;
  *
  * @author renhongxiang
  */
-public class RMMaySQLConnectionSetting implements RY_SQLConnectionSetting{
+public class RMMySQLConnectionSetting implements RY_SQLConnectionSetting{
 
     @Override
     public String getDbURL() {

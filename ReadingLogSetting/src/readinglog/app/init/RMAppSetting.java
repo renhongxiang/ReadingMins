@@ -13,7 +13,7 @@ import rcommon.app.setting.RAppSetting;
  */
 public class RMAppSetting extends RAppSetting{
 
-    public static boolean developInstance = true;
+    public static boolean developInstance = false;
 
 //    public static boolean autoTestInstance = true;
     

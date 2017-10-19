@@ -31,16 +31,6 @@ public class RM_AppInitWeb extends RM_AppInit{
     }
     
     @Override
-    protected RY_SQLConnectionFactory getConnectFact() {
-        return new RMSQLConnectionMySQL();
-    }
-
-    @Override
-    public RY_SQLConnectionFactory createSQLConnection() {
-        return new RMSQLConnectionMySQL();
-    }
-    
-    @Override
     public void doInit(){
         if(!appInited){
             RMAppSetting setting = new RMAppSetting();

@@ -57,3 +57,9 @@ Temporary Items
 /ReadingMinsTest/build
 /ReadingLogSetting/build
 /ReadingMinsLib/build
+/ReadingLog_DBTool/nbproject/private/
+/ReadingLog_DBTool/build/
+/ReadingLog_DBTool/dist/
+/ReadingLogEncryptLib/nbproject/private/
+/ReadingLogEncryptLib/build/
+/ReadingLogEncryptLib/dist/
