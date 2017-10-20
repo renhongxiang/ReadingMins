@@ -5,9 +5,7 @@
  */
 package com.readingmins.config;
 
-import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
 import readinglog.app.init.RMAppSetting;
-import readinglog.app.init.RMSQLConnectionMySQL;
 import rm_lib.application.init.RM_AppInit;
 
 /**

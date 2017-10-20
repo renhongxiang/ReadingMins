@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class RMEmailCertifyController extends UserEmailCertifyController{
     
     @RequestMapping(value = "/emailCertify")
-    public String logout(HttpServletRequest request,ModelMap model) {
+    public String certifyGet(HttpServletRequest request,ModelMap model) {
         return this.pageRequestHandle(request, model);
     }
     

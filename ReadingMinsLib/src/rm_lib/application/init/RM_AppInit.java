@@ -9,6 +9,7 @@ import rcommon.database.rsqlbase.RY_SQLConnectionFactory;
 import rcommon.rdata.iosystem.DataIOFactoryManager;
 import rcommon.rdata.iosystem.DataIOOperationFactory;
 import rcommon.rdata.iosys.operation.common.DataIOTimerOperation;
+import rcommon.rdata.structure.RY_IODataCommonDataDefine;
 import readinglog.app.init.RMSQLConnectionMySQL;
 import rm.encrypt.RMEncryptInit;
 import rytable.RY_DataBaseInitBase;
@@ -23,8 +24,6 @@ import rytable.ini.DBInitBase;
  * @author renhongxiang
  */
 public class RM_AppInit extends DBInitBase{
-
-    
     
     protected static boolean appInited = false;
     
@@ -51,6 +50,7 @@ public class RM_AppInit extends DBInitBase{
     @Override
     public void doInit(){
         if(!appInited){
+            RY_IODataCommonDataDefine.setIsLockAllowNull(true);
             
             this.initDataBase();
             
@@ -64,7 +64,6 @@ public class RM_AppInit extends DBInitBase{
             
             RMEncryptInit encryyptLib = new RMEncryptInit();
             encryyptLib.InitLib();
-            
             
             appInited = true;
         }
