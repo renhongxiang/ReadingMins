@@ -36,14 +36,20 @@ public class StudentAddController extends RM_LoginedControllerBase{
     
     @RequestMapping(value = "/studentAdd", method = RequestMethod.GET)
     public String addStudentGet(HttpServletRequest request, ModelMap model) {
-        this.controllerPageIn(request, model);
+        String page = this.controllerPageIn(request, model);
+        if(page != null){
+            return page;
+        }
         model.addAttribute("addStudentForm", new StudentBean());
         return getControllerPageName(); // this is which page to use.
     }
 
     @RequestMapping(value = "/studentAdd", method = RequestMethod.POST)
     public String addStudentPost(HttpServletRequest request, @ModelAttribute("addStudentForm") StudentBean bean, BindingResult result, ModelMap model) {
-        this.controllerPageIn(request, model);
+        String page = this.controllerPageIn(request, model);
+        if(page != null){
+            return page;
+        }
         if(bean != null){
             RY_User user = this.getLoginUser(request);
             if(user != null){

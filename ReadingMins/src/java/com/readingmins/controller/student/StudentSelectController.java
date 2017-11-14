@@ -35,7 +35,10 @@ public class StudentSelectController extends RM_LoginedControllerBase{
     @RequestMapping(value = "/studentSelect", method = RequestMethod.GET)
     public String selectStudentGet(HttpServletRequest request, ModelMap model) {
         
-        this.controllerPageIn(request, model);
+        String page = this.controllerPageIn(request, model);
+        if(page != null){
+            return page;
+        }
         
         RY_User user = this.getLoginUser(request);            
         List<RM_Student> rmStudents = this.loadStudentsByUser(user);
@@ -60,7 +63,10 @@ public class StudentSelectController extends RM_LoginedControllerBase{
     @RequestMapping(value = "/studentSelect", method = RequestMethod.POST)
     public String selectStudentPost(HttpServletRequest request, ModelMap model) {
 
-        this.controllerPageIn(request, model);
+        String page = this.controllerPageIn(request, model);
+        if(page != null){
+            return page;
+        }
 
         List<RM_Student> studentList = null;
         RSessionDataPackage curDataGroup = this.getCurPackage(request);

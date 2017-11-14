@@ -48,7 +48,10 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
     @RequestMapping(value = "/readingLogAdd", method = RequestMethod.GET)
     public String submitMinsGet(HttpServletRequest request, @ModelAttribute("monthReadingLog") ReadingLogMonthBean beanMonth, ModelMap model) {
 
-        this.controllerPageIn(request, model);
+        String page = this.controllerPageIn(request, model);
+        if(page != null){
+            return page;
+        }
         
         this.prepareModel(request, beanMonth, model);
         
@@ -62,7 +65,10 @@ public class ReadingLogAddController extends MonthlyDetailControllerBase{
                 @ModelAttribute("monthpost") String hiddenMonth, 
                 ModelMap model) {
         
-        this.controllerPageIn(request, model);
+        String page = this.controllerPageIn(request, model);
+        if(page != null){
+            return page;
+        }
         
         if(RStringUtils.isNotBlank(hiddenMonth)){
             beanMonth.setMonth(hiddenMonth);

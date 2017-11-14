@@ -2,29 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentEdit.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/web.xml</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/body.css</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/resource/css/base.css</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/src/java/com/readingmins/config/RM_AppInitWeb.java</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/glassfish-web.xml</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingEmail.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/layouts/sessLayout.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseHeader.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseFooter.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingPassword.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentAdd.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/settingEmailConfirm.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/settingMenu.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/studentMenu.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogDownload.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogEdit.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/readingLogAdd.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/userMenu.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/baseCss.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/pages/studentSelect.jsp</file>
-            <file>file:/I:/Code/GitHub2/ReadingMins/ReadingMins/web/WEB-INF/views/tiles/template/sessHeader.jsp</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
